@@ -1,0 +1,177 @@
+:host section.development {
+  padding-bottom: 300px;
+  padding-top: 100px;
+  position: relative;
+}
+
+:host section.development .blue {
+  bottom: 0px;
+  height: 225px;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+:host section.development .white {
+  bottom: -22px;
+  height: 225px;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+
+:host section.development .white img,
+:host section.development .blue img {
+  width: 100%;
+}
+
+:host section.development .design-development {
+  text-align: center;
+  padding-top: 50px
+}
+
+:host section.development .design-development i {
+  font-size: 41px;
+  background: #f48fb1;
+  color: #fff;
+  padding: 30px;
+  border-radius: 50%;
+  position: relative;
+}
+
+:host section.development .design-development i::after {
+  border: 1px solid #f48fb1;
+  content: "";
+  height: 120px;
+  left: -10px;
+  position: absolute;
+  top: -10px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+:host section.development .design-development i::before {
+  border: 1px solid #f48fb1;
+  content: "";
+  height: 140px;
+  left: -20px;
+  position: absolute;
+  top: -20px;
+  width: 140px;
+  border-radius: 50%;
+}
+
+:host section.development .design-development.one i {
+  background: #0ceac5;
+}
+
+:host section.development .design-development.one i::after,
+:host section.development .design-development.one i::before {
+  border: 1px solid #0ceac5;
+}
+
+:host section.development .design-development.three i {
+  background: #82b1ff;
+}
+
+:host section.development .design-development.three i::after,
+:host section.development .design-development.three i::before {
+  border: 1px solid #82b1ff;
+}
+
+:host section.development .design-development h2 {
+  position: relative;
+  color: #455a64;
+  font-family: "Raleway", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 55px auto 25px;
+  width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: -o-fit-content;
+}
+
+:host section.development .design-development h2::before {
+  border: 1px solid #455a64;
+  bottom: -15px;
+  content: "";
+  position: absolute;
+  width: 100%;
+}
+
+:host section.development .design-development p {
+  color: #455a64;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+/* Responsive */
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  :host section.development {
+    padding-bottom: 205px;
+  }
+  :host section.development .white {
+    bottom: -83px;
+  }
+  :host section.development .blue {
+    bottom: -60px;
+  }
+  :host section.development {
+    height: 600px;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  :host section.development {
+    height: auto;
+    overflow: hidden;
+  }
+  :host section.development .white {
+    bottom: -100px;
+  }
+  :host section.development .blue {
+    bottom: -80px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  :host section.development {
+    margin-top: 30px;
+  }
+  :host section.development {
+    height: auto;
+    overflow: hidden;
+  }
+  :host section.development .white {
+    bottom: -100px;
+  }
+  :host section.development .blue {
+    bottom: -90px;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+  :host section.development {
+    padding-bottom: 100px;
+    height: auto;
+  }
+  :host section.development .blue {
+    height: 65px;
+  }
+  :host section.development .white {
+    bottom: 0;
+    height: 57px;
+  }
+}
+
+@media only screen and (max-width: 549px) {
+  :host section.development {
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+}

@@ -1,0 +1,396 @@
+:host header.header {
+  background-image: url("src/assets/img/header-bg.jpg");
+  background-size: 100% auto;
+  height: auto;
+  overflow: hidden;
+  padding-top: 20px;
+  position: relative;
+}
+
+:host header.header .blue {
+  bottom: -65px;
+  height: 525px;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+
+:host header.header .container {
+  position: relative
+}
+
+:host header.header img.shepe1 {
+  left: 200px;
+  position: absolute;
+  top: 60px;
+  width: 40px;
+  height: 40px;
+}
+
+:host header.header img.shepe2 {
+  height: 75px;
+  left: 72px;
+  position: absolute;
+  top: 125px;
+  transform: rotate(180deg);
+  width: 75px;
+}
+
+:host header.header img.shepe3 {
+  height: 75px;
+  left: 160px;
+  position: absolute;
+  top: 200px;
+  transform: rotate(180deg);
+  width: 75px;
+}
+
+:host header.header img.shepe4 {
+  height: 50px;
+  left: 290px;
+  position: absolute;
+  top: 130px;
+  width: 50px;
+}
+
+:host header.header img.shepe5 {
+  height: 50px;
+  left: 590px;
+  position: absolute;
+  top: 100px;
+  width: 50px;
+}
+
+:host header.header img.shepe6 {
+  height: 75px;
+  left: 800px;
+  position: absolute;
+  top: 90px;
+  width: 75px;
+}
+
+:host header.header .white img,
+:host header.header .blue img {
+  width: 100%;
+}
+
+:host header.header .white {
+  bottom: -105px;
+  height: 525px;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+
+:host header.header .logo h2 {
+  margin: 0;
+  padding: 0
+}
+
+:host header.header .logo h2 a {
+  font-family: 'Orbitron', cursive;
+  font-size: 30px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #fff;
+}
+
+:host header.header ul.nav.navbar-nav li a {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+:host header.header ul.nav.navbar-nav {
+  float: right;
+}
+
+:host header.header ul.nav.navbar-nav li :hover {
+  background: transparent
+}
+
+:host header.header .header-text {
+  margin: 0 auto;
+  padding-top: 130px;
+  text-align: center;
+  width: 770px;
+}
+
+:host header.header .header-text h1 {
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-size: 65px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+:host header.header .header-text h1::before {
+  background: #fff none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 3px;
+  left: 130px;
+  position: absolute;
+  width: 500px;
+}
+
+:host header.header .header-text p {
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 57px;
+}
+
+:host header.header .header-text button {
+  background: transparent none repeat scroll 0 0;
+  border: 2px solid #fff;
+  border-radius: 60px / 61px;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 170px;
+  margin-right: 27px;
+  padding: 14px 50px;
+}
+
+:host header.header .header-text button:hover {
+  background: #fff;
+  color: #11bdd7;
+}
+
+:host header.header .another-text h3 {
+  color: #455a64;
+  font-family: "Raleway", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  padding-bottom: 17px;
+  position: relative;
+  margin-top: 40px;
+}
+
+:host header.header .another-text h3::before {
+  background: #455a64 none repeat scroll 0 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  bottom: 0px;
+  width: 70px;
+}
+
+:host header.header .another-text p {
+  color: #78909c;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 32px;
+  margin-top: 15px;
+}
+
+/* Responsive */
+
+@media (min-width: 1440px) and (max-width: 1745px) {
+  :host header.header .white {
+    bottom: -110px;
+  }
+  :host header.header .blue {
+    bottom: -80px;
+  }
+  :host header.header .another-text {
+    margin-left: 100px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  :host header.header {
+    background-size: 100% auto;
+    height: auto;
+  }
+  :host header.header .header-text {
+    padding-top: 45px;
+  }
+  :host header.header .blue {
+    bottom: -178px;
+  }
+  :host header.header .white {
+    bottom: -205px;
+  }
+  :host header.header .header-text button {
+    margin-bottom: 80px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  :host header.header {
+    height: auto;
+  }
+  :host header.header .blue {
+    height: 365px;
+  }
+  :host header.header .white {
+    bottom: 0;
+    height: 275px;
+  }
+  :host header.header .header-text {
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  :host header.header .another-text {
+    margin-top: 150px;
+  }
+  :host header.header .header-text h1 {
+    font-size: 40px;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+  }
+  :host header.header .header-text p {
+    line-height: 25px;
+    margin-bottom: 20px;
+  }
+  :host header.header .header-text button {
+    margin-bottom: -15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  :host header.header .header-text {
+    width: 100%;
+    padding-top: 20px;
+  }
+  :host header.header .header-text h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    margin-top: 0;
+  }
+  :host header.header .header-text p {
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 15px;
+  }
+  :host header.header .header-text p br {
+    display: none;
+  }
+  :host header.header {
+    height: auto;
+  }
+  :host header.header .blue {
+    bottom: -285px;
+  }
+  :host header.header .white {
+    bottom: -305px;
+  }
+  :host header.header .another-text h3 {
+    font-size: 33px;
+    padding-bottom: 3px;
+  }
+  :host header.header .another-text p {
+    line-height: 20px;
+    margin-top: 4px;
+  }
+  :host header.header .header-text button {
+    margin-bottom: 62px;
+    font-size: 16px;
+    padding: 10px 35px;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+  :host header.header .logo {
+    text-align: center;
+  }
+  :host header.header ul.nav.navbar-nav {
+    height: 90px;
+    width: 100%;
+    text-align: center;
+  }
+  :host header.header ul.nav.navbar-nav>li {
+    display: inline-block;
+  }
+  :host header.header .header-text {
+    width: 100%;
+  }
+  :host header.header .header-text h1 {
+    font-size: 40px;
+  }
+  :host header.header .header-text h1::before {
+    left: 0;
+    width: 100%;
+  }
+  :host header.header .header-text p br {
+    display: none;
+  }
+  :host header.header {
+    height: auto;
+    background-size: 100% auto;
+  }
+  :host header.header .blue {
+    bottom: -45px;
+    height: 210px;
+  }
+  :host header.header .white {
+    bottom: -40px;
+    height: 192px;
+  }
+  :host header.header .header-text {
+    padding-top: 50px;
+  }
+  :host header.header .header-text button {
+    margin-bottom: 0;
+  }
+  :host header.header .another-text {
+    margin-bottom: 200px;
+  }
+  :host header.header .another-text p br {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 549px) {
+  :host header.header .white,
+  :host header.header .blue,
+  :host section .blue,
+  :host section .white {
+    display: none;
+  }
+
+  :host header.header .header-text {
+    padding-top: 0;
+    width: 100%;
+  }
+
+  :host header.header .header-text h1::before {
+    display: none;
+  }
+
+  :host header.header .header-text h1 {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+
+  :host header.header .header-text p br {
+    display: none;
+  }
+
+  :host header.header .header-text p {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 23px;
+  }
+
+  :host header.header .header-text button {
+    display: block;
+    font-size: 18px;
+    margin: 20px auto 0;
+    padding: 14px 50px;
+    width: auto;
+  }
+}
+

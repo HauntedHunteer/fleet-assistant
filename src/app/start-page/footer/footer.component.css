@@ -1,0 +1,112 @@
+:host footer.footer {
+  background-image: url("src/assets/img/footer-bg.jpg");
+  background-size: 100% 100%;
+  height: 400px;
+  margin-top: 100px;
+  padding-top: 110px;
+}
+
+:host footer.footer .footer-icon h2 {
+  color: #fff;
+  font-family: "Croissant One", cursive;
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+:host footer.footer .footer-icon h2::before {
+  background: #455a64 none repeat scroll 0 0;
+  bottom: -17px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 310px;
+}
+
+:host footer.footer .footer-icon h5 {
+  color: #4c797d;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 35px;
+}
+
+:host footer.footer .footer-icon i {
+  color: #fff;
+  font-size: 25px;
+  padding: 0 44px 0 0;
+}
+
+:host footer.footer .footer-text .footer-text-single h3 {
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+
+:host footer.footer .footer-text .footer-text-single p a {
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4c797d;
+  text-decoration: none;
+}
+
+/* Responsive */
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  :host footer.footer {
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  :host footer.footer {
+    margin-top: 50px;
+  }
+  :host footer.footer .footer-text .footer-text-single p a {
+    font-size: 13px;
+  }
+  :host footer.footer .footer-icon i {
+    padding: 0 30px 0 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  :host footer.footer {
+    height: auto;
+  }
+  :host footer.footer .footer-icon {}
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+  :host footer.footer {
+    background-size: 100% auto;
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+@media only screen and (max-width: 549px) {
+  :host footer.footer {
+    height: auto;
+    margin-top: 0;
+  }
+  :host footer.footer .footer-icon h2::before {
+    width: 100px;
+  }
+  :host footer.footer .footer-icon i {
+    font-size: 22px;
+    padding: 0 20px 0 0;
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  :host footer.footer .footer-text .footer-text-single p a {
+    font-size: 10px;
+    font-weight: 800;
+  }
+}

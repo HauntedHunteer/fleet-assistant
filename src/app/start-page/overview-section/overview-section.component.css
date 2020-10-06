@@ -1,0 +1,121 @@
+:host section.overview .overview-text {
+  margin-bottom: 75px;
+}
+
+:host section.overview .overview-text h2 {
+  color: #455a64;
+  font-family: "Raleway", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0 auto;
+  position: relative;
+  width: -moz-fit-content;
+  padding-bottom: 25px;
+}
+
+:host section.overview .overview-text h2::before {
+  background: #455a64 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 65px;
+  position: absolute;
+  width: 75px;
+}
+
+:host section.overview .overview-text p {
+  color: #78909c;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 32px;
+  margin: 0 auto;
+  padding-top: 10px;
+  width: -moz-fit-content;
+}
+
+:host section.overview {
+  padding-bottom: 100px;
+  padding-top: 100px;
+  position: relative;
+}
+
+:host section.overview .design-development {
+  text-align: center;
+  padding-top: 50px
+}
+
+:host section.overview .design-development h2 {
+  position: relative;
+  color: #455a64;
+  font-family: "Raleway", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 55px auto 25px;
+  width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: -o-fit-content;
+}
+
+:host section.overview .design-development h2::before {
+  border: 1px solid #455a64;
+  bottom: -15px;
+  content: "";
+  position: absolute;
+  width: 100%;
+}
+
+:host section.overview .design-development p {
+  color: #455a64;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+/* Responsive */
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  :host section.overview {
+    padding-bottom: 205px;
+  }
+  :host section.overview {
+    height: 600px;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  :host section.overview {
+    height: auto;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  :host section.overview {
+    margin-top: 30px;
+  }
+  :host section.overview {
+    height: auto;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+  :host section.overview {
+    padding-bottom: 100px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 549px) {
+  :host section.overview {
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+  .warpper section.overview .overview-text p br {
+    display: none;
+  }
+}
