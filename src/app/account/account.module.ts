@@ -6,17 +6,19 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountLayoutComponent } from './account-layout/account-layout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { StartPageModule } from '../start-page/start-page.module';
-
+import { SiteFrameworkModule } from '../site-framework/site-framework.module';
 
 
 @NgModule({
-  declarations: [AccountLayoutComponent, LoginComponent, RegisterComponent],
+  declarations: [
+    AccountLayoutComponent,
+    LoginComponent,
+    RegisterComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,
     ReactiveFormsModule,
-    StartPageModule
+    SiteFrameworkModule
   ]
 })
 export class AccountModule { }

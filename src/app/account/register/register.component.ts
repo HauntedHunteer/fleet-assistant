@@ -6,6 +6,8 @@ import { first } from 'rxjs/operators';
 import { AccountService } from '../account.service';
 import { AlertService } from '../../_services/alert.service';
 
+import { MustMatch } from '../../_helpers/must-match';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -27,7 +29,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', Validators.required],
+      terms : ['', Validators.requiredTrue]
+    }, {
+      validator: MustMatch('password', 'confirmPassword')
     });
   }
 

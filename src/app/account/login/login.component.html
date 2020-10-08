@@ -1,29 +1,35 @@
-<div class="card">
-  <h4 class="card-header">Logowanie</h4>
-  <div class="card-body">
+<mat-card>
+  <mat-card-title>Logowanie</mat-card-title>
+  <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="email">Adres E-mail </label>
-        <input type="text" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Adres E-mail jest obowiązkowy</div>
-          <div *ngIf="f.email.errors.email">Niepoprawny format adresu E-mail</div>
-        </div>
+        <mat-form-field class="input-full-width">
+          <mat-label>Adres E-mail </mat-label>
+          <input matInput [formControl]="f.email" />
+          <mat-error *ngIf="f.email.hasError('email') && !f.email.hasError('required')">
+            Niepoprawny format adresu E-mail
+          </mat-error>
+          <mat-error *ngIf="f.email.hasError('required')">
+            Adres E-mail jest <strong>obowiązkowy</strong>
+          </mat-error>
+        </mat-form-field>
       </div>
       <div class="form-group">
-        <label for="password">Hasło</label>
-        <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Hasło jest obowiązkowe</div>
-        </div>
+        <mat-form-field class="input-full-width">
+          <mat-label>Hasło</mat-label>
+          <input type="password" matInput [formControl]="f.password" />
+          <mat-error *ngIf="f.password.hasError('required')">
+            Hasło jest <strong>obowiązkowe</strong>
+          </mat-error>
+        </mat-form-field>
       </div>
       <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
+        <button [disabled]="loading || !form.valid" mat-raised-button color="primary">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
           Zaloguj się
         </button>
-        <a routerLink="../register" class="btn btn-link">Zarejestruj się </a>
+        <a routerLink="../register" mat-raised-button class="ml-3">Zarejestruj się </a>
       </div>
     </form>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>

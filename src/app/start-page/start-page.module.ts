@@ -22,8 +22,7 @@ import { FooterComponent } from './footer/footer.component';
     StartPageRoutingModule
   ],
   exports: [
-    StartPageComponent,
-    FooterComponent
+    StartPageComponent
   ]
 })
 export class StartPageModule { }
