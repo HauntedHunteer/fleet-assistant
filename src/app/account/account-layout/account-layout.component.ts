@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AccountService } from '../account.service';
+import { TokenStorageService } from '../token-storage.service';
 
 @Component({
   selector: 'app-account-layout',
@@ -12,10 +12,10 @@ export class AccountLayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private accountService: AccountService
+    private tokenStorageService: TokenStorageService
               ) {
     // redirect to dashboard if already logged in
-    if (this.accountService.userValue) {
+    if (this.tokenStorageService.getUser()) {
       this.router.navigate(['/dashboard']);
     }
   }

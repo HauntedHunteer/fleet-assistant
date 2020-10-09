@@ -3,6 +3,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 
 import { AccountService } from '../account/account.service';
+import { TokenStorageService } from '../account/token-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,14 @@ import { AccountService } from '../account/account.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private accountService: AccountService
+    private tokenStorageService: TokenStorageService
   ) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const user = this.accountService.userValue;
+    const user = this.tokenStorageService.getUser();
     if (user) {
       // authorised so return true
       return true;

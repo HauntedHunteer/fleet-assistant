@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -80,5 +80,51 @@ export class AccountService {
         }
         return x;
       }));
+  }
+} */
+
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
+import { environment } from '../../environments/environment';
+import { User } from '../_models/user';
+
+import { TokenStorageService } from './token-storage.service';
+
+const AUTH_API = 'http://localhost:8080/api/auth/';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AccountService {
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private tokenStorageService: TokenStorageService) { }
+
+  login(credentials): Observable<any> {
+    return this.http.post(AUTH_API + 'signin', {
+      email: credentials.email,
+      password: credentials.password
+    }, httpOptions);
+  }
+
+  register(user): Observable<any> {
+    return this.http.post(AUTH_API + 'signup', {
+      email: user.email,
+      password: user.password
+    }, httpOptions);
+  }
+
+  logout() {
+    this.tokenStorageService.signOut();
+    this.router.navigate(['/account/login']);
   }
 }
