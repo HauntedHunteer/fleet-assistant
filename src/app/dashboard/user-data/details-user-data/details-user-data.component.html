@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> Twoje dane </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Imię: </strong> {{ userAddressAndData.userData.name }} </p>
+    <p><strong>Nazwisko: </strong>  {{ userAddressAndData.userData.surname }}</p>
+    <p><strong>Numer telefonu: </strong> {{ userAddressAndData.userData.phoneNumber }}</p>
+    <mat-card-subtitle>Adres</mat-card-subtitle>
+    <p><strong>Kraj: </strong> {{ userAddressAndData.country }} </p>
+    <p><strong>Miasto: </strong> {{ userAddressAndData.city }}</p>
+    <p><strong>Ulica: </strong> {{ userAddressAndData.street }}</p>
+    <p><strong>Numer budynku: </strong> {{ userAddressAndData.buildingNumber }}</p>
+    <p><strong>Numer mieszkania: </strong> {{ userAddressAndData.flatNumber }}</p>
+    <p><strong>Kod pocztowy: </strong>{{ userAddressAndData.postalCode }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Edytuj dane</button>
+    <button mat-button>Powrót</button>
+  </mat-card-actions>
+</mat-card>
+

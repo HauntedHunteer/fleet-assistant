@@ -14,39 +14,22 @@
     }
   ],
   "users": [
+
+  ],
+  "userData": [
     {
-      "id": 1,
-      "email": "test@test.pl",
-      "password": "test"
-    },
-    {
-      "email": "m.niemczuk@interia.pl",
-      "password": "12345678",
-      "id": 2
-    },
-    {
-      "email": "test1@test.pl",
-      "password": "test12345678",
-      "confirmPassword": "test12345678",
-      "terms": true,
-      "id": 3
-    },
-    {
-      "email": "test1@test.pl",
-      "password": "test12345678",
-      "id": 4
-    },
-    {
-      "email": "123@tema",
-      "password": "12345678",
-      "confirmPassword": "12345678",
-      "terms": true,
-      "id": 5
-    },
-    {
-      "email": "test@test.pl",
-      "password": "test",
-      "id": 6
+      "id": "1",
+      "userData": {
+        "name": "Mateusz",
+        "surname": "Niemczuk",
+        "phoneNumber": "12345689"
+      },
+      "country": "Polska",
+      "city": "Chełm",
+      "street": "Lubelska",
+      "buildingNumber": "45",
+      "flatNumber": "12a",
+      "postalCode": "22-151"
     }
   ],
   "profile": {

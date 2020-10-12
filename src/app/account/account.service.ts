@@ -94,6 +94,7 @@ import { User } from '../_models/user';
 import { TokenStorageService } from './token-storage.service';
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
+const RESET_PSW_API = 'http://localhost:8080/user/reset-password';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -109,15 +110,15 @@ export class AccountService {
     private router: Router,
     private tokenStorageService: TokenStorageService) { }
 
-  login(credentials): Observable<any> {
-    return this.http.post(AUTH_API + 'signin', {
+  login(credentials): Observable<User> {
+    return this.http.post<User>(AUTH_API + 'login', {
       email: credentials.email,
       password: credentials.password
     }, httpOptions);
   }
 
-  register(user): Observable<any> {
-    return this.http.post(AUTH_API + 'signup', {
+  register(user): Observable<User> {
+    return this.http.post<User>(AUTH_API + 'register', {
       email: user.email,
       password: user.password
     }, httpOptions);
@@ -126,5 +127,9 @@ export class AccountService {
   logout() {
     this.tokenStorageService.signOut();
     this.router.navigate(['/account/login']);
+  }
+
+  resetPassword(email): Observable<any> {
+    return this.http.post(RESET_PSW_API, email, httpOptions);
   }
 }

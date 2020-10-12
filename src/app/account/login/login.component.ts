@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
           data => {
             this.tokenStorageService.saveToken(data.accessToken);
             this.tokenStorageService.saveUser(data);
-            console.log('user logged in' + data);
+            console.log('user logged in');
             this.router.navigate([this.returnUrl]);
           },
           error => {

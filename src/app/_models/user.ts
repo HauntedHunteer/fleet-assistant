@@ -1,10 +1,7 @@
 export interface User {
-  idUser: string;
   email: string;
-  password: string;
   createdAt: string;
-  userLevel: string;
+  role: string;
   userStatus: string;
-  idManager: string;
-  token: string;
+  accessToken: string;
 }

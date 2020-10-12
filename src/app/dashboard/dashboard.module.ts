@@ -3,13 +3,27 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { UserDataComponent } from './user-data/user-data.component';
+import { CreateUserDataComponent } from './user-data/create-user-data/create-user-data.component';
+import { UpdateUserDataComponent } from './user-data/update-user-data/update-user-data.component';
+import { DetailsUserDataComponent } from './user-data/details-user-data/details-user-data.component';
+import { SiteFrameworkModule } from '../site-framework/site-framework.module';
+
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [
+    DashboardComponent,
+    UserDataComponent,
+    CreateUserDataComponent,
+    UpdateUserDataComponent,
+    DetailsUserDataComponent
+  ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    SiteFrameworkModule,
+
   ]
 })
 export class DashboardModule { }

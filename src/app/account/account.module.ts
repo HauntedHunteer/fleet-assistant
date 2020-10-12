@@ -7,13 +7,16 @@ import { AccountLayoutComponent } from './account-layout/account-layout.componen
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SiteFrameworkModule } from '../site-framework/site-framework.module';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
   declarations: [
     AccountLayoutComponent,
     LoginComponent,
-    RegisterComponent],
+    RegisterComponent,
+    ResetPasswordComponent
+  ],
   imports: [
     CommonModule,
     AccountRoutingModule,
