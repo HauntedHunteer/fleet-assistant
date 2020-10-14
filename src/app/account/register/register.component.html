@@ -5,7 +5,7 @@
       <div class="form-group">
         <mat-form-field class="input-full-width">
           <mat-label>Adres E-mail </mat-label>
-          <input matInput [formControl]="f.email" />
+          <input matInput [formControl]="f.email" required />
           <mat-error *ngIf="f.email.hasError('email') && !f.email.hasError('required')">
             Niepoprawny format adresu E-mail
           </mat-error>
@@ -17,7 +17,7 @@
       <div class="form-group">
         <mat-form-field class="input-full-width">
           <mat-label>Hasło</mat-label>
-          <input type="password" matInput [formControl]="f.password" />
+          <input type="password" matInput [formControl]="f.password" required />
           <mat-error *ngIf="f.password.hasError('required')">
             Hasło jest <strong>obowiązkowe</strong>
           </mat-error>
@@ -29,7 +29,7 @@
       <div class="form-group">
         <mat-form-field class="input-full-width">
           <mat-label>Potwierdź swoje hasło</mat-label>
-          <input type="password" matInput [formControl]="f.confirmPassword" />
+          <input type="password" matInput [formControl]="f.confirmPassword" required />
           <mat-error *ngIf="f.confirmPassword.hasError('required')">
             Potwierdzenie hasła jest <strong>obowiązkowe</strong>
           </mat-error>
@@ -39,7 +39,7 @@
         </mat-form-field>
       </div>
       <div class="form-group">
-        <mat-checkbox color="primary" [formControl]="f.terms">Akceptuję regulamin serwisu</mat-checkbox>
+        <mat-checkbox color="primary" [formControl]="f.terms" required >Akceptuję regulamin serwisu</mat-checkbox>
       </div>
       <div class="form-group">
         <button [disabled]="loading || !form.valid" mat-raised-button color="primary" class="ml-3">

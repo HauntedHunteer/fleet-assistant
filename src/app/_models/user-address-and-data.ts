@@ -1,7 +1,6 @@
 export interface UserAddressAndData {
-  id: string; // temporary
+  id: string;
   userData: UserData;
-  country: string;
   city: string;
   street: string;
   buildingNumber: string;

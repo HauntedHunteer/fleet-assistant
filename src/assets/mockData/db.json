@@ -13,9 +13,7 @@
       "postId": 1
     }
   ],
-  "users": [
-
-  ],
+  "users": [],
   "userData": [
     {
       "id": "1",
@@ -30,6 +28,33 @@
       "buildingNumber": "45",
       "flatNumber": "12a",
       "postalCode": "22-151"
+    },
+    {
+      "id": "2",
+      "userData": {
+        "name": "Paweł",
+        "surname": "Nankiewicz",
+        "phoneNumber": "123456789"
+      },
+      "country": "Polska",
+      "city": "Lublin",
+      "postalCode": "22-100",
+      "street": "Stalowa",
+      "buildingNumber": "2",
+      "flatNumber": ""
+    },
+    {
+      "id": "3",
+      "userData": {
+        "name": "Mateusz",
+        "surname": "Niemczuk",
+        "phoneNumber": "123456789"
+      },
+      "city": "Chełm",
+      "postalCode": "11-333",
+      "street": "Lubelska",
+      "buildingNumber": "13",
+      "flatNumber": "22b"
     }
   ],
   "profile": {

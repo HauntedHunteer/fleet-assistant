@@ -19,9 +19,8 @@ export class DetailsUserDataComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    this.userDataService.viewUserData(1).subscribe(
+    this.userDataService.viewUserData().subscribe(
       data => {
-        console.log(data);
         this.userAddressAndData = data;
     },
       error => {

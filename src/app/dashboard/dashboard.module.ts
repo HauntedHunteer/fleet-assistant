@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
@@ -10,20 +11,19 @@ import { DetailsUserDataComponent } from './user-data/details-user-data/details-
 import { SiteFrameworkModule } from '../site-framework/site-framework.module';
 
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
     UserDataComponent,
     CreateUserDataComponent,
     UpdateUserDataComponent,
-    DetailsUserDataComponent
+    DetailsUserDataComponent,
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     DashboardRoutingModule,
-    SiteFrameworkModule,
-
+    SiteFrameworkModule
   ]
 })
 export class DashboardModule { }

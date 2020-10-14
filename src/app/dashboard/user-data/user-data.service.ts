@@ -19,15 +19,15 @@ export class UserDataService {
     private httpClient: HttpClient
   ) { }
 
-  createUserData(userAddressAndData): Observable<UserAddressAndData> {
+  createUserData(userAddressAndData: UserAddressAndData): Observable<UserAddressAndData> {
     return this.httpClient.post<UserAddressAndData>(`${environment.apiUrl}/userData`, userAddressAndData, httpOptions);
   }
 
-  viewUserData(userDataId): Observable<UserAddressAndData> {
-    return this.httpClient.get<UserAddressAndData>(`${environment.apiUrl}/userData/` + userDataId, httpOptions);
+  viewUserData(): Observable<UserAddressAndData> {
+    return this.httpClient.get<UserAddressAndData>(`${environment.apiUrl}/userData`, httpOptions);
   }
 
-  updateUserData(userAddressAndData): Observable<UserAddressAndData> {
-    return this.httpClient.put<UserAddressAndData>(`${environment.apiUrl}/userData/`, userAddressAndData, httpOptions);
+  updateUserData(userAddressAndData: UserAddressAndData): Observable<UserAddressAndData> {
+    return this.httpClient.put<UserAddressAndData>(`${environment.apiUrl}/userData`, userAddressAndData, httpOptions);
   }
 }

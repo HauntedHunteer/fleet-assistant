@@ -6,62 +6,84 @@
         <div class="col">
           <mat-form-field class="input-full-width">
             <mat-label>Imię </mat-label>
-            <input matInput [formControl]="f.name" />
+            <input matInput [formControl]="f.name" required />
             <mat-error *ngIf="f.name.hasError('required')">
               Imię jest <strong>obowiązkowe</strong>
             </mat-error>
+            <mat-error *ngIf="f.name.hasError('minlength')">
+              Imię musi składać się co najmnej z <strong>3</strong> znaków
+            </mat-error>
+            <mat-error *ngIf="f.name.hasError('maxlength')">
+              Imię musi składać się co najwyżej z <strong>45</strong> znaków
+            </mat-error>
           </mat-form-field>
         </div>
+
         <div class="col">
           <mat-form-field class="input-full-width">
             <mat-label>Nazwisko </mat-label>
-            <input matInput [formControl]="f.surname" />
+            <input matInput [formControl]="f.surname" required />
             <mat-error *ngIf="f.surname.hasError('required')">
               Nazwisko jest <strong>obowiązkowe</strong>
             </mat-error>
+            <mat-error *ngIf="f.surname.hasError('minlength')">
+              Nazwisko musi składać się co najmnej z <strong>3</strong> znaków
+            </mat-error>
+            <mat-error *ngIf="f.surname.hasError('maxlength')">
+              Nazwisko musi składać się co najwyżej z <strong>45</strong> znaków
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
-          <mat-form-field>
+          <mat-form-field class="input-full-width">
             <mat-label>Numer telefonu </mat-label>
-            <input matInput [formControl]="f.phoneNumber" />
+            <input matInput [formControl]="f.phoneNumber" required />
             <mat-error *ngIf="f.phoneNumber.hasError('required')">
               Numer telefonu jest <strong>obowiązkowy</strong>
             </mat-error>
+            <mat-error *ngIf="f.phoneNumber.hasError('minlength')">
+              Numer telefonu musi składać się co najmnej z <strong>7</strong> cyfr
+            </mat-error>
+            <mat-error *ngIf="f.phoneNumber.hasError('maxlength')">
+              Numer telefonu musi składać się co najwyżej z <strong>15</strong> cyfr
+            </mat-error>
+            <mat-error *ngIf="f.phoneNumber.hasError('pattern')">
+              Nieprawidłowy format
+            </mat-error>
           </mat-form-field>
         </div>
+        <div class="col"></div>
+        <div class="col"></div>
       </div>
-
-      <mat-card-subtitle>Dane adresowe</mat-card-subtitle>
 
       <div class="row">
         <div class="col">
           <mat-form-field class="input-full-width">
-            <mat-label>Kraj </mat-label>
-            <input matInput [formControl]="f.country" />
-            <mat-error *ngIf="f.country.hasError('required')">
-              Kraj jest <strong>obowiązkowy</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="input-full-width">
             <mat-label>Miasto </mat-label>
-            <input matInput [formControl]="f.city" />
+            <input matInput [formControl]="f.city" required />
             <mat-error *ngIf="f.city.hasError('required')">
               Miasto jest <strong>obowiązkowe</strong>
+            </mat-error>
+            <mat-error *ngIf="f.city.hasError('minlength')">
+              Miasto musi składać się co najmnej z <strong>3</strong> znaków
+            </mat-error>
+            <mat-error *ngIf="f.city.hasError('maxlength')">
+              Miasto musi składać się co najwyżej z <strong>45</strong> znaków
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="input-full-width">
             <mat-label>Kod pocztowy </mat-label>
-            <input matInput [formControl]="f.postalCode" />
+            <input matInput [formControl]="f.postalCode" placeholder="Format: xx-xxx" required />
             <mat-error *ngIf="f.postalCode.hasError('required')">
               Kod pocztowy jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.postalCode.hasError('pattern')">
+              Nieprawidłowy format - (xx-xxx)
             </mat-error>
           </mat-form-field>
         </div>
@@ -69,20 +91,34 @@
 
       <div class="row">
         <div class="col">
-          <mat-form-field>
+          <mat-form-field class="input-full-width">
             <mat-label>Ulica </mat-label>
             <input matInput [formControl]="f.street" />
+            <mat-error *ngIf="f.street.hasError('minlength')">
+              Ulica musi składać się co najmnej z <strong>3</strong> znaków
+            </mat-error>
+            <mat-error *ngIf="f.street.hasError('maxlength')">
+              Ulica musi składać się co najwyżej z <strong>45</strong> znaków
+            </mat-error>
           </mat-form-field>
         </div>
+        <div class="col"></div>
+        <div class="col"></div>
       </div>
 
       <div class="row">
         <div class="col">
           <mat-form-field class="input-full-width">
             <mat-label>Numer budynku </mat-label>
-            <input matInput [formControl]="f.buildingNumber" />
+            <input matInput [formControl]="f.buildingNumber" required />
             <mat-error *ngIf="f.buildingNumber.hasError('required')">
               Numer budynku jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.buildingNumber.hasError('maxlength')">
+              Numer budynku musi składać się co najwyżej z <strong>5</strong> znaków
+            </mat-error>
+            <mat-error *ngIf="f.buildingNumber.hasError('pattern')">
+              Nieprawidłowy format
             </mat-error>
           </mat-form-field>
         </div>
@@ -90,14 +126,20 @@
           <mat-form-field class="input-full-width">
             <mat-label>Numer lokalu </mat-label>
             <input matInput [formControl]="f.flatNumber" />
+            <mat-error *ngIf="f.flatNumber.hasError('minlength')">
+              Numer lokalu musi składać się co najmnej z <strong>1</strong> znaków
+            </mat-error>
+            <mat-error *ngIf="f.flatNumber.hasError('maxlength')">
+              Numer lokalu musi składać się co najwyżej z <strong>5</strong> znaków
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
-      <mat-card-actions>
+      <mat-card-actions class="text-center">
         <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
           Dodaj
         </button>
-        <a routerLink="../dashboard" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+        <a routerLink="/dashboard/userData/details" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
       </mat-card-actions>
     </form>
   </mat-card-content>

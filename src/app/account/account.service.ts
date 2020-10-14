@@ -90,11 +90,7 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
-
 import { TokenStorageService } from './token-storage.service';
-
-const AUTH_API = 'http://localhost:8080/api/auth/';
-const RESET_PSW_API = 'http://localhost:8080/user/reset-password';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -111,14 +107,14 @@ export class AccountService {
     private tokenStorageService: TokenStorageService) { }
 
   login(credentials): Observable<User> {
-    return this.http.post<User>(AUTH_API + 'login', {
+    return this.http.post<User>(`${environment.apiUrl}/api/auth/signin`, {
       email: credentials.email,
       password: credentials.password
     }, httpOptions);
   }
 
   register(user): Observable<User> {
-    return this.http.post<User>(AUTH_API + 'register', {
+    return this.http.post<User>(`${environment.apiUrl}/api/auth/signup`, {
       email: user.email,
       password: user.password
     }, httpOptions);
@@ -130,6 +126,6 @@ export class AccountService {
   }
 
   resetPassword(email): Observable<any> {
-    return this.http.post(RESET_PSW_API, email, httpOptions);
+    return this.http.post(`${environment.apiUrl}/user/reset-password`, email, httpOptions);
   }
 }
