@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserDataService } from '../user-data.service';
 import { AlertService } from '../../../_services/alert.service';
-import { UserAddressAndData } from '../../../_models/user-address-and-data';
+import { UserData } from '../../../_models/user-data';
 
 @Component({
   selector: 'app-create-user-data',
@@ -40,22 +40,21 @@ export class CreateUserDataComponent implements OnInit {
   }
 
   onSubmit() {
-    const userAddressAndData: UserAddressAndData = {
+    const userData: UserData = {
       id: '',
-      userData: {
+      name: this.f.name.value,
+      surname: this.f.surname.value,
+      phoneNumber: this.f.phoneNumber.value,
+      address: {
         id: '',
-        name: this.f.name.value,
-        surname: this.f.surname.value,
-        phoneNumber: this.f.phoneNumber.value
-      },
-      city: this.f.city.value,
-      postalCode: this.f.postalCode.value,
-      street: this.f.street.value,
-      buildingNumber: this.f.buildingNumber.value,
-      flatNumber: this.f.flatNumber.value,
+        city: this.f.city.value,
+        postalCode: this.f.postalCode.value,
+        street: this.f.street.value,
+        buildingNumber: this.f.buildingNumber.value,
+        flatNumber: this.f.flatNumber.value
+      }
     };
-    console.log(userAddressAndData);
-    this.userDataService.createUserData(userAddressAndData).subscribe(
+    this.userDataService.createUserData(userData).subscribe(
       data => {
         this.alertService.success('Dane zaktualizowno pomyślnie', { keepAfterRouteChange : true});
         this.router.navigate(['../details'], { relativeTo: this.route });

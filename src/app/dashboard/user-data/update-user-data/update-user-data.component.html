@@ -1,13 +1,13 @@
-<mat-card>
-  <mat-card-title>Uzupełnij swoje dane</mat-card-title>
-  <ng-container>
-    <mat-card-content class="detailsFont" *ngIf="userAddressAndData">
+<ng-container *ngIf="userData">
+  <mat-card>
+    <mat-card-title>Uzupełnij swoje dane</mat-card-title>
+    <mat-card-content class="detailsFont">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row">
           <div class="col">
             <mat-form-field class="input-full-width">
               <mat-label>Imię </mat-label>
-              <input matInput [formControl]="f.name" [(ngModel)]="userAddressAndData.userData.name" required />
+              <input matInput [formControl]="f.name" [(ngModel)]="userData.name" required />
               <mat-error *ngIf="f.name.hasError('required')">
                 Imię jest <strong>obowiązkowe</strong>
               </mat-error>
@@ -23,7 +23,7 @@
           <div class="col">
             <mat-form-field class="input-full-width">
               <mat-label>Nazwisko </mat-label>
-              <input matInput [formControl]="f.surname" [(ngModel)]="userAddressAndData.userData.surname" required />
+              <input matInput [formControl]="f.surname" [(ngModel)]="userData.surname" required />
               <mat-error *ngIf="f.surname.hasError('required')">
                 Nazwisko jest <strong>obowiązkowe</strong>
               </mat-error>
@@ -41,7 +41,7 @@
           <div class="col">
             <mat-form-field class="input-full-width">
               <mat-label>Numer telefonu </mat-label>
-              <input matInput [formControl]="f.phoneNumber" [(ngModel)]="userAddressAndData.userData.phoneNumber" required />
+              <input matInput [formControl]="f.phoneNumber" [(ngModel)]="userData.phoneNumber" required />
               <mat-error *ngIf="f.phoneNumber.hasError('required')">
                 Numer telefonu jest <strong>obowiązkowy</strong>
               </mat-error>
@@ -64,7 +64,7 @@
           <div class="col">
             <mat-form-field class="input-full-width">
               <mat-label>Miasto </mat-label>
-              <input matInput [formControl]="f.city" [(ngModel)]="userAddressAndData.city" required />
+              <input matInput [formControl]="f.city" [(ngModel)]="userData.address.city" required />
               <mat-error *ngIf="f.city.hasError('required')">
                 Miasto jest <strong>obowiązkowe</strong>
               </mat-error>
@@ -79,7 +79,7 @@
           <div class="col">
             <mat-form-field class="input-full-width">
               <mat-label>Kod pocztowy </mat-label>
-              <input matInput [formControl]="f.postalCode" placeholder="Format: xx-xxx" [(ngModel)]="userAddressAndData.postalCode" required />
+              <input matInput [formControl]="f.postalCode" placeholder="Format: xx-xxx" [(ngModel)]="userData.address.postalCode" required />
               <mat-error *ngIf="f.postalCode.hasError('required')">
                 Kod pocztowy jest <strong>obowiązkowy</strong>
               </mat-error>
@@ -94,7 +94,7 @@
           <div class="col">
             <mat-form-field class="input-full-width">
               <mat-label>Ulica </mat-label>
-              <input matInput [formControl]="f.street" [(ngModel)]="userAddressAndData.street" />
+              <input matInput [formControl]="f.street" [(ngModel)]="userData.address.street" />
               <mat-error *ngIf="f.street.hasError('minlength')">
                 Ulica musi składać się co najmnej z <strong>3</strong> znaków
               </mat-error>
@@ -111,7 +111,7 @@
           <div class="col">
             <mat-form-field class="input-full-width">
               <mat-label>Numer budynku </mat-label>
-              <input matInput [formControl]="f.buildingNumber" [(ngModel)]="userAddressAndData.buildingNumber" required />
+              <input matInput [formControl]="f.buildingNumber" [(ngModel)]="userData.address.buildingNumber" required />
               <mat-error *ngIf="f.buildingNumber.hasError('required')">
                 Numer budynku jest <strong>obowiązkowy</strong>
               </mat-error>
@@ -126,7 +126,7 @@
           <div class="col">
             <mat-form-field class="input-full-width">
               <mat-label>Numer lokalu </mat-label>
-              <input matInput [formControl]="f.flatNumber" [(ngModel)]="userAddressAndData.flatNumber" />
+              <input matInput [formControl]="f.flatNumber" [(ngModel)]="userData.address.flatNumber" />
               <mat-error *ngIf="f.flatNumber.hasError('minlength')">
                 Numer lokalu musi składać się co najmnej z <strong>1</strong> znaków
               </mat-error>
@@ -138,12 +138,12 @@
         </div>
         <mat-card-actions class="text-center">
           <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
-            Edytuj
+            Zaktualizuj
           </button>
           <a routerLink="/dashboard/userData/details" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
         </mat-card-actions>
       </form>
     </mat-card-content>
-  </ng-container>
-</mat-card>
+  </mat-card>
+</ng-container>
 

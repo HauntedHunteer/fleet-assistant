@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { UserAddressAndData } from '../../_models/user-address-and-data';
+import { UserData } from '../../_models/user-data';
 
 
 const httpOptions = {
@@ -19,15 +19,15 @@ export class UserDataService {
     private httpClient: HttpClient
   ) { }
 
-  createUserData(userAddressAndData: UserAddressAndData): Observable<UserAddressAndData> {
-    return this.httpClient.post<UserAddressAndData>(`${environment.apiUrl}/user/userdata`, userAddressAndData, httpOptions);
+  createUserData(userData: UserData): Observable<UserData> {
+    return this.httpClient.post<UserData>(`${environment.apiUrl}/user/userdata`, userData, httpOptions);
   }
 
-  viewUserData(): Observable<UserAddressAndData> {
-    return this.httpClient.get<UserAddressAndData>(`${environment.apiUrl}/user/userdata`, httpOptions);
+  viewUserData(): Observable<UserData> {
+    return this.httpClient.get<UserData>(`${environment.apiUrl}/user/userdata`, httpOptions);
   }
 
-  updateUserData(userAddressAndData: UserAddressAndData): Observable<UserAddressAndData> {
-    return this.httpClient.put<UserAddressAndData>(`${environment.apiUrl}/user/userdata`, userAddressAndData, httpOptions);
+  updateUserData(userData: UserData): Observable<UserData> {
+    return this.httpClient.put<UserData>(`${environment.apiUrl}/user/userdata`, userData, httpOptions);
   }
 }

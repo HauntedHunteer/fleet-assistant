@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 
 import { UserDataService } from '../user-data.service';
 import { AlertService } from '../../../_services/alert.service';
-import { UserAddressAndData } from '../../../_models/user-address-and-data';
-
+import { UserData } from '../../../_models/user-data';
 
 
 @Component({
@@ -13,7 +12,7 @@ import { UserAddressAndData } from '../../../_models/user-address-and-data';
   styleUrls: ['./details-user-data.component.css']
 })
 export class DetailsUserDataComponent implements OnInit {
-  userAddressAndData: UserAddressAndData;
+  userData: UserData;
   constructor(
     private router: Router,
     private userDataService: UserDataService,
@@ -23,7 +22,7 @@ export class DetailsUserDataComponent implements OnInit {
   ngOnInit(): void {
     this.userDataService.viewUserData().subscribe(
       data => {
-        this.userAddressAndData = data;
+        this.userData = data;
     },
       error => {
         if (error === 'Nie znaleziono danych użytkownika') {

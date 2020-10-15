@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserDataService } from '../user-data.service';
 import { AlertService } from '../../../_services/alert.service';
-import { UserAddressAndData } from '../../../_models/user-address-and-data';
+import { UserData } from '../../../_models/user-data';
 
 @Component({
   selector: 'app-update-user-data',
@@ -12,9 +12,9 @@ import { UserAddressAndData } from '../../../_models/user-address-and-data';
   styleUrls: ['./update-user-data.component.css']
 })
 export class UpdateUserDataComponent implements OnInit {
-  userAddressAndData: UserAddressAndData;
-  userAddressAndDataId: string;
+  userData: UserData;
   userDataId: string;
+  addressId: string;
   form: FormGroup;
 
   constructor(
@@ -28,9 +28,9 @@ export class UpdateUserDataComponent implements OnInit {
   ngOnInit(): void {
     this.userDataService.viewUserData().subscribe(
       data => {
-        this.userAddressAndData = data;
-        this.userAddressAndDataId = data.id;
-        this.userDataId = data.userData.id;
+        this.userData = data;
+        this.userDataId = data.id;
+        this.addressId = data.address.id;
       },
       error => {
         this.alertService.error(error);
@@ -53,22 +53,22 @@ export class UpdateUserDataComponent implements OnInit {
   }
 
   onSubmit() {
-    const userAddressAndData: UserAddressAndData = {
-      id: this.userAddressAndDataId,
-      userData: {
-        id: this.userDataId,
-        name: this.f.name.value,
-        surname: this.f.surname.value,
-        phoneNumber: this.f.phoneNumber.value
-      },
-      city: this.f.city.value,
-      postalCode: this.f.postalCode.value,
-      street: this.f.street.value,
-      buildingNumber: this.f.buildingNumber.value,
-      flatNumber: this.f.flatNumber.value,
+    const userData: UserData = {
+      id: this.userDataId,
+      name: this.f.name.value,
+      surname: this.f.surname.value,
+      phoneNumber: this.f.phoneNumber.value,
+      address: {
+        id: this.addressId,
+        city: this.f.city.value,
+        postalCode: this.f.postalCode.value,
+        street: this.f.street.value,
+        buildingNumber: this.f.buildingNumber.value,
+        flatNumber: this.f.flatNumber.value
+      }
     };
 
-    this.userDataService.updateUserData(userAddressAndData).subscribe(
+    this.userDataService.updateUserData(userData).subscribe(
       data => {
         this.alertService.success('Dane zaktualizowno pomyślnie', { keepAfterRouteChange : true});
         this.router.navigate(['../details'], { relativeTo: this.route });
