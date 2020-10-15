@@ -43,6 +43,7 @@ export class CreateUserDataComponent implements OnInit {
     const userAddressAndData: UserAddressAndData = {
       id: '',
       userData: {
+        id: '',
         name: this.f.name.value,
         surname: this.f.surname.value,
         phoneNumber: this.f.phoneNumber.value
@@ -53,7 +54,7 @@ export class CreateUserDataComponent implements OnInit {
       buildingNumber: this.f.buildingNumber.value,
       flatNumber: this.f.flatNumber.value,
     };
-
+    console.log(userAddressAndData);
     this.userDataService.createUserData(userAddressAndData).subscribe(
       data => {
         this.alertService.success('Dane zaktualizowno pomyślnie', { keepAfterRouteChange : true});

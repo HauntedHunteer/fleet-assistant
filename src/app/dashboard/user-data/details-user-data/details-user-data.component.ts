@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserDataService } from '../user-data.service';
 import { AlertService } from '../../../_services/alert.service';
@@ -14,6 +15,7 @@ import { UserAddressAndData } from '../../../_models/user-address-and-data';
 export class DetailsUserDataComponent implements OnInit {
   userAddressAndData: UserAddressAndData;
   constructor(
+    private router: Router,
     private userDataService: UserDataService,
     private alertService: AlertService,
               ) { }
@@ -24,7 +26,12 @@ export class DetailsUserDataComponent implements OnInit {
         this.userAddressAndData = data;
     },
       error => {
-        this.alertService.error(error);
+        if (error === 'Nie znaleziono danych użytkownika') {
+          this.router.navigate(['dashboard/userData/create']);
+        }
+        else {
+          this.alertService.error(error);
+        }
       });
   }
 

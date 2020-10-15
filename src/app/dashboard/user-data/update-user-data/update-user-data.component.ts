@@ -13,6 +13,7 @@ import { UserAddressAndData } from '../../../_models/user-address-and-data';
 })
 export class UpdateUserDataComponent implements OnInit {
   userAddressAndData: UserAddressAndData;
+  userAddressAndDataId: string;
   userDataId: string;
   form: FormGroup;
 
@@ -28,7 +29,8 @@ export class UpdateUserDataComponent implements OnInit {
     this.userDataService.viewUserData().subscribe(
       data => {
         this.userAddressAndData = data;
-        this.userDataId = data.id;
+        this.userAddressAndDataId = data.id;
+        this.userDataId = data.userData.id;
       },
       error => {
         this.alertService.error(error);
@@ -52,8 +54,9 @@ export class UpdateUserDataComponent implements OnInit {
 
   onSubmit() {
     const userAddressAndData: UserAddressAndData = {
-      id: this.userDataId,
+      id: this.userAddressAndDataId,
       userData: {
+        id: this.userDataId,
         name: this.f.name.value,
         surname: this.f.surname.value,
         phoneNumber: this.f.phoneNumber.value

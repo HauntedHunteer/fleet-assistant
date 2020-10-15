@@ -2,20 +2,49 @@
   <mat-card-header>
     <mat-card-title> Twoje dane </mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    <p><strong>Imię: </strong> {{ userAddressAndData.userData.name }} </p>
-    <p><strong>Nazwisko: </strong>  {{ userAddressAndData.userData.surname }}</p>
-    <p><strong>Numer telefonu: </strong> {{ userAddressAndData.userData.phoneNumber }}</p>
-    <mat-card-subtitle>Adres</mat-card-subtitle>
-    <p><strong>Miasto: </strong> {{ userAddressAndData.city }}</p>
-    <p><strong>Ulica: </strong> {{ userAddressAndData.street }}</p>
-    <p><strong>Numer budynku: </strong> {{ userAddressAndData.buildingNumber }}</p>
-    <p><strong>Numer mieszkania: </strong> {{ userAddressAndData.flatNumber }}</p>
-    <p><strong>Kod pocztowy: </strong>{{ userAddressAndData.postalCode }}</p>
+  <mat-card-content class="detailsFont">
+    <div class="">
+      <img class="mb-4" src="assets/img/driving-license.svg" alt="" width="100" height="100">
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>Imię:  {{ userAddressAndData.userData.name }} </p>
+      </div>
+      <div class="col-md-4">
+        <p>Nazwisko:   {{ userAddressAndData.userData.surname }}</p>
+      </div>
+      <div class="col-md-4">
+        <p>Numer telefonu:  {{ userAddressAndData.userData.phoneNumber }}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <p>Miasto:  {{ userAddressAndData.city }}</p>
+      </div>
+      <div class="col-md-4">
+        <p>Ulica:  {{ userAddressAndData.street }}</p>
+      </div>
+      <div class="col-md-4">
+        <p>Numer budynku:  {{ userAddressAndData.buildingNumber }}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <p>Numer mieszkania:  {{ userAddressAndData.flatNumber }}</p>
+      </div>
+      <div class="col-md-4">
+        <p>Kod pocztowy: {{ userAddressAndData.postalCode }}</p>
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button routerLink="/dashboard/userData/update" mat-button>Edytuj dane</button>
-    <button routerLink="/dashboard" mat-button>Powrót</button>
+  <mat-card-actions class="text-center">
+    <button routerLink="/dashboard/userData/update" mat-raised-button color="primary" >Edytuj dane</button>
+    <button routerLink="/dashboard" mat-raised-button>Powrót</button>
   </mat-card-actions>
 </mat-card>
 
