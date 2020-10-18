@@ -14,6 +14,133 @@
     }
   ],
   "users": [],
+  "makes": [
+    {
+      "id": 1,
+      "name": "Opel"
+    },
+    {
+      "id": 2,
+      "name": "Volkswagen"
+    },
+    {
+      "id": 3,
+      "name": "Skoda"
+    }
+  ],
+  "fuelTypes": [
+    {
+      "id": 1,
+      "name": "Benzyna"
+    },
+    {
+      "id": 2,
+      "name": "Diesel"
+    },
+    {
+      "id": 3,
+      "name": "LPG"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "make": "Opel",
+      "model": "Astra",
+      "year": "2010",
+      "color": "Czerwony",
+      "mileage": "50000",
+      "vinNumber": "123456",
+      "vehicleRegistrationNumber": "LCH 123",
+      "vehicleStatus": "Aktywny",
+      "fuelType": "Benzyna",
+      "cityFuelConsumption": "10",
+      "countryFuelConsumption": "8",
+      "averageFuelConsumption": "9",
+      "company": ""
+    },
+    {
+      "id": 2,
+      "make": "Volkswagen",
+      "model": "Golf",
+      "year": "2000",
+      "color": "Czerwony",
+      "mileage": "50000",
+      "vinNumber": "123456",
+      "vehicleRegistrationNumber": "LU 123",
+      "vehicleStatus": "Aktywny",
+      "fuelType": "PB95",
+      "cityFuelConsumption": "10",
+      "countryFuelConsumption": "8",
+      "averageFuelConsumption": "9",
+      "company": ""
+    },
+    {
+      "id": 3,
+      "make": "Mercedes",
+      "model": "W124",
+      "year": "1984",
+      "color": "Czerwony",
+      "mileage": "50000",
+      "vinNumber": "123456",
+      "vehicleRegistrationNumber": "LC 123",
+      "vehicleStatus": "Aktywny",
+      "fuelType": "PB95",
+      "cityFuelConsumption": "10",
+      "countryFuelConsumption": "8",
+      "averageFuelConsumption": "9",
+      "company": ""
+    },
+    {
+      "id": 4,
+      "make": "Volkswagen",
+      "model": "Golf",
+      "year": "2000",
+      "color": "Czerwony",
+      "mileage": "50000",
+      "vinNumber": "123456",
+      "vehicleRegistrationNumber": "LU 123",
+      "vehicleStatus": "Aktywny",
+      "fuelType": "PB95",
+      "cityFuelConsumption": "10",
+      "countryFuelConsumption": "8",
+      "averageFuelConsumption": "9",
+      "company": ""
+    },
+    {
+      "id": 5,
+      "make": "Volkswagen",
+      "model": "Golf",
+      "year": "2000",
+      "color": "Czerwony",
+      "mileage": "50000",
+      "vinNumber": "123456",
+      "vehicleRegistrationNumber": "LU 123",
+      "vehicleStatus": "Aktywny",
+      "fuelType": "PB95",
+      "cityFuelConsumption": "10",
+      "countryFuelConsumption": "8",
+      "averageFuelConsumption": "9",
+      "company": ""
+    },
+    {
+      "id": 6,
+      "make": "Volkswagen",
+      "model": "Golf",
+      "year": "2000",
+      "color": "Czerwony",
+      "mileage": "50000",
+      "vinNumber": "123456",
+      "vehicleRegistrationNumber": "LU 123",
+      "vehicleStatus": "Aktywny",
+      "fuelType": "PB95",
+      "cityFuelConsumption": "10",
+      "countryFuelConsumption": "8",
+      "averageFuelConsumption": "9",
+      "company": ""
+    }
+
+  ],
   "userData": [
     {
       "id": "1",

@@ -31,6 +31,7 @@ export class UpdateUserDataComponent implements OnInit {
         this.userData = data;
         this.userDataId = data.id;
         this.addressId = data.address.id;
+        this.pushValues(this.userData);
       },
       error => {
         this.alertService.error(error);
@@ -46,6 +47,17 @@ export class UpdateUserDataComponent implements OnInit {
       buildingNumber: ['', [Validators.required, Validators.maxLength(5), Validators.pattern('[0-9]{1,5}')]],
       flatNumber: ['', [Validators.minLength(1), Validators.maxLength(5)]]
     });
+  }
+
+  pushValues(userData: UserData) {
+    this.f.name.setValue(userData.name);
+    this.f.surname.setValue(userData.surname);
+    this.f.phoneNumber.setValue(userData.phoneNumber);
+    this.f.city.setValue(userData.address.city);
+    this.f.postalCode.setValue(userData.address.postalCode);
+    this.f.street.setValue(userData.address.street);
+    this.f.buildingNumber.setValue(userData.address.buildingNumber);
+    this.f.flatNumber.setValue(userData.address.flatNumber);
   }
 
   get f() {

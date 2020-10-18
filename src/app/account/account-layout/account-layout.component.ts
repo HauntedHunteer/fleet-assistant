@@ -22,7 +22,7 @@ export class AccountLayoutComponent implements OnInit {
     if (this.tokenStorageService.getUser()) {
       this.router.navigate(['/dashboard']);
     } else {
-      this.router.navigate(['account/login']);
+      this.router.navigate(['/account/login']);
     }
   }
 

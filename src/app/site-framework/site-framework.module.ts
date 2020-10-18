@@ -13,6 +13,10 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
@@ -29,7 +33,11 @@ const material = [
   MatListModule,
   FlexLayoutModule,
   MatMenuModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatDividerModule
 ];
 
 @NgModule({

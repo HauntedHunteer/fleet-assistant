@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-data',
@@ -9,11 +8,12 @@ import { Router } from '@angular/router';
 })
 export class UserDataComponent implements OnInit {
   constructor(
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    //this.router.navigate(['dashboard/userData/details']);
+    this.router.navigate(['./details'], {relativeTo: this.route});
   }
 
 }

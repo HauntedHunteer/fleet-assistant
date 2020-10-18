@@ -2,6 +2,9 @@
 body {
   background: #fbfbfb;
 }
+.input-full-width {
+  width: 100%;
+}
 
 /*
 html, body { height: 100%; }
