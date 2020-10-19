@@ -11,6 +11,16 @@ import { CreateVehicleComponent } from './vehicle/create-vehicle/create-vehicle.
 import { UpdateVehicleComponent } from './vehicle/update-vehicle/update-vehicle.component';
 import { DetailsVehicleComponent } from './vehicle/details-vehicle/details-vehicle.component';
 import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
+import { InspectionComponent } from './inspection/inspection.component';
+import { CreateInspectionComponent } from './inspection/create-inspection/create-inspection.component';
+import { UpdateInspectionComponent } from './inspection/update-inspection/update-inspection.component';
+import { DetailsInspectionComponent } from './inspection/details-inspection/details-inspection.component';
+import { ListInspectionComponent } from './inspection/list-inspection/list-inspection.component';
+import { InsuranceComponent } from './insurance/insurance.component';
+import { CreateInsuranceComponent } from './insurance/create-insurance/create-insurance.component';
+import { UpdateInsuranceComponent } from './insurance/update-insurance/update-insurance.component';
+import { DetailsInsuranceComponent } from './insurance/details-insurance/details-insurance.component';
+import { ListInsuranceComponent } from './insurance/list-insurance/list-insurance.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent,
@@ -28,6 +38,22 @@ const routes: Routes = [
             { path: 'update/:id', component: UpdateVehicleComponent },
             { path: 'details/:id', component: DetailsVehicleComponent },
             { path: 'list', component: ListVehicleComponent }
+          ]
+        },
+        { path: 'inspection', component: InspectionComponent,
+          children: [
+            { path: 'create', component: CreateInspectionComponent },
+            { path: 'update/:id', component: UpdateInspectionComponent },
+            { path: 'details/:id', component: DetailsInspectionComponent },
+            { path: 'list', component: ListInspectionComponent }
+          ]
+        },
+        { path: 'insurance', component: InsuranceComponent,
+          children: [
+            { path: 'create', component: CreateInsuranceComponent },
+            { path: 'update/:id', component: UpdateInsuranceComponent },
+            { path: 'details/:id', component: DetailsInsuranceComponent },
+            { path: 'list', component: ListInsuranceComponent }
           ]
         }
       ]}

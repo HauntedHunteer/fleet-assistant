@@ -2,8 +2,13 @@
 body {
   background: #fbfbfb;
 }
+
 .input-full-width {
   width: 100%;
+}
+
+.detailsFont {
+  font-size: large;
 }
 
 /*

@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
@@ -37,7 +38,8 @@ const material = [
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
-  MatDividerModule
+  MatDividerModule,
+  MatDatepickerModule
 ];
 
 @NgModule({

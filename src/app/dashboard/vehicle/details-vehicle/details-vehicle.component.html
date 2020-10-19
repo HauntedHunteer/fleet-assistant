@@ -1,0 +1,78 @@
+<ng-container *ngIf="vehicle">
+  <mat-card>
+    <mat-card-actions>
+      <button routerLink="../list" mat-stroked-button color="primary" class="py-2 m-2">Przebiegi</button>
+      <button routerLink="/dashboard/inspection/list?idV={{vehicleId}}" mat-stroked-button color="primary" class="py-2 m-2">Przeglądy</button>
+      <button routerLink="../list" mat-stroked-button color="primary" class="py-2 m-2">Naprawy</button>
+      <button routerLink="/dashboard/inspection/list?idV={{vehicleId}}" mat-stroked-button color="primary" class="py-2 m-2">Ubezpieczenia</button>
+      <button routerLink="../list" mat-stroked-button color="primary" class="py-2 m-2">Tankowania</button>
+    </mat-card-actions>
+    <mat-card-header>
+      <mat-card-title> Dane pojazdu </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="detailsFont">
+      <div>
+        <img class="mb-4" src="assets/img/car.svg" alt="" width="100" height="100">
+      </div>
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Marka:</strong>  {{ vehicle.make }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Model:</strong>   {{ vehicle.model }}</p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Rok produkcji:</strong>  {{ vehicle.year }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Kolor:</strong>  {{ vehicle.color }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Przebieg:</strong>   {{ vehicle.mileage }}</p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Numer VIN:</strong>  {{ vehicle.vinNumber }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Numer rejestracyjny:</strong>  {{ vehicle.vehicleRegistrationNumber }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Typ paliwa:</strong>   {{ vehicle.fuelType }}</p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Status pojazdu:</strong>  {{ vehicle.vehicleStatus }}</p>
+        </div>
+      </div>
+
+      <mat-divider class="my-1"></mat-divider>
+      <div class="row">
+        <div class="col-md-12 my-3 mr-3">
+          Średnie spalanie:
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Cykl miejski:</strong>  {{ vehicle.cityFuelConsumption }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Cykl pozamiejski:</strong>   {{ vehicle.countryFuelConsumption }}</p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Cykl mieszany:</strong>  {{ vehicle.averageFuelConsumption }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+      <button routerLink="../../update/{{vehicle.id}}" mat-raised-button color="primary" class="p-1">Edytuj dane</button>
+      <button routerLink="../list" mat-raised-button color="warn" class="p-1 my-2">Usuń pojazd</button>
+      <button routerLink="../../list" mat-raised-button class="p-1 my-2">Powrót</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

@@ -14,6 +14,16 @@ import { CreateVehicleComponent } from './vehicle/create-vehicle/create-vehicle.
 import { DetailsVehicleComponent } from './vehicle/details-vehicle/details-vehicle.component';
 import { UpdateVehicleComponent } from './vehicle/update-vehicle/update-vehicle.component';
 import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.component';
+import { InsuranceComponent } from './insurance/insurance.component';
+import { InspectionComponent } from './inspection/inspection.component';
+import { CreateInspectionComponent } from './inspection/create-inspection/create-inspection.component';
+import { DetailsInspectionComponent } from './inspection/details-inspection/details-inspection.component';
+import { UpdateInspectionComponent } from './inspection/update-inspection/update-inspection.component';
+import { ListInspectionComponent } from './inspection/list-inspection/list-inspection.component';
+import { CreateInsuranceComponent } from './insurance/create-insurance/create-insurance.component';
+import { DetailsInsuranceComponent } from './insurance/details-insurance/details-insurance.component';
+import { UpdateInsuranceComponent } from './insurance/update-insurance/update-insurance.component';
+import { ListInsuranceComponent } from './insurance/list-insurance/list-insurance.component';
 
 
 
@@ -28,7 +38,17 @@ import { ListVehicleComponent } from './vehicle/list-vehicle/list-vehicle.compon
     DetailsVehicleComponent,
     UpdateVehicleComponent,
     ListVehicleComponent,
-    VehicleComponent
+    VehicleComponent,
+    InsuranceComponent,
+    InspectionComponent,
+    CreateInspectionComponent,
+    DetailsInspectionComponent,
+    UpdateInspectionComponent,
+    ListInspectionComponent,
+    CreateInsuranceComponent,
+    DetailsInsuranceComponent,
+    UpdateInsuranceComponent,
+    ListInsuranceComponent
   ],
   imports: [
     CommonModule,

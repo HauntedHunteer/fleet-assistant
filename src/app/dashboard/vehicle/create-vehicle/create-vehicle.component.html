@@ -1,0 +1,181 @@
+<mat-card>
+  <mat-card-title>Uzupełnij dane o pojeździe</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Marka</mat-label>
+            <mat-select [formControl]="f.makes" required>
+              <mat-option>Wybierz</mat-option>
+              <mat-option *ngFor="let make of makes" [value]="make">
+                {{make.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.makes.hasError('required')">
+              Marka jest <strong>obowiązkowa</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Model </mat-label>
+            <input matInput [formControl]="f.model" required />
+            <mat-error *ngIf="f.model.hasError('required')">
+              Model jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.model.hasError('maxlength')">
+              Model musi składać się co najwyżej z <strong>45</strong> znaków
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Rok produkcji </mat-label>
+            <input matInput [formControl]="f.year" placeholder="Format: RRRR" required />
+            <mat-error *ngIf="f.year.hasError('required')">
+              Rok produkcji jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.year.hasError('pattern')">
+              Nieprawidłowy format - (RRRR)
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Kolor </mat-label>
+            <input matInput [formControl]="f.color" required />
+            <mat-error *ngIf="f.color.hasError('required')">
+              Kolor jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.color.hasError('minlength')">
+              Kolor musi składać się co najmnej z <strong>3</strong> znaków
+            </mat-error>
+            <mat-error *ngIf="f.color.hasError('maxlength')">
+              Kolor musi składać się co najwyżej z <strong>45</strong> znaków
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Przebieg (km) </mat-label>
+            <input matInput [formControl]="f.mileage" required />
+            <mat-error *ngIf="f.mileage.hasError('required')">
+              Przebieg jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.mileage.hasError('maxlength')">
+              Przebieg musi składać się co najwyżej z <strong>7</strong> cyfr
+            </mat-error>
+            <mat-error *ngIf="f.mileage.hasError('pattern')">
+              Nieprawidłowy format
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Numer rejestracyjny </mat-label>
+            <input matInput [formControl]="f.vehicleRegistrationNumber" required />
+            <mat-error *ngIf="f.vehicleRegistrationNumber.hasError('required')">
+              Numer rejestracyjny jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.vehicleRegistrationNumber.hasError('maxlength')">
+              Numer rejestracyjny musi składać się co najwyżej z <strong>10</strong> znaków
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Numer VIN </mat-label>
+            <input matInput [formControl]="f.vinNumber" required />
+            <mat-error *ngIf="f.vinNumber.hasError('required')">
+              Numer VIN jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.vinNumber.hasError('minlength')">
+              Numer VIN musi składać się co najmnej z <strong>17</strong> znaków
+            </mat-error>
+            <mat-error *ngIf="f.vinNumber.hasError('maxlength')">
+              Numer VIN musi składać się co najwyżej z <strong>17</strong> znaków
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Typ paliwa</mat-label>
+            <mat-select [formControl]="f.fuelTypes" required>
+              <mat-option>Wybierz</mat-option>
+              <mat-option *ngFor="let fuelType of fuelTypes" [value]="fuelType">
+                {{fuelType.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.fuelTypes.hasError('required')">
+              Typ paliwa jest <strong>obowiązkowy</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <mat-card-subtitle class="mb-3"><strong>Średnie spalanie</strong></mat-card-subtitle>
+
+      <div class="row">
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Cykl miejski (l/100 km) </mat-label>
+            <input matInput [formControl]="f.cityFuelConsumption" required />
+            <mat-error *ngIf="f.cityFuelConsumption.hasError('required')">
+              Cykl miejski jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.cityFuelConsumption.hasError('pattern')">
+              Nieprawidłowy format
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Cykl pozamiejski (l/100 km) </mat-label>
+            <input matInput [formControl]="f.countryFuelConsumption" required />
+            <mat-error *ngIf="f.countryFuelConsumption.hasError('required')">
+              Cykl pozamiejski jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.countryFuelConsumption.hasError('pattern')">
+              Nieprawidłowy format
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col m-1">
+          <mat-form-field class="input-full-width">
+            <mat-label>Cykl mieszany (l/100 km) </mat-label>
+            <input matInput [formControl]="f.averageFuelConsumption" required />
+            <mat-error *ngIf="f.averageFuelConsumption.hasError('required')">
+              Cykl mieszany jest <strong>obowiązkowy</strong>
+            </mat-error>
+            <mat-error *ngIf="f.averageFuelConsumption.hasError('pattern')">
+              Nieprawidłowy format
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-card-actions class="text-center m-1">
+        <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+          Dodaj
+        </button>
+        <a routerLink="../list" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
