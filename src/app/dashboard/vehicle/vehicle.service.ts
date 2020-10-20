@@ -28,7 +28,7 @@ export class VehicleService {
     return this.httpClient.post<Vehicle>(`${environment.apiUrl}/vehicle`, vehicle, httpOptions);
   }
 
-  viewVehicleDetails(vehicleId): Observable<Vehicle> {
+  getVehicleDetails(vehicleId): Observable<Vehicle> {
     return this.httpClient.get<Vehicle>(`${environment.apiUrl}/vehicle/v?id=` + vehicleId, httpOptions);
   }
 

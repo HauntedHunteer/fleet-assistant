@@ -34,7 +34,7 @@ export class UpdateVehicleComponent implements OnInit {
     this.route.params.subscribe(
       parameter => {
         this.vehicleId = parameter.id;
-        this.vehicleService.viewVehicleDetails(this.vehicleId).subscribe(
+        this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
           data => {
             this.vehicle = data;
             this.vehicleService.getMakes().subscribe(

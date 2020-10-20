@@ -37,7 +37,7 @@ export class UpdateInspectionComponent implements OnInit {
           inspectionData => {
             this.inspection = inspectionData;
             this.vehicleId = inspectionData.vehicleId;
-            this.vehicleService.viewVehicleDetails(this.vehicleId).subscribe(
+            this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               vehicleData => {
                 this.vehicle = vehicleData;
                 this.pushValues(this.inspection);

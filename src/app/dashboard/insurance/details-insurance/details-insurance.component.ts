@@ -34,7 +34,7 @@ export class DetailsInsuranceComponent implements OnInit {
           insuranceData => {
             this.insurance = insuranceData;
             this.vehicleId = insuranceData.vehicleId;
-            this.vehicleService.viewVehicleDetails(this.vehicleId).subscribe(
+            this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               data => {
                 this.vehicle = data;
               },

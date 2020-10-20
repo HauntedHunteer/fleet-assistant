@@ -32,7 +32,7 @@ export class CreateInspectionComponent implements OnInit {
       params => {
         this.vehicleId = params.idV;
 
-        this.vehicleService.viewVehicleDetails(this.vehicleId).subscribe(
+        this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
           data => {
             this.vehicle = data;
           },

@@ -26,7 +26,7 @@ export class UpdateUserDataComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userDataService.viewUserData().subscribe(
+    this.userDataService.getUserData().subscribe(
       data => {
         this.userData = data;
         this.userDataId = data.id;

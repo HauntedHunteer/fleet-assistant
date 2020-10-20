@@ -21,6 +21,11 @@ import { CreateInsuranceComponent } from './insurance/create-insurance/create-in
 import { UpdateInsuranceComponent } from './insurance/update-insurance/update-insurance.component';
 import { DetailsInsuranceComponent } from './insurance/details-insurance/details-insurance.component';
 import { ListInsuranceComponent } from './insurance/list-insurance/list-insurance.component';
+import { RepairComponent } from './repair/repair.component';
+import { CreateRepairComponent } from './repair/create-repair/create-repair.component';
+import { UpdateRepairComponent } from './repair/update-repair/update-repair.component';
+import { DetailsRepairComponent } from './repair/details-repair/details-repair.component';
+import { ListRepairComponent } from './repair/list-repair/list-repair.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent,
@@ -54,6 +59,14 @@ const routes: Routes = [
             { path: 'update/:id', component: UpdateInsuranceComponent },
             { path: 'details/:id', component: DetailsInsuranceComponent },
             { path: 'list', component: ListInsuranceComponent }
+          ]
+        },
+        { path: 'repair', component: RepairComponent,
+          children: [
+            { path: 'create', component: CreateRepairComponent },
+            { path: 'update/:id', component: UpdateRepairComponent },
+            { path: 'details/:id', component: DetailsRepairComponent },
+            { path: 'list', component: ListRepairComponent }
           ]
         }
       ]}

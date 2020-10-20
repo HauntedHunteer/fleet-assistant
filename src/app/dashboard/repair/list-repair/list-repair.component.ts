@@ -4,18 +4,18 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { InspectionService } from '../inspection.service';
+import { RepairService } from '../repair.service';
 import { AlertService } from '../../../_services/alert.service';
-import { Inspection } from '../../../_models/inspection';
+import { Repair } from '../../../_models/repair';
 
 @Component({
-  selector: 'app-list-inspection',
-  templateUrl: './list-inspection.component.html',
-  styleUrls: ['./list-inspection.component.css']
+  selector: 'app-list-repair',
+  templateUrl: './list-repair.component.html',
+  styleUrls: ['./list-repair.component.css']
 })
-export class ListInspectionComponent implements OnInit {
-  displayedColumns: string[] = ['expirationDate', 'cost', 'id'];
-  dataSource: MatTableDataSource<Inspection>;
+export class ListRepairComponent implements OnInit {
+  displayedColumns: string[] = ['repairDate', 'title', 'id'];
+  dataSource: MatTableDataSource<Repair>;
   vehicleId: string;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -23,7 +23,7 @@ export class ListInspectionComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private inspectionService: InspectionService,
+    private repairService: RepairService,
     private alertService: AlertService
   ) { }
 
@@ -31,7 +31,7 @@ export class ListInspectionComponent implements OnInit {
     this.route.queryParams.subscribe(
       params => {
         this.vehicleId = params.idV;
-        this.inspectionService.getInspectionListById(this.vehicleId).subscribe(
+        this.repairService.getRepairListById(this.vehicleId).subscribe(
           data => {
             this.dataSource = new MatTableDataSource(data);
             this.dataSource.paginator = this.paginator;

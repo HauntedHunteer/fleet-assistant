@@ -24,6 +24,11 @@ import { CreateInsuranceComponent } from './insurance/create-insurance/create-in
 import { DetailsInsuranceComponent } from './insurance/details-insurance/details-insurance.component';
 import { UpdateInsuranceComponent } from './insurance/update-insurance/update-insurance.component';
 import { ListInsuranceComponent } from './insurance/list-insurance/list-insurance.component';
+import { RepairComponent } from './repair/repair.component';
+import { CreateRepairComponent } from './repair/create-repair/create-repair.component';
+import { DetailsRepairComponent } from './repair/details-repair/details-repair.component';
+import { ListRepairComponent } from './repair/list-repair/list-repair.component';
+import { UpdateRepairComponent } from './repair/update-repair/update-repair.component';
 
 
 
@@ -48,7 +53,12 @@ import { ListInsuranceComponent } from './insurance/list-insurance/list-insuranc
     CreateInsuranceComponent,
     DetailsInsuranceComponent,
     UpdateInsuranceComponent,
-    ListInsuranceComponent
+    ListInsuranceComponent,
+    RepairComponent,
+    CreateRepairComponent,
+    DetailsRepairComponent,
+    ListRepairComponent,
+    UpdateRepairComponent
   ],
   imports: [
     CommonModule,

@@ -22,7 +22,7 @@ export class DetailsUserDataComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    this.userDataService.viewUserData().subscribe(
+    this.userDataService.getUserData().subscribe(
       data => {
         this.userData = data;
     },

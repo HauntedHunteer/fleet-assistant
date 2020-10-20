@@ -2,29 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { InsuranceService } from '../insurance.service';
+import { RepairService } from '../repair.service';
 import { VehicleService } from '../../vehicle/vehicle.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
-import { Insurance } from '../../../_models/insurance';
-import { InsuranceType } from '../../../_models/insurance-type';
+import { Repair } from '../../../_models/repair';
 
 @Component({
-  selector: 'app-create-insurance',
-  templateUrl: './create-insurance.component.html',
-  styleUrls: ['./create-insurance.component.css']
+  selector: 'app-create-repair',
+  templateUrl: './create-repair.component.html',
+  styleUrls: ['./create-repair.component.css']
 })
-export class CreateInsuranceComponent implements OnInit {
+export class CreateRepairComponent implements OnInit {
   form: FormGroup;
   vehicleId: string;
   vehicle: Vehicle;
-  insuranceTypes: InsuranceType[];
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private insuranceService: InsuranceService,
+    private repairService: RepairService,
     private vehicleService: VehicleService,
     private alertService: AlertService
   ) { }
@@ -41,26 +39,16 @@ export class CreateInsuranceComponent implements OnInit {
           error => {
             this.alertService.error(error);
           });
-
-        this.insuranceService.getInsuranceTypes().subscribe(
-          insuranceTypeData => {
-            this.insuranceTypes = insuranceTypeData;
-          },
-          error => {
-            this.alertService.error(error);
-          });
       },
       error => {
         this.alertService.error(error);
       });
 
     this.form = this.formBuilder.group( {
-      insuranceTypes: ['', Validators.required],
-      policyNumber: ['', [Validators.required, Validators.maxLength(25)]],
-      effectiveDate: ['', Validators.required],
-      expirationDate: ['', Validators.required],
+      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      repairDate: ['', Validators.required],
       cost: ['', [Validators.required, Validators.pattern('^([0-9]\\d{0,5}|[0-9]\\d{0,5}\\.\\d{1,2})$')]],
-      description: ['', Validators.maxLength(100)]
+      description: ['', [ Validators.required, Validators.maxLength(100)]]
     });
   }
 
@@ -69,19 +57,17 @@ export class CreateInsuranceComponent implements OnInit {
   }
 
   onSubmit() {
-    const insurance: Insurance = {
+    const repair: Repair = {
       id: '',
       vehicleId: this.vehicleId,
-      effectiveDate: this.f.effectiveDate.value,
-      expirationDate: this.f.expirationDate.value,
+      title: this.f.title.value,
+      repairDate: this.f.repairDate.value,
       cost: this.f.cost.value,
-      policyNumber: this.f.policyNumber.value,
-      insuranceType: this.f.insuranceTypes.value.name,
       description: this.f.description.value
     };
-    this.insuranceService.createInsurance(insurance).subscribe(
+    this.repairService.createRepair(repair).subscribe(
       data => {
-        this.alertService.success('Ubezpieczenie dodano pomyślnie', { keepAfterRouteChange : true});
+        this.alertService.success('Naprawę dodano pomyślnie', { keepAfterRouteChange : true});
         this.router.navigate(['../list'], {relativeTo: this.route, queryParams: { idV: this.vehicleId}});
       },
       error => {

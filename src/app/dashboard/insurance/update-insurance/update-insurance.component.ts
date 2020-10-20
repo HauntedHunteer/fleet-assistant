@@ -7,7 +7,7 @@ import { InsuranceService } from '../insurance.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Insurance} from '../../../_models/insurance';
-import { InsuranceType } from '../../../_models/insurance-type';;
+import { InsuranceType } from '../../../_models/insurance-type';
 
 @Component({
   selector: 'app-update-insurance',
@@ -46,7 +46,7 @@ export class UpdateInsuranceComponent implements OnInit {
                 this.alertService.error(error);
               });
             this.vehicleId = insuranceData.vehicleId;
-            this.vehicleService.viewVehicleDetails(this.vehicleId).subscribe(
+            this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               vehicleData => {
                 this.vehicle = vehicleData;
                 this.pushValues(this.insurance);

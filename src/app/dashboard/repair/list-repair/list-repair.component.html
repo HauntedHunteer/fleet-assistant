@@ -1,0 +1,36 @@
+<button routerLink="../create?idV={{vehicleId}}" mat-raised-button color="primary" class="mt-1 mb-2"> Dodaj nową naprawę</button>
+<ng-container>
+  <mat-form-field>
+    <mat-label>Wyszukaj</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Wyszukiwanie wg. dowolnej kolumny" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- RepairDate Column -->
+      <ng-container matColumnDef="expirationDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data naprawy </th>
+        <td mat-cell *matCellDef="let row"> {{row.repairDate}} </td>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="cost">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tytuł </th>
+        <td mat-cell *matCellDef="let row"> {{row.title}} </td>
+      </ng-container>
+
+      <!-- Details Link Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef > Szczegóły </th>
+        <td mat-cell *matCellDef="let row" > <a routerLink="../details/{{row.id}}" mat-raised-button > Szczegóły </a> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 30]"></mat-paginator>
+  </div>
+</ng-container>

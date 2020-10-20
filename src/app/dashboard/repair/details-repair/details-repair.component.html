@@ -1,0 +1,52 @@
+<ng-container *ngIf="repair && vehicle">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Dane naprawy </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="detailsFont">
+      <div>
+        <img class="mb-4" src="assets/img/car-repair.svg" alt="" width="100" height="100">
+      </div>
+      <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Marka:</strong> {{ vehicle.make}} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Model:</strong> {{ vehicle.model }}</p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Model:</strong> {{ vehicle.vehicleRegistrationNumber }}</p>
+        </div>
+      </div>
+      <mat-divider class="mt-1"></mat-divider>
+
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Tytuł:</strong> {{ repair.title }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Data naprawy:</strong> {{ repair.repairDate }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Koszt:</strong>  {{ repair.cost }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Opis naprawy:</strong> {{ repair.description }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+      <button routerLink="../../update/{{repair.id}}" mat-raised-button color="primary" class="p-1">Edytuj dane</button>
+      <button routerLink="../list" mat-raised-button color="warn" class="p-1 my-2">Usuń przegląd</button>
+      <button routerLink="../../list?idV={{vehicle.id}}" mat-raised-button class="p-1 my-2">Powrót</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
