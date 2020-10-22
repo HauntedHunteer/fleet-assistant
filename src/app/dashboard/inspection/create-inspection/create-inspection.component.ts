@@ -17,6 +17,7 @@ export class CreateInspectionComponent implements OnInit {
   form: FormGroup;
   vehicleId: string;
   vehicle: Vehicle;
+  query;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,10 +32,12 @@ export class CreateInspectionComponent implements OnInit {
     this.route.queryParams.subscribe(
       params => {
         this.vehicleId = params.idV;
-
         this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
           data => {
             this.vehicle = data;
+            this.query = {
+              idV: this.vehicleId
+            };
           },
           error => {
             this.alertService.error(error);

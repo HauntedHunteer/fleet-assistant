@@ -23,24 +23,20 @@ export class RepairService {
     // broken
   }
 
-  getRepairListById(repairId): Observable<Repair[]> {
-    return this.httpClient.get<Repair[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // broken
+  getRepairListById(vehicleId): Observable<Repair[]> {
+    return this.httpClient.get<Repair[]>(`${environment.apiUrl}/repair/v/` + vehicleId, httpOptions);
   }
 
   createRepair(repair: Repair): Observable<Repair> {
-    return this.httpClient.post<Repair>(`${environment.apiUrl}/vehicle`, repair, httpOptions);
-    // broken
+    return this.httpClient.post<Repair>(`${environment.apiUrl}/repair`, repair, httpOptions);
   }
 
   getRepairDetails(repairId): Observable<Repair> {
-    return this.httpClient.get<Repair>(`${environment.apiUrl}/vehicle/v?id=` + repairId, httpOptions);
-    // broken
+    return this.httpClient.get<Repair>(`${environment.apiUrl}/repair/` + repairId, httpOptions);
   }
 
   updateRepair(repair: Repair): Observable<Repair> {
-    return this.httpClient.put<Repair>(`${environment.apiUrl}/vehicle`, repair, httpOptions);
-    // broken
+    return this.httpClient.put<Repair>(`${environment.apiUrl}/repair`, repair, httpOptions);
   }
 
   // missing delete

@@ -25,29 +25,26 @@ export class InsuranceService {
   }
 
   getInsuranceListById(vehicleId): Observable<Insurance[]> {
-    return this.httpClient.get<Insurance[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // broken
+    return this.httpClient.get<Insurance[]>(`${environment.apiUrl}/insurance/v/` + vehicleId, httpOptions);
   }
 
   createInsurance(insurance: Insurance): Observable<Insurance> {
-    return this.httpClient.post<Insurance>(`${environment.apiUrl}/vehicle`, insurance, httpOptions);
-    // broken
+    return this.httpClient.post<Insurance>(`${environment.apiUrl}/insurance`, insurance, httpOptions);
   }
 
   getInsuranceDetails(insuranceId): Observable<Insurance> {
-    return this.httpClient.get<Insurance>(`${environment.apiUrl}/vehicle/v?id=` + insuranceId, httpOptions);
-    // broken
+    return this.httpClient.get<Insurance>(`${environment.apiUrl}/insurance/` + insuranceId, httpOptions);
   }
 
   updateInsurance(insurance: Insurance): Observable<Insurance> {
-    return this.httpClient.put<Insurance>(`${environment.apiUrl}/vehicle`, insurance, httpOptions);
+    return this.httpClient.put<Insurance>(`${environment.apiUrl}/insurance`, insurance, httpOptions);
     // broken
   }
 
   // missing delete
 
   getInsuranceTypes(): Observable<InsuranceType[]> {
-    return this.httpClient.get<InsuranceType[]>(`${environment.apiUrl}/vehicle/fuelType`, httpOptions);
+    return this.httpClient.get<InsuranceType[]>(`${environment.apiUrl}/insurance/types`, httpOptions);
     // broken
   }
 }

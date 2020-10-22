@@ -1,0 +1,80 @@
+<ng-container *ngIf="vehicle">
+  <mat-card>
+    <mat-card-title>Uzupełnij dane o tankowaniu</mat-card-title>
+    <mat-card-content>
+      <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Marka:</strong>  {{ vehicle.make}} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Model:</strong>   {{ vehicle.model }}</p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
+        </div>
+      </div>
+      <mat-divider class="mt-1"></mat-divider>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col m-1">
+            <mat-form-field class="input-full-width">
+              <mat-label>Koszt paliwa (zł) </mat-label>
+              <input matInput [formControl]="f.cost" required />
+              <mat-error *ngIf="f.cost.hasError('required')">
+                Koszt paliwa jest <strong>obowiązkowy</strong>
+              </mat-error>
+              <mat-error *ngIf="f.cost.hasError('pattern')">
+                Nieprawidłowy format
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col m-1">
+            <mat-form-field class="input-full-width">
+              <mat-label>Objętość zatankowanego paliwa (l) </mat-label>
+              <input matInput [formControl]="f.litre" required />
+              <mat-error *ngIf="f.litre.hasError('required')">
+                Objętość paliwa jest <strong>obowiązkowa</strong>
+              </mat-error>
+              <mat-error *ngIf="f.litre.hasError('pattern')">
+                Nieprawidłowy format
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col m-1">
+            <mat-form-field>
+              <mat-label>Data tankowania</mat-label>
+              <input matInput [matDatepicker]="dpr" [formControl]="f.refuelingDate" required>
+              <mat-datepicker-toggle matSuffix [for]="dpr"></mat-datepicker-toggle>
+              <mat-datepicker #dpr></mat-datepicker>
+              <mat-error *ngIf="f.refuelingDate.hasError('required')">
+                Data tankowania jest <strong>obowiązkowa</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col m-1">
+            <mat-form-field class="example-full-width">
+              <mat-label>Uwagi dodatkowe</mat-label>
+              <textarea matInput [formControl]="f.description"></textarea>
+              <mat-error *ngIf="f.description.hasError('maxlength')">
+                Uwagi dodatkowe muszą składać się co najwyżej z <strong>100</strong> znaków
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <mat-card-actions class="text-center m-1">
+        <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+          Dodaj
+        </button>
+        <a routerLink="../list" [queryParams]="query" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

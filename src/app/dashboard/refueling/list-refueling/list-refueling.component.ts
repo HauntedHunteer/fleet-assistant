@@ -4,18 +4,18 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { RepairService } from '../repair.service';
+import { RefuelingService } from '../refueling.service';
 import { AlertService } from '../../../_services/alert.service';
-import { Repair } from '../../../_models/repair';
+import { Refueling } from '../../../_models/refueling';
 
 @Component({
-  selector: 'app-list-repair',
-  templateUrl: './list-repair.component.html',
-  styleUrls: ['./list-repair.component.css']
+  selector: 'app-list-refueling',
+  templateUrl: './list-refueling.component.html',
+  styleUrls: ['./list-refueling.component.css']
 })
-export class ListRepairComponent implements OnInit {
-  displayedColumns: string[] = ['repairDate', 'title', 'id'];
-  dataSource: MatTableDataSource<Repair>;
+export class ListRefuelingComponent implements OnInit {
+  displayedColumns: string[] = ['refuelingDate', 'cost', 'id'];
+  dataSource: MatTableDataSource<Refueling>;
   vehicleId: string;
   query;
 
@@ -24,7 +24,7 @@ export class ListRepairComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private repairService: RepairService,
+    private refuelingService: RefuelingService,
     private alertService: AlertService
   ) { }
 
@@ -35,7 +35,7 @@ export class ListRepairComponent implements OnInit {
         this.query = {
           idV: this.vehicleId
         };
-        this.repairService.getRepairListById(this.vehicleId).subscribe(
+        this.refuelingService.getRefuelingListById(this.vehicleId).subscribe(
           data => {
             this.dataSource = new MatTableDataSource(data);
             this.dataSource.paginator = this.paginator;

@@ -2,39 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { VehicleService} from '../../vehicle/vehicle.service';
-import { InspectionService } from '../inspection.service';
+import { RefuelingService } from '../refueling.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
-import { Inspection } from '../../../_models/inspection';
+import { Refueling } from '../../../_models/refueling';
 
 @Component({
-  selector: 'app-details-inspection',
-  templateUrl: './details-inspection.component.html',
-  styleUrls: ['./details-inspection.component.css']
+  selector: 'app-details-refueling',
+  templateUrl: './details-refueling.component.html',
+  styleUrls: ['./details-refueling.component.css']
 })
-export class DetailsInspectionComponent implements OnInit {
+export class DetailsRefuelingComponent implements OnInit {
   vehicle: Vehicle;
   vehicleId: string;
-  inspection: Inspection;
-  inspectionId: string;
+  refueling: Refueling;
+  refuelingId: string;
   query;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
-    private inspectionService: InspectionService,
+    private refuelingService: RefuelingService,
     private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
       parameter => {
-        this.inspectionId = parameter.id;
-        this.inspectionService.getInspectionDetails(this.inspectionId).subscribe(
-          inspectionData => {
-            this.inspection = inspectionData;
-            this.vehicleId = inspectionData.vehicleId;
+        this.refuelingId = parameter.id;
+        this.refuelingService.getRefuelingDetails(this.refuelingId).subscribe(
+          refuelingData => {
+            this.refueling = refuelingData;
+            this.vehicleId = refuelingData.vehicleId;
             this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               data => {
                 this.vehicle = data;

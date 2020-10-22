@@ -17,6 +17,7 @@ export class ListInspectionComponent implements OnInit {
   displayedColumns: string[] = ['expirationDate', 'cost', 'id'];
   dataSource: MatTableDataSource<Inspection>;
   vehicleId: string;
+  query;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -31,6 +32,9 @@ export class ListInspectionComponent implements OnInit {
     this.route.queryParams.subscribe(
       params => {
         this.vehicleId = params.idV;
+        this.query = {
+          idV: this.vehicleId
+        };
         this.inspectionService.getInspectionListById(this.vehicleId).subscribe(
           data => {
             this.dataSource = new MatTableDataSource(data);

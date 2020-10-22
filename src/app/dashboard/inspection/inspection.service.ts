@@ -24,23 +24,19 @@ export class InspectionService {
   }
 
   getInspectionListById(vehicleId): Observable<Inspection[]> {
-    return this.httpClient.get<Inspection[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // broken
+    return this.httpClient.get<Inspection[]>(`${environment.apiUrl}/inspection/v/` + vehicleId, httpOptions);
   }
 
   createInspection(inspection: Inspection): Observable<Inspection> {
-    return this.httpClient.post<Inspection>(`${environment.apiUrl}/vehicle`, inspection, httpOptions);
-    // broken
+    return this.httpClient.post<Inspection>(`${environment.apiUrl}/inspection`, inspection, httpOptions);
   }
 
   getInspectionDetails(inspectionId): Observable<Inspection> {
-    return this.httpClient.get<Inspection>(`${environment.apiUrl}/vehicle/v?id=` + inspectionId, httpOptions);
-    // broken
+    return this.httpClient.get<Inspection>(`${environment.apiUrl}/inspection/` + inspectionId, httpOptions);
   }
 
   updateInspection(inspection: Inspection): Observable<Inspection> {
-    return this.httpClient.put<Inspection>(`${environment.apiUrl}/vehicle`, inspection, httpOptions);
-    // broken
+    return this.httpClient.put<Inspection>(`${environment.apiUrl}/inspection`, inspection, httpOptions);
   }
 
   // missing delete

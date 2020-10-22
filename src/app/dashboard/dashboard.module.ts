@@ -29,6 +29,11 @@ import { CreateRepairComponent } from './repair/create-repair/create-repair.comp
 import { DetailsRepairComponent } from './repair/details-repair/details-repair.component';
 import { ListRepairComponent } from './repair/list-repair/list-repair.component';
 import { UpdateRepairComponent } from './repair/update-repair/update-repair.component';
+import { RefuelingComponent } from './refueling/refueling.component';
+import { CreateRefuelingComponent } from './refueling/create-refueling/create-refueling.component';
+import { DetailsRefuelingComponent } from './refueling/details-refueling/details-refueling.component';
+import { ListRefuelingComponent } from './refueling/list-refueling/list-refueling.component';
+import { UpdateRefuelingComponent } from './refueling/update-refueling/update-refueling.component';
 
 
 
@@ -58,7 +63,12 @@ import { UpdateRepairComponent } from './repair/update-repair/update-repair.comp
     CreateRepairComponent,
     DetailsRepairComponent,
     ListRepairComponent,
-    UpdateRepairComponent
+    UpdateRepairComponent,
+    RefuelingComponent,
+    CreateRefuelingComponent,
+    DetailsRefuelingComponent,
+    ListRefuelingComponent,
+    UpdateRefuelingComponent
   ],
   imports: [
     CommonModule,

@@ -26,6 +26,11 @@ import { CreateRepairComponent } from './repair/create-repair/create-repair.comp
 import { UpdateRepairComponent } from './repair/update-repair/update-repair.component';
 import { DetailsRepairComponent } from './repair/details-repair/details-repair.component';
 import { ListRepairComponent } from './repair/list-repair/list-repair.component';
+import { RefuelingComponent } from './refueling/refueling.component';
+import { CreateRefuelingComponent } from './refueling/create-refueling/create-refueling.component';
+import { UpdateRefuelingComponent } from './refueling/update-refueling/update-refueling.component';
+import { DetailsRefuelingComponent } from './refueling/details-refueling/details-refueling.component';
+import { ListRefuelingComponent } from './refueling/list-refueling/list-refueling.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent,
@@ -67,6 +72,14 @@ const routes: Routes = [
             { path: 'update/:id', component: UpdateRepairComponent },
             { path: 'details/:id', component: DetailsRepairComponent },
             { path: 'list', component: ListRepairComponent }
+          ]
+        },
+        { path: 'refueling', component: RefuelingComponent,
+          children: [
+            { path: 'create', component: CreateRefuelingComponent },
+            { path: 'update/:id', component: UpdateRefuelingComponent },
+            { path: 'details/:id', component: DetailsRefuelingComponent },
+            { path: 'list', component: ListRefuelingComponent }
           ]
         }
       ]}

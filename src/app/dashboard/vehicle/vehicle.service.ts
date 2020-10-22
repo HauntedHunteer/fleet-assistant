@@ -29,7 +29,7 @@ export class VehicleService {
   }
 
   getVehicleDetails(vehicleId): Observable<Vehicle> {
-    return this.httpClient.get<Vehicle>(`${environment.apiUrl}/vehicle/v?id=` + vehicleId, httpOptions);
+    return this.httpClient.get<Vehicle>(`${environment.apiUrl}/vehicle/` + vehicleId, httpOptions);
   }
 
   updateVehicle(vehicle: Vehicle): Observable<Vehicle> {

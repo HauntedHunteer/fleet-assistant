@@ -13,6 +13,7 @@ import { Vehicle } from '../../../_models/vehicle';
 export class DetailsVehicleComponent implements OnInit {
   vehicle: Vehicle;
   vehicleId: string;
+  query;
 
   constructor(
     private router: Router,
@@ -28,6 +29,9 @@ export class DetailsVehicleComponent implements OnInit {
         this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
           data => {
             this.vehicle = data;
+            this.query = {
+              idV: this.vehicleId
+            };
           },
           error => {
             this.alertService.error(error);

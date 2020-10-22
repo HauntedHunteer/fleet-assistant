@@ -1,11 +1,11 @@
-<ng-container *ngIf="repair && vehicle">
+<ng-container *ngIf="refueling && vehicle">
   <mat-card>
     <mat-card-header>
-      <mat-card-title> Dane naprawy </mat-card-title>
+      <mat-card-title> Dane tankowania </mat-card-title>
     </mat-card-header>
     <mat-card-content class="detailsFont">
       <div>
-        <img class="mb-4" src="assets/img/car-repair.svg" alt="" width="100" height="100">
+        <img class="mb-4" src="assets/img/car-refueling.svg" alt="" width="100" height="100">
       </div>
       <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
       <div class="row">
@@ -23,10 +23,10 @@
 
       <div class="row">
         <div class="col-md-4 py-1">
-          <p><strong>Tytuł:</strong> {{ repair.title }} </p>
+          <p><strong>Koszt paliwa (zł):</strong> {{ refueling.cost }} </p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Data naprawy:</strong> {{ repair.repairDate }} </p>
+          <p><strong>Objętość zatankowanego paliwa (l):</strong> {{ refueling.litre }} </p>
         </div>
         <div class="col-md-4 py-1">
         </div>
@@ -34,17 +34,17 @@
 
       <div class="row">
         <div class="col-md-4 py-1">
-          <p><strong>Koszt:</strong>  {{ repair.cost }} </p>
+          <p><strong>Data tankowania:</strong>  {{ refueling.refuelingDate}} </p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Opis naprawy:</strong> {{ repair.description }} </p>
+          <p><strong>Uwagi dodatkowe:</strong> {{ refueling.description }} </p>
         </div>
         <div class="col-md-4 py-1">
         </div>
       </div>
     </mat-card-content>
     <mat-card-actions class="text-center">
-      <button routerLink="../../update/{{repair.id}}" mat-raised-button color="primary" class="p-1">Edytuj dane</button>
+      <button routerLink="../../update/{{refueling.id}}" mat-raised-button color="primary" class="p-1">Edytuj dane</button>
       <button routerLink="../list" mat-raised-button color="warn" class="p-1 my-2">Usuń przegląd</button>
       <button routerLink="../../list" [queryParams]="query" mat-raised-button class="p-1 my-2">Powrót</button>
     </mat-card-actions>

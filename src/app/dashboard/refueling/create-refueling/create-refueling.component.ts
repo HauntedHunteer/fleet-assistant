@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { RepairService } from '../repair.service';
+import { RefuelingService } from '../refueling.service';
 import { VehicleService } from '../../vehicle/vehicle.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
-import { Repair } from '../../../_models/repair';
+import { Refueling } from '../../../_models/refueling';
 
 @Component({
-  selector: 'app-create-repair',
-  templateUrl: './create-repair.component.html',
-  styleUrls: ['./create-repair.component.css']
+  selector: 'app-create-refueling',
+  templateUrl: './create-refueling.component.html',
+  styleUrls: ['./create-refueling.component.css']
 })
-export class CreateRepairComponent implements OnInit {
+export class CreateRefuelingComponent implements OnInit {
   form: FormGroup;
   vehicleId: string;
   vehicle: Vehicle;
@@ -23,7 +23,7 @@ export class CreateRepairComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private repairService: RepairService,
+    private refuelingService: RefuelingService,
     private vehicleService: VehicleService,
     private alertService: AlertService
   ) { }
@@ -49,34 +49,33 @@ export class CreateRepairComponent implements OnInit {
       });
 
     this.form = this.formBuilder.group( {
-      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      repairDate: ['', Validators.required],
-      cost: ['', [Validators.required, Validators.pattern('^([0-9]\\d{0,5}|[0-9]\\d{0,5}\\.\\d{1,2})$')]],
-      description: ['', [ Validators.required, Validators.maxLength(100)]]
+      cost: ['', [Validators.required, Validators.pattern('^([0-9]\\d{0,3}|[0-9]\\d{0,3}\\.\\d{1,2})$')]],
+      litre: ['', [Validators.required, Validators.pattern('^([0-9]\\d{0,2}|[0-9]\\d{0,2}\\.\\d{1,2})$')]],
+      refuelingDate: ['', Validators.required],
+      description: ['', Validators.maxLength(100)]
     });
   }
 
   get f() {
     return this.form.controls;
   }
-
   onSubmit() {
-    const repair: Repair = {
+    const refueling: Refueling = {
       id: '',
       vehicleId: this.vehicleId,
-      title: this.f.title.value,
-      repairDate: this.f.repairDate.value,
+      refuelingDate: this.f.refuelingDate.value,
+      litre: this.f.litre.value,
       cost: this.f.cost.value,
-      description: this.f.description.value
+      description: this.f.description.value,
     };
-    this.repairService.createRepair(repair).subscribe(
+    this.refuelingService.createRefueling(refueling).subscribe(
       data => {
-        this.alertService.success('Naprawę dodano pomyślnie', { keepAfterRouteChange : true});
+        this.alertService.success('Tankowanie dodano pomyślnie', { keepAfterRouteChange : true});
         this.router.navigate(['../list'], {relativeTo: this.route, queryParams: { idV: this.vehicleId}});
       },
       error => {
         this.alertService.error(error);
       });
   }
-}
 
+}

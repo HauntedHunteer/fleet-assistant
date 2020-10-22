@@ -17,6 +17,7 @@ export class DetailsInsuranceComponent implements OnInit {
   vehicleId: string;
   insurance: Insurance;
   insuranceId: string;
+  query;
 
   constructor(
     private router: Router,
@@ -37,6 +38,9 @@ export class DetailsInsuranceComponent implements OnInit {
             this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               data => {
                 this.vehicle = data;
+                this.query = {
+                  idV: this.vehicleId
+                };
               },
               error => {
                 this.alertService.error(error);

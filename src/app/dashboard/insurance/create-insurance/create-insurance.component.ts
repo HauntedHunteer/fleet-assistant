@@ -19,6 +19,7 @@ export class CreateInsuranceComponent implements OnInit {
   vehicleId: string;
   vehicle: Vehicle;
   insuranceTypes: InsuranceType[];
+  query;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,6 +38,9 @@ export class CreateInsuranceComponent implements OnInit {
         this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
           data => {
             this.vehicle = data;
+            this.query = {
+              idV: this.vehicleId
+            };
           },
           error => {
             this.alertService.error(error);
