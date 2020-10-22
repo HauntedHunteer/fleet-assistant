@@ -14,7 +14,7 @@
           <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
         </div>
       </div>
-      <mat-divider class="mt-1"></mat-divider>
+      <mat-card-subtitle class="my-3"><strong>Ubezpieczenie:</strong></mat-card-subtitle>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row">
@@ -27,7 +27,7 @@
                   {{insuranceType.name}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="f.insuranceType.hasError('required')">
+              <mat-error *ngIf="f.insuranceTypes.hasError('required')">
                 Typ polisyjest <strong>obowiązkowy</strong>
               </mat-error>
             </mat-form-field>
@@ -49,7 +49,7 @@
 
         <div class="row">
           <div class="col m-1">
-            <mat-form-field>
+            <mat-form-field class="input-full-width">
               <mat-label>Data rozpoczęcia</mat-label>
               <input matInput [matDatepicker]="dpi" [formControl]="f.effectiveDate" required>
               <mat-datepicker-toggle matSuffix [for]="dpi"></mat-datepicker-toggle>
@@ -61,7 +61,7 @@
           </div>
 
           <div class="col m-1">
-            <mat-form-field>
+            <mat-form-field class="input-full-width">
               <mat-label>Data ważności</mat-label>
               <input matInput [matDatepicker]="dpe" [formControl]="f.expirationDate" required>
               <mat-datepicker-toggle matSuffix [for]="dpe"></mat-datepicker-toggle>
@@ -75,11 +75,11 @@
 
         <div class="row">
           <div class="col m-1">
-            <mat-form-field >
-              <mat-label>Koszt przeglądu (zł) </mat-label>
+            <mat-form-field class="input-full-width">
+              <mat-label>Koszt ubezpieczenia (zł) </mat-label>
               <input matInput [formControl]="f.cost" required />
               <mat-error *ngIf="f.cost.hasError('required')">
-                Koszt przeglądu jest <strong>obowiązkowy</strong>
+                Koszt ubezpiecznia jest <strong>obowiązkowy</strong>
               </mat-error>
               <mat-error *ngIf="f.cost.hasError('pattern')">
                 Nieprawidłowy format
@@ -88,7 +88,7 @@
           </div>
 
           <div class="col m-1">
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="input-full-width">
               <mat-label>Uwagi dodatkowe</mat-label>
               <textarea matInput [formControl]="f.description"></textarea>
               <mat-error *ngIf="f.description.hasError('maxlength')">

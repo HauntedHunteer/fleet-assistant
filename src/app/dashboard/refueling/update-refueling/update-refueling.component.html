@@ -14,7 +14,7 @@
           <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
         </div>
       </div>
-      <mat-divider class="mt-1"></mat-divider>
+      <mat-card-subtitle class="my-3"><strong>Tankowanie:</strong></mat-card-subtitle>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row">
@@ -72,7 +72,7 @@
           <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
             Zaktualizuj
           </button>
-          <a routerLink="../details/{{refueling.id}}" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+          <a routerLink="../../details/{{refueling.id}}" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
         </mat-card-actions>
       </form>
     </mat-card-content>

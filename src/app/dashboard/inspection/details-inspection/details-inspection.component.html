@@ -16,10 +16,10 @@
           <p><strong>Model:</strong> {{ vehicle.model }}</p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Model:</strong> {{ vehicle.vehicleRegistrationNumber }}</p>
+          <p><strong>Numer rejestracyjny:</strong> {{ vehicle.vehicleRegistrationNumber }}</p>
         </div>
       </div>
-      <mat-divider class="mt-1"></mat-divider>
+      <mat-card-subtitle class="my-3"><strong>Przegląd:</strong></mat-card-subtitle>
 
       <div class="row">
         <div class="col-md-4 py-1">
@@ -34,7 +34,7 @@
 
       <div class="row">
         <div class="col-md-4 py-1">
-          <p><strong>Koszt:</strong>  {{ inspection.cost }} </p>
+          <p><strong>Koszt przeglądu (zł):</strong>  {{ inspection.cost | currency:'':''}} </p>
         </div>
         <div class="col-md-4 py-1">
           <p><strong>Uwagi dodatkowe:</strong> {{ inspection.description }} </p>

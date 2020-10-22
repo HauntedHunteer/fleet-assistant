@@ -14,7 +14,7 @@
           <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
         </div>
       </div>
-      <mat-divider class="mt-1"></mat-divider>
+      <mat-card-subtitle class="my-3"><strong>Tankowanie:</strong></mat-card-subtitle>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row">
@@ -68,13 +68,13 @@
             </mat-form-field>
           </div>
         </div>
+        <mat-card-actions class="text-center m-1">
+          <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+            Dodaj
+          </button>
+          <a routerLink="../list" [queryParams]="query" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+        </mat-card-actions>
       </form>
-      <mat-card-actions class="text-center m-1">
-        <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
-          Dodaj
-        </button>
-        <a routerLink="../list" [queryParams]="query" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
-      </mat-card-actions>
     </mat-card-content>
   </mat-card>
 </ng-container>

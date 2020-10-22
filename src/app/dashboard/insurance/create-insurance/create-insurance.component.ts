@@ -41,14 +41,14 @@ export class CreateInsuranceComponent implements OnInit {
             this.query = {
               idV: this.vehicleId
             };
-          },
-          error => {
-            this.alertService.error(error);
-          });
 
-        this.insuranceService.getInsuranceTypes().subscribe(
-          insuranceTypeData => {
-            this.insuranceTypes = insuranceTypeData;
+            this.insuranceService.getInsuranceTypes().subscribe(
+              insuranceTypeData => {
+                this.insuranceTypes = insuranceTypeData;
+              },
+              error => {
+                this.alertService.error(error);
+              });
           },
           error => {
             this.alertService.error(error);

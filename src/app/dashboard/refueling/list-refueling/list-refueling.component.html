@@ -1,4 +1,5 @@
 <button routerLink="../create" [queryParams]="query" mat-raised-button color="primary" class="mt-1 mb-2"> Dodaj nowe tankowanie</button>
+<button routerLink="/dashboard/vehicle/details/{{vehicleId}}" mat-raised-button color="warn" class="mt-1 mb-2 mx-2">Powrót do pojazdu</button>
 <ng-container>
   <mat-form-field>
     <mat-label>Wyszukaj</mat-label>
@@ -9,15 +10,15 @@
     <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- RefuelingDate Column -->
-      <ng-container matColumnDef="expirationDate">
+      <ng-container matColumnDef="refuelingDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Data tankowania </th>
         <td mat-cell *matCellDef="let row"> {{row.refuelingDate}} </td>
       </ng-container>
 
       <!-- Cost Column -->
       <ng-container matColumnDef="cost">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Koszt tankowania </th>
-        <td mat-cell *matCellDef="let row"> {{row.cost}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Koszt tankowania (zł)</th>
+        <td mat-cell *matCellDef="let row"> {{row.cost | currency:'':''}} </td>
       </ng-container>
 
       <!-- Details Link Column -->

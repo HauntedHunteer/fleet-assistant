@@ -5,7 +5,7 @@
       <button routerLink="/dashboard/inspection/list" [queryParams]="query" mat-stroked-button color="primary" class="py-2 m-2">Przeglądy</button>
       <button routerLink="/dashboard/repair/list" [queryParams]="query" mat-stroked-button color="primary" class="py-2 m-2">Naprawy</button>
       <button routerLink="/dashboard/insurance/list" [queryParams]="query" mat-stroked-button color="primary" class="py-2 m-2">Ubezpieczenia</button>
-      <button routerLink="/dashboard/insurance/list" [queryParams]="query" mat-stroked-button color="primary" class="py-2 m-2">Tankowania</button>
+      <button routerLink="/dashboard/refueling/list" [queryParams]="query" mat-stroked-button color="primary" class="py-2 m-2">Tankowania</button>
     </mat-card-actions>
     <mat-card-header>
       <mat-card-title> Dane pojazdu </mat-card-title>
@@ -59,13 +59,13 @@
 
       <div class="row">
         <div class="col-md-4 py-1">
-          <p><strong>Cykl miejski:</strong>  {{ vehicle.cityFuelConsumption }} </p>
+          <p><strong>Cykl miejski (l/100km):</strong>  {{ vehicle.cityFuelConsumption }} </p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Cykl pozamiejski:</strong>   {{ vehicle.countryFuelConsumption }}</p>
+          <p><strong>Cykl pozamiejski (l/100km):</strong>   {{ vehicle.countryFuelConsumption }}</p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Cykl mieszany:</strong>  {{ vehicle.averageFuelConsumption }}</p>
+          <p><strong>Cykl mieszany (l/100km):</strong>  {{ vehicle.averageFuelConsumption }}</p>
         </div>
       </div>
     </mat-card-content>

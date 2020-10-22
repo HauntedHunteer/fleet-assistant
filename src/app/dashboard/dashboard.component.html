@@ -23,7 +23,7 @@
           Moja flota
         </a>
         <mat-menu #fleetMenu="matMenu" xPosition="before">
-          <button routerLink="/dashboard/vehicle" mat-menu-item> Pojazdy </button>
+          <button routerLink="/dashboard/vehicle/list" mat-menu-item> Pojazdy </button>
           <button mat-menu-item> opcja 2 </button>
         </mat-menu>
 
@@ -61,11 +61,9 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
-      <div class="p-5">
-        <h1>Hi {{ currentUser.email }}!</h1>
-        <p>Witaj w aplikacji FleetAssistant</p>
-        <router-outlet></router-outlet>
+      <div class="p-3">
         <app-alert></app-alert>
+        <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

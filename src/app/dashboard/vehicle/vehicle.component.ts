@@ -14,7 +14,7 @@ export class VehicleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.router.navigate(['./list'], {relativeTo: this.route});
+    // this.router.navigate(['./list'], {relativeTo: this.route});
   }
 
 }

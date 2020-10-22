@@ -19,11 +19,11 @@
           <p><strong>Model:</strong> {{ vehicle.vehicleRegistrationNumber }}</p>
         </div>
       </div>
-      <mat-divider class="mt-1"></mat-divider>
+      <mat-card-subtitle class="my-3"><strong>Tankowanie:</strong></mat-card-subtitle>
 
       <div class="row">
         <div class="col-md-4 py-1">
-          <p><strong>Koszt paliwa (zł):</strong> {{ refueling.cost }} </p>
+          <p><strong>Koszt paliwa (zł):</strong> {{ refueling.cost | currency:'':'' }} </p>
         </div>
         <div class="col-md-4 py-1">
           <p><strong>Objętość zatankowanego paliwa (l):</strong> {{ refueling.litre }} </p>
