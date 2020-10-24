@@ -9,43 +9,44 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <p><strong>Imię:</strong>  {{ userData.name}} </p>
+          <p><strong>Adres E-mail:</strong>  {{ currentUser.email}} </p>
         </div>
         <div class="col-md-4">
-          <p><strong>Nazwisko:</strong>   {{ userData.surname }}</p>
+          <p><strong>Imię:</strong>  {{ userData.name}} </p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Numer telefonu:</strong>  {{ userData.phoneNumber }}</p>
+          <p><strong>Nazwisko:</strong>   {{ userData.surname }}</p>
         </div>
       </div>
 
       <div class="row">
+        <div class="col-md-4">
+          <p><strong>Numer telefonu:</strong>  {{ userData.phoneNumber }}</p>
+        </div>
         <div class="col-md-4">
           <p><strong>Miasto:</strong>  {{ userData.address.city }}</p>
         </div>
         <div class="col-md-4">
           <p><strong>Ulica:</strong>  {{ userData.address.street }}</p>
         </div>
-        <div class="col-md-4">
-          <p><strong>Numer budynku:</strong>  {{ userData.address.buildingNumber }}</p>
-        </div>
       </div>
 
       <div class="row">
+        <div class="col-md-4">
+          <p><strong>Numer budynku:</strong>  {{ userData.address.buildingNumber }}</p>
+        </div>
         <div class="col-md-4">
           <p><strong>Numer mieszkania:</strong>  {{ userData.address.flatNumber }}</p>
         </div>
         <div class="col-md-4">
           <p><strong>Kod pocztowy:</strong> {{ userData.address.postalCode }}</p>
         </div>
-        <div class="col-md-4">
-
-        </div>
       </div>
     </mat-card-content>
     <mat-card-actions class="text-center">
-      <button routerLink="../update" mat-raised-button color="primary" >Edytuj dane</button>
-      <button routerLink="/dashboard" mat-raised-button>Powrót</button>
+      <button routerLink="../changePwd" class="m-1" mat-raised-button color="primary" >Zmień hasło</button>
+      <button routerLink="../update" class="m-1" mat-raised-button color="primary" >Edytuj dane</button>
+      <button routerLink="/dashboard" class="m-1" mat-raised-button>Powrót</button>
     </mat-card-actions>
   </mat-card>
 </ng-container>

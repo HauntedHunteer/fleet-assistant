@@ -5,6 +5,7 @@ import { AccountLayoutComponent } from './account-layout/account-layout.componen
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
       children: [
         { path: 'login', component: LoginComponent },
         { path: 'register', component: RegisterComponent },
-        { path: 'resetPassword', component: ResetPasswordComponent }
+        { path: 'resetPassword', component: ResetPasswordComponent },
+        { path: 'setNewPassword', component: SetNewPasswordComponent }
       ]}
   ];
 

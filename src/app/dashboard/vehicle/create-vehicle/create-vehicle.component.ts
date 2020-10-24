@@ -47,9 +47,9 @@ export class CreateVehicleComponent implements OnInit {
     this.form = this.formBuilder.group( {
       makes: ['', Validators.required],
       model: ['', [Validators.required, Validators.maxLength(45)]],
-      year: ['', [Validators.required, Validators.pattern('[0-9]{4}')]],
+      year: ['', [Validators.required, Validators.pattern('^([1-2]{1}[0-9]{3})$')]],
       color: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(45)]],
-      mileage: ['', [Validators.required, Validators.maxLength(7), Validators.pattern('[0-9]{1,7}')]],
+      mileage: ['', [Validators.required, Validators.maxLength(7), Validators.pattern('^([1-9]\\d{1}|[1-9]\\d{0,6})$')]],
       vehicleRegistrationNumber: ['', [Validators.required, Validators.maxLength(10)]],
       vinNumber: ['', [Validators.required, Validators.minLength(17), Validators.maxLength(17)]],
       fuelTypes: ['', Validators.required],

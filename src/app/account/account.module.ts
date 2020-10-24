@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SiteFrameworkModule } from '../site-framework/site-framework.module';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     AccountLayoutComponent,
     LoginComponent,
     RegisterComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    SetNewPasswordComponent
   ],
   imports: [
     CommonModule,

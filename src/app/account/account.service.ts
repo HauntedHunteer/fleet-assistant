@@ -84,13 +84,14 @@ export class AccountService {
 } */
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
 import { TokenStorageService } from './token-storage.service';
+import { ResetPwd } from '../_models/reset-pwd';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -127,5 +128,25 @@ export class AccountService {
 
   resetPassword(email): Observable<any> {
     return this.http.post(`${environment.apiUrl}/user/reset-password`, email, httpOptions);
+  }
+
+  getResetPasswordToken(qParams): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('u', qParams.u);
+    params = params.append('c', qParams.c);
+    return this.http.get(`${environment.apiUrl}/user/reset-password`, {params: params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
+    // broken
+  }
+
+  setNewPassword(bundle: ResetPwd): Observable<ResetPwd> {
+    return this.http.post<ResetPwd>(`${environment.apiUrl}/user/reset-password`, bundle, httpOptions);
+    // broken
+  }
+
+  changePassword(oldPassword, newPassword): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/user/change-password`, {
+      oldPwd: oldPassword,
+      newPwd: newPassword
+    }, httpOptions);
   }
 }

@@ -1,0 +1,51 @@
+<ng-container *ngIf="use && vehicle">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Dane przebiegu </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="detailsFont">
+      <div>
+        <img class="mb-4" src="assets/img/car-trip.svg" alt="" width="100" height="100">
+      </div>
+      <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Marka:</strong> {{ vehicle.make}} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Model:</strong> {{ vehicle.model }}</p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Numer rejestracyjny:</strong> {{ vehicle.vehicleRegistrationNumber }}</p>
+        </div>
+      </div>
+      <mat-card-subtitle class="my-3"><strong>Przebieg:</strong></mat-card-subtitle>
+
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Data przebiegu:</strong> {{ use.tripDate }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Przebieg (km):</strong> {{ use.trip }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 py-1">
+          <p><strong>Uwagi dodatkowe:</strong> {{ use.description }} </p>
+        </div>
+        <div class="col-md-4 py-1">
+        </div>
+        <div class="col-md-4 py-1">
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+      <button routerLink="../../update/{{use.id}}" mat-raised-button color="primary" class="p-1">Edytuj dane</button>
+      <button routerLink="../list" mat-raised-button color="warn" class="p-1 my-2">Usuń przebieg</button>
+      <button routerLink="../../list" [queryParams]="query" mat-raised-button class="p-1 my-2">Powrót</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

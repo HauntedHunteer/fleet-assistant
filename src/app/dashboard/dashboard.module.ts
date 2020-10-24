@@ -9,6 +9,7 @@ import { UserDataComponent } from './user-data/user-data.component';
 import { CreateUserDataComponent } from './user-data/create-user-data/create-user-data.component';
 import { UpdateUserDataComponent } from './user-data/update-user-data/update-user-data.component';
 import { DetailsUserDataComponent } from './user-data/details-user-data/details-user-data.component';
+import { ChangePasswordComponent } from './user-data/change-password/change-password.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { CreateVehicleComponent } from './vehicle/create-vehicle/create-vehicle.component';
 import { DetailsVehicleComponent } from './vehicle/details-vehicle/details-vehicle.component';
@@ -34,6 +35,11 @@ import { CreateRefuelingComponent } from './refueling/create-refueling/create-re
 import { DetailsRefuelingComponent } from './refueling/details-refueling/details-refueling.component';
 import { ListRefuelingComponent } from './refueling/list-refueling/list-refueling.component';
 import { UpdateRefuelingComponent } from './refueling/update-refueling/update-refueling.component';
+import { UseComponent } from './use/use.component';
+import { CreateUseComponent } from './use/create-use/create-use.component';
+import { DetailsUseComponent } from './use/details-use/details-use.component';
+import { ListUseComponent } from './use/list-use/list-use.component';
+import { UpdateUseComponent } from './use/update-use/update-use.component';
 
 
 
@@ -44,6 +50,7 @@ import { UpdateRefuelingComponent } from './refueling/update-refueling/update-re
     CreateUserDataComponent,
     UpdateUserDataComponent,
     DetailsUserDataComponent,
+    ChangePasswordComponent,
     CreateVehicleComponent,
     DetailsVehicleComponent,
     UpdateVehicleComponent,
@@ -68,7 +75,12 @@ import { UpdateRefuelingComponent } from './refueling/update-refueling/update-re
     CreateRefuelingComponent,
     DetailsRefuelingComponent,
     ListRefuelingComponent,
-    UpdateRefuelingComponent
+    UpdateRefuelingComponent,
+    UseComponent,
+    CreateUseComponent,
+    DetailsUseComponent,
+    ListUseComponent,
+    UpdateUseComponent
   ],
   imports: [
     CommonModule,

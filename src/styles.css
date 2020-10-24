@@ -8,7 +8,8 @@ body {
 }
 
 .detailsFont {
-  font-size: large;
+  font-size: larger;
+  font-family: 'Armata', sans-serif;
 }
 
 table {

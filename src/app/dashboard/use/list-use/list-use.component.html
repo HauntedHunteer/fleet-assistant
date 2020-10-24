@@ -1,0 +1,38 @@
+<button routerLink="../create" [queryParams]="query" mat-raised-button color="primary" class="mt-1 mb-2 mx-2"> Dodaj nowy przebieg</button>
+<button routerLink="/dashboard/vehicle/details/{{vehicleId}}" mat-raised-button color="warn" class="mt-1 mb-2 mx-2">Powrót do pojazdu</button>
+
+<ng-container>
+  <mat-form-field>
+    <mat-label>Wyszukaj</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Wyszukiwanie wg. dowolnej kolumny" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- TripDate Column -->
+      <ng-container matColumnDef="tripDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data przebiegu </th>
+        <td mat-cell *matCellDef="let row"> {{row.tripDate}} </td>
+      </ng-container>
+
+      <!-- Trip Column -->
+      <ng-container matColumnDef="trip">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Długość przebiegu (km) </th>
+        <td mat-cell *matCellDef="let row"> {{row.trip}} </td>
+      </ng-container>
+
+      <!-- Details Link Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef > Szczegóły </th>
+        <td mat-cell *matCellDef="let row" > <a routerLink="../details/{{row.id}}" mat-raised-button > Szczegóły </a> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 30]"></mat-paginator>
+  </div>
+</ng-container>

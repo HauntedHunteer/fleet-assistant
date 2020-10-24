@@ -59,7 +59,7 @@ export class UpdateInspectionComponent implements OnInit {
       });
   }
 
-  pushValues(inspection: Inspection){
+  pushValues(inspection: Inspection) {
     this.f.inspectionDate.setValue(inspection.inspectionDate);
     this.f.expirationDate.setValue(inspection.expirationDate);
     this.f.cost.setValue(inspection.cost);

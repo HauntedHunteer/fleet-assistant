@@ -3,7 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserDataService } from '../user-data.service';
 import { AlertService } from '../../../_services/alert.service';
+import { TokenStorageService } from '../../../account/token-storage.service';
 import { UserData } from '../../../_models/user-data';
+import { User } from '../../../_models/user';
 
 
 @Component({
@@ -13,15 +15,17 @@ import { UserData } from '../../../_models/user-data';
 })
 export class DetailsUserDataComponent implements OnInit {
   userData: UserData;
-
+  currentUser: User;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private tokenStorageService: TokenStorageService,
     private userDataService: UserDataService,
     private alertService: AlertService,
               ) { }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorageService.getUser();
     this.userDataService.getUserData().subscribe(
       data => {
         this.userData = data;
