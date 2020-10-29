@@ -54,7 +54,7 @@ export class UpdateRepairComponent implements OnInit {
           title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
           repairDate: ['', Validators.required],
           cost: ['', [Validators.required, Validators.pattern('^([0-9]\\d{0,5}|[0-9]\\d{0,5}\\.\\d{1,2})$')]],
-          description: ['', [ Validators.required, Validators.maxLength(100)]]
+          description: ['', [ Validators.required, Validators.maxLength(555)]]
         });
       });
   }

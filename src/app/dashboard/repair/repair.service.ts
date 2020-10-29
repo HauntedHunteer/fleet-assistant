@@ -39,5 +39,7 @@ export class RepairService {
     return this.httpClient.put<Repair>(`${environment.apiUrl}/repair`, repair, httpOptions);
   }
 
-  // missing delete
+  deleteRepair(repairId): Observable<Repair> {
+    return this.httpClient.delete<Repair>(`${environment.apiUrl}/repair/` + repairId, httpOptions);
+  }
 }

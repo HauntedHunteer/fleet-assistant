@@ -39,5 +39,8 @@ export class InspectionService {
     return this.httpClient.put<Inspection>(`${environment.apiUrl}/inspection`, inspection, httpOptions);
   }
 
-  // missing delete
+  deleteInspection(inspectionId): Observable<Inspection> {
+    return this.httpClient.delete<Inspection>(`${environment.apiUrl}/inspection/` + inspectionId, httpOptions);
+  }
 }
+

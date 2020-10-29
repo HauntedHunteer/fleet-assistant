@@ -18,10 +18,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 const material = [
   MatToolbarModule,
@@ -39,14 +41,16 @@ const material = [
   MatPaginatorModule,
   MatSortModule,
   MatDividerModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatDialogModule
 ];
 
 @NgModule({
   declarations: [
     FooterComponent,
     AlertComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +60,9 @@ const material = [
   exports: [
     material,
     FooterComponent,
-    AlertComponent
+    AlertComponent,
+    PageNotFoundComponent,
+    ConfirmDialogComponent
   ]
 })
 export class SiteFrameworkModule { }

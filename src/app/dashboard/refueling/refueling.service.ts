@@ -39,5 +39,7 @@ export class RefuelingService {
     return this.httpClient.put<Refueling>(`${environment.apiUrl}/refueling`, refueling, httpOptions);
   }
 
-  // missing delete
+  deleteRefueling(refuelingId): Observable<Refueling> {
+    return this.httpClient.delete<Refueling>(`${environment.apiUrl}/refueling/` + refuelingId, httpOptions);
+  }
 }

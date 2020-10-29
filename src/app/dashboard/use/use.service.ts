@@ -24,24 +24,22 @@ export class UseService {
   }
 
   getUseListById(vehicleId): Observable<Use[]> {
-    return this.httpClient.get<Use[]>(`${environment.apiUrl}/inspection/v/` + vehicleId, httpOptions);
-    // broken
+    return this.httpClient.get<Use[]>(`${environment.apiUrl}/use/v/` + vehicleId, httpOptions);
   }
 
   createUse(use: Use): Observable<Use> {
-    return this.httpClient.post<Use>(`${environment.apiUrl}/inspection`, use, httpOptions);
-    // broken
+    return this.httpClient.post<Use>(`${environment.apiUrl}/use`, use, httpOptions);
   }
 
   getUseDetails(useId): Observable<Use> {
-    return this.httpClient.get<Use>(`${environment.apiUrl}/inspection/` + useId, httpOptions);
-    // broken
+    return this.httpClient.get<Use>(`${environment.apiUrl}/use/` + useId, httpOptions);
   }
 
   updateUse(use: Use): Observable<Use> {
-    return this.httpClient.put<Use>(`${environment.apiUrl}/inspection`, use, httpOptions);
-    // broken
+    return this.httpClient.put<Use>(`${environment.apiUrl}/use`, use, httpOptions);
   }
 
-  // missing delete
+  deleteUse(useId): Observable<Use> {
+    return this.httpClient.delete<Use>(`${environment.apiUrl}/use/` + useId, httpOptions);
+  }
 }

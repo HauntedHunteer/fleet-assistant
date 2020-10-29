@@ -21,8 +21,6 @@ export class AccountLayoutComponent implements OnInit {
     // redirect to dashboard if already logged in
     if (this.tokenStorageService.getUser()) {
       this.router.navigate(['/dashboard']);
-    } else {
-      this.router.navigate(['/account/login']);
     }
   }
 

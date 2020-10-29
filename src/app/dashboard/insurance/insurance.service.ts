@@ -38,13 +38,13 @@ export class InsuranceService {
 
   updateInsurance(insurance: Insurance): Observable<Insurance> {
     return this.httpClient.put<Insurance>(`${environment.apiUrl}/insurance`, insurance, httpOptions);
-    // broken
   }
 
-  // missing delete
+  deleteInsurance(insuranceId): Observable<Insurance> {
+    return this.httpClient.delete<Insurance>(`${environment.apiUrl}/insurance/` + insuranceId, httpOptions);
+  }
 
   getInsuranceTypes(): Observable<InsuranceType[]> {
     return this.httpClient.get<InsuranceType[]>(`${environment.apiUrl}/insurance/types`, httpOptions);
-    // broken
   }
 }

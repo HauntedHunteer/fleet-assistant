@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { ConfirmDialogComponent, ConfirmDialogModel} from '../../../site-framework/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
 import { VehicleService } from '../vehicle.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
@@ -19,7 +22,8 @@ export class DetailsVehicleComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +41,32 @@ export class DetailsVehicleComponent implements OnInit {
             this.alertService.error(error);
           });
       });
+  }
+
+  confirmDialog(): void {
+
+    const message = `Czy na pewno chcesz usunąć ten pojazd?`;
+
+    const dialogData = new ConfirmDialogModel('Potwierdź działanie', message);
+
+    const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
+      maxWidth: '400px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      const result: boolean = dialogResult;
+      if (result) {
+        this.vehicleService.deleteVehicle(this.vehicleId).subscribe(
+          data => {
+            this.alertService.info('Pojazd został usunięty pomyślnie', { keepAfterRouteChange : true});
+            this.router.navigate(['../../list'], {relativeTo: this.route});
+          },
+          error => {
+            this.alertService.error(error);
+          });
+      }
+    });
   }
 
 }

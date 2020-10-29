@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { TokenStorageService } from '../account/token-storage.service';
@@ -19,11 +19,11 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     this.user = this.tokenStorageService.getUser();
-    if (this.user && this.user.role === 'ADMIN') {
+    if (this.user && this.user.role === 'ROLE_ADMIN') {
       return true;
     }
 
-    this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url }});
+    this.router.navigate(['/dashboard'], { queryParams: { returnUrl: state.url }});
     return false;
   }
 

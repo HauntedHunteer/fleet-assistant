@@ -1,0 +1,31 @@
+<button routerLink="../create" mat-raised-button color="primary" class="mt-1 mb-2 mx-2"> Wygeneruj konto dla kierowcy</button>
+<button routerLink="/dashboard" mat-raised-button color="warn" class="mt-1 mb-2 mx-2">Panel użytkownika</button>
+<ng-container>
+  <mat-form-field>
+    <mat-label>Wyszukaj</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Wyszukiwanie wg. dowolnej kolumny" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Adres E-mail </th>
+        <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+      </ng-container>
+
+      <!-- Details Link Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef > Szczegóły </th>
+        <td mat-cell *matCellDef="let row" > <a routerLink="../details/{{row.id}}" mat-raised-button > Szczegóły </a> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 30]"></mat-paginator>
+  </div>
+</ng-container>

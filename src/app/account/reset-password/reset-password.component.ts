@@ -33,8 +33,7 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit() {
     this.accountService.resetPassword(this.form.value).subscribe(
       data => {
-        console.log('reset password ' + data.value);
-        this.alertService.success('Link weryfikacyjny został wysłany na podany adres E-mail ', { keepAfterRouteChange : true});
+        this.alertService.success('Link weryfikacyjny został wysłany na podany adres E-mail', { keepAfterRouteChange : true});
         this.router.navigate(['../login'], { relativeTo: this.route });
       },
       error => {

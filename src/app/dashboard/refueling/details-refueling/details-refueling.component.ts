@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { ConfirmDialogComponent, ConfirmDialogModel} from '../../../site-framework/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
 import { VehicleService} from '../../vehicle/vehicle.service';
 import { RefuelingService } from '../refueling.service';
 import { AlertService } from '../../../_services/alert.service';
@@ -24,7 +27,8 @@ export class DetailsRefuelingComponent implements OnInit {
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
     private refuelingService: RefuelingService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +54,32 @@ export class DetailsRefuelingComponent implements OnInit {
             this.alertService.error(error);
           });
       });
+  }
+
+  confirmDialog(): void {
+
+    const message = `Czy na pewno chcesz usunąć to tankowanie?`;
+
+    const dialogData = new ConfirmDialogModel('Potwierdź działanie', message);
+
+    const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
+      maxWidth: '400px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      const result: boolean = dialogResult;
+      if (result) {
+        this.refuelingService.deleteRefueling(this.refuelingId).subscribe(
+          data => {
+            this.alertService.info('Tankowanie zostało usunięte pomyślnie', { keepAfterRouteChange : true});
+            this.router.navigate(['../../list'], {relativeTo: this.route, queryParams: { idV: this.vehicleId}});
+          },
+          error => {
+            this.alertService.error(error);
+          });
+      }
+    });
   }
 
 }

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AdminGuard } from '../_helpers/admin.guard';
+import { SuperuserGuard } from '../_helpers/superuser.guard';
+
 import { DashboardComponent } from './dashboard.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { CreateUserDataComponent } from './user-data/create-user-data/create-user-data.component';
@@ -96,7 +99,11 @@ const routes: Routes = [
             { path: 'details/:id', component: DetailsUseComponent },
             { path: 'list', component: ListUseComponent }
           ]
-        }
+        },
+        { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+          canActivate: [AdminGuard] },
+        { path: 'drivers', loadChildren: () => import('./drivers/drivers.module').then(m => m.DriversModule),
+          canActivate: [SuperuserGuard] }
       ]}
   ];
 

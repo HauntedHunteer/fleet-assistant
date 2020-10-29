@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { SiteFrameworkModule } from '../site-framework/site-framework.module';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
+import { SetNewPwdForDriverComponent } from './set-new-pwd-for-driver/set-new-pwd-for-driver.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SetNewPasswordComponent } from './set-new-password/set-new-password.com
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    SetNewPasswordComponent
+    SetNewPasswordComponent,
+    SetNewPwdForDriverComponent
   ],
   imports: [
     CommonModule,

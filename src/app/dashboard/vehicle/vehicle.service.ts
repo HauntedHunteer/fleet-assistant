@@ -36,7 +36,9 @@ export class VehicleService {
     return this.httpClient.put<Vehicle>(`${environment.apiUrl}/vehicle`, vehicle, httpOptions);
   }
 
-  // change status missing (delete)
+  deleteVehicle(vehicleId): Observable<Vehicle> {
+    return this.httpClient.delete<Vehicle>(`${environment.apiUrl}/vehicle/` + vehicleId, httpOptions);
+  }
 
   getMakes(): Observable<VehicleMake[]> {
     return this.httpClient.get<VehicleMake[]>(`${environment.apiUrl}/vehicle/make`, httpOptions);

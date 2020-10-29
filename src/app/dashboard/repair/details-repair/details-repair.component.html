@@ -45,7 +45,7 @@
     </mat-card-content>
     <mat-card-actions class="text-center">
       <button routerLink="../../update/{{repair.id}}" mat-raised-button color="primary" class="p-1">Edytuj dane</button>
-      <button routerLink="../list" mat-raised-button color="warn" class="p-1 my-2">Usuń przegląd</button>
+      <button mat-raised-button color="warn" (click)="confirmDialog()" class="p-1 my-2">Usuń naprawę</button>
       <button routerLink="../../list" [queryParams]="query" mat-raised-button class="p-1 my-2">Powrót</button>
     </mat-card-actions>
   </mat-card>

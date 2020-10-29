@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { ConfirmDialogComponent, ConfirmDialogModel} from '../../../site-framework/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
 import { VehicleService} from '../../vehicle/vehicle.service';
 import { InsuranceService } from '../insurance.service';
 import { AlertService } from '../../../_services/alert.service';
@@ -24,7 +27,8 @@ export class DetailsInsuranceComponent implements OnInit {
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
     private insuranceService: InsuranceService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +54,32 @@ export class DetailsInsuranceComponent implements OnInit {
             this.alertService.error(error);
           });
       });
+  }
+
+  confirmDialog(): void {
+
+    const message = `Czy na pewno chcesz usunąć to ubezpieczenie?`;
+
+    const dialogData = new ConfirmDialogModel('Potwierdź działanie', message);
+
+    const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
+      maxWidth: '400px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      const result: boolean = dialogResult;
+      if (result) {
+        this.insuranceService.deleteInsurance(this.insuranceId).subscribe(
+          data => {
+            this.alertService.info('Ubezpiecznie zostało usunięte pomyślnie', { keepAfterRouteChange : true});
+            this.router.navigate(['../../list'], {relativeTo: this.route, queryParams: { idV: this.vehicleId}});
+          },
+          error => {
+            this.alertService.error(error);
+          });
+      }
+    });
   }
 
 }

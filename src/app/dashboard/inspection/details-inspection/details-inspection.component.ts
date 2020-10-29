@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { ConfirmDialogComponent, ConfirmDialogModel} from '../../../site-framework/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
 import { VehicleService} from '../../vehicle/vehicle.service';
 import { InspectionService } from '../inspection.service';
 import { AlertService } from '../../../_services/alert.service';
@@ -24,7 +27,8 @@ export class DetailsInspectionComponent implements OnInit {
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
     private inspectionService: InspectionService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +54,32 @@ export class DetailsInspectionComponent implements OnInit {
             this.alertService.error(error);
           });
       });
+  }
+
+  confirmDialog(): void {
+
+    const message = `Czy na pewno chcesz usunąć ten przegląd?`;
+
+    const dialogData = new ConfirmDialogModel('Potwierdź działanie', message);
+
+    const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
+      maxWidth: '400px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      const result: boolean = dialogResult;
+      if (result) {
+        this.inspectionService.deleteInspection(this.inspectionId).subscribe(
+          data => {
+            this.alertService.info('Przegląd został usunięty pomyślnie', { keepAfterRouteChange : true});
+            this.router.navigate(['../../list'], {relativeTo: this.route, queryParams: { idV: this.vehicleId}});
+          },
+          error => {
+            this.alertService.error(error);
+          });
+      }
+    });
   }
 
 }

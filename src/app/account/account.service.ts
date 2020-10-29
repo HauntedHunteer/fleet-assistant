@@ -135,18 +135,16 @@ export class AccountService {
     params = params.append('u', qParams.u);
     params = params.append('c', qParams.c);
     return this.http.get(`${environment.apiUrl}/user/reset-password`, {params: params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
-    // broken
   }
 
   setNewPassword(bundle: ResetPwd): Observable<ResetPwd> {
-    return this.http.post<ResetPwd>(`${environment.apiUrl}/user/reset-password`, bundle, httpOptions);
-    // broken
+    return this.http.post<ResetPwd>(`${environment.apiUrl}/user/reset-password/new`, bundle, httpOptions);
   }
 
   changePassword(oldPassword, newPassword): Observable<any> {
     return this.http.post(`${environment.apiUrl}/user/change-password`, {
-      oldPwd: oldPassword,
-      newPwd: newPassword
+      oldPassword: oldPassword,
+      newPassword: newPassword
     }, httpOptions);
   }
 }
