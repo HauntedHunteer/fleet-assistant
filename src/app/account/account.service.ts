@@ -81,7 +81,7 @@ export class AccountService {
         return x;
       }));
   }
-} */
+} */ // todo
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -146,5 +146,9 @@ export class AccountService {
       oldPassword: oldPassword,
       newPassword: newPassword
     }, httpOptions);
+  }
+
+  getMail(userId): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/user/get-user-by-id/` + userId, httpOptions);
   }
 }

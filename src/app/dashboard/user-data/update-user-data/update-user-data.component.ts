@@ -3,8 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserDataService } from '../user-data.service';
+import { TokenStorageService } from '../../../account/token-storage.service';
 import { AlertService } from '../../../_services/alert.service';
 import { UserData } from '../../../_models/user-data';
+import {User} from '../../../_models/user';
 
 @Component({
   selector: 'app-update-user-data',
@@ -12,6 +14,7 @@ import { UserData } from '../../../_models/user-data';
   styleUrls: ['./update-user-data.component.css']
 })
 export class UpdateUserDataComponent implements OnInit {
+  currentUser: User;
   userData: UserData;
   userDataId: string;
   addressId: string;
@@ -21,12 +24,14 @@ export class UpdateUserDataComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private tokenStorageService: TokenStorageService,
     private userDataService: UserDataService,
     private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
-    this.userDataService.getUserData().subscribe(
+    this.currentUser = this.tokenStorageService.getUser();
+    this.userDataService.getUserData(this.currentUser.id).subscribe(
       data => {
         this.userData = data;
         this.userDataId = data.id;
@@ -70,6 +75,7 @@ export class UpdateUserDataComponent implements OnInit {
       name: this.f.name.value,
       surname: this.f.surname.value,
       phoneNumber: this.f.phoneNumber.value,
+      email: null,
       address: {
         id: this.addressId,
         city: this.f.city.value,

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { VehicleService} from '../../vehicle/vehicle.service';
 import { RefuelingService } from '../refueling.service';
+import { AccountService } from '../../../account/account.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Refueling } from '../../../_models/refueling';
@@ -20,6 +21,8 @@ export class DetailsRefuelingComponent implements OnInit {
   vehicleId: string;
   refueling: Refueling;
   refuelingId: string;
+  userId: string;
+  userMail: string;
   query;
 
   constructor(
@@ -27,6 +30,7 @@ export class DetailsRefuelingComponent implements OnInit {
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
     private refuelingService: RefuelingService,
+    private accountService: AccountService,
     private alertService: AlertService,
     private matDialog: MatDialog
   ) { }
@@ -39,12 +43,21 @@ export class DetailsRefuelingComponent implements OnInit {
           refuelingData => {
             this.refueling = refuelingData;
             this.vehicleId = refuelingData.vehicleId;
+            this.userId = refuelingData.userId;
             this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               data => {
                 this.vehicle = data;
                 this.query = {
                   idV: this.vehicleId
                 };
+              },
+              error => {
+                this.alertService.error(error);
+              });
+
+            this.accountService.getMail(this.userId).subscribe(
+              data => {
+                this.userMail = data.email;
               },
               error => {
                 this.alertService.error(error);

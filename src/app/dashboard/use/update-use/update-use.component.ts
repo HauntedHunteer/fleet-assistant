@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { VehicleService } from '../../vehicle/vehicle.service';
 import { UseService } from '../use.service';
+import { TokenStorageService } from '../../../account/token-storage.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Use } from '../../../_models/use';
@@ -19,6 +20,7 @@ export class UpdateUseComponent implements OnInit {
   vehicle: Vehicle;
   useId: string;
   use: Use;
+  userId: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,6 +28,7 @@ export class UpdateUseComponent implements OnInit {
     private router: Router,
     private useService: UseService,
     private vehicleService: VehicleService,
+    private tokenStorageService: TokenStorageService,
     private alertService: AlertService
   ) { }
 
@@ -40,6 +43,7 @@ export class UpdateUseComponent implements OnInit {
             this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               vehicleData => {
                 this.vehicle = vehicleData;
+                this.userId = this.tokenStorageService.getUser().id;
                 this.pushValues(this.use);
               },
               error => {
@@ -72,6 +76,7 @@ export class UpdateUseComponent implements OnInit {
     const use: Use = {
       id: this.useId,
       vehicleId: this.vehicleId,
+      userId: this.userId,
       trip: this.f.trip.value,
       tripDate: this.f.tripDate.value,
       description: this.f.description.value

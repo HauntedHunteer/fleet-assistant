@@ -19,7 +19,7 @@ export class SuperuserGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     this.user = this.tokenStorageService.getUser();
-    if (this.user && this.user.role === 'ROLE_SUPERUSER') {
+    if (this.user.roles === 'ROLE_SUPERUSER') {
       return true;
     }
 

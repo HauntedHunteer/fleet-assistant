@@ -15,7 +15,7 @@ import { User } from '../../../_models/user';
   styleUrls: ['./list-drivers.component.css']
 })
 export class ListDriversComponent implements OnInit {
-  displayedColumns: string[] = ['email', 'id'];
+  displayedColumns: string[] = ['email', 'createdAt', 'id'];
   dataSource: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

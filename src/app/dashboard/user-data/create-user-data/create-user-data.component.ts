@@ -45,6 +45,7 @@ export class CreateUserDataComponent implements OnInit {
       name: this.f.name.value,
       surname: this.f.surname.value,
       phoneNumber: this.f.phoneNumber.value,
+      email: null,
       address: {
         id: '',
         city: this.f.city.value,

@@ -23,8 +23,8 @@ export class UserDataService {
     return this.httpClient.post<UserData>(`${environment.apiUrl}/user/userdata`, userData, httpOptions);
   }
 
-  getUserData(): Observable<UserData> {
-    return this.httpClient.get<UserData>(`${environment.apiUrl}/user/userdata`, httpOptions);
+  getUserData(userId): Observable<UserData> {
+    return this.httpClient.get<UserData>(`${environment.apiUrl}/user/userdata/` + userId, httpOptions);
   }
 
   updateUserData(userData: UserData): Observable<UserData> {

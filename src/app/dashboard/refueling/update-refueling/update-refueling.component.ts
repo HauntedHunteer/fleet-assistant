@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { VehicleService } from '../../vehicle/vehicle.service';
 import { RefuelingService } from '../refueling.service';
+import { TokenStorageService } from '../../../account/token-storage.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Refueling} from '../../../_models/refueling';
@@ -19,6 +20,7 @@ export class UpdateRefuelingComponent implements OnInit {
   vehicle: Vehicle;
   refuelingId: string;
   refueling: Refueling;
+  userId: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,6 +28,7 @@ export class UpdateRefuelingComponent implements OnInit {
     private router: Router,
     private refuelingService: RefuelingService,
     private vehicleService: VehicleService,
+    private tokenStorageService: TokenStorageService,
     private alertService: AlertService
   ) { }
 
@@ -40,6 +43,7 @@ export class UpdateRefuelingComponent implements OnInit {
             this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               vehicleData => {
                 this.vehicle = vehicleData;
+                this.userId = this.tokenStorageService.getUser().id;
                 this.pushValues(this.refueling);
               },
               error => {
@@ -74,6 +78,7 @@ export class UpdateRefuelingComponent implements OnInit {
     const refueling: Refueling = {
       id: this.refuelingId,
       vehicleId: this.vehicleId,
+      userId: this.userId,
       refuelingDate: this.f.refuelingDate.value,
       litre: this.f.litre.value,
       cost: this.f.cost.value,

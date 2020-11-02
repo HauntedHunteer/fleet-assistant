@@ -1,1 +1,58 @@
-<p>assign-vehicle works!</p>
+<ng-container *ngIf="vehiclesList">
+  <div class="row">
+    <div class="column left">
+
+    </div>
+    <div class="column middle">
+      <mat-card>
+        <mat-card-title>Przypisz pojazdy do kierowcy</mat-card-title>
+        <mat-card-content>
+          <ng-container *ngIf="userData">
+            <mat-card-subtitle class="my-3"><strong>Kierowca:</strong></mat-card-subtitle>
+            <div class="row">
+              <div class="col-md-4">
+                <p><strong>Adres E-mail:</strong>  {{ userData.email}} </p>
+              </div>
+              <div class="col-md-4">
+                <p><strong>Imię:</strong>  {{ userData.name}} </p>
+              </div>
+              <div class="col-md-4 py-1">
+                <p><strong>Nazwisko:</strong>   {{ userData.surname }}</p>
+              </div>
+            </div>
+          </ng-container>
+
+          <mat-card-subtitle class="my-3"><strong>Wybierz pojazdy:</strong></mat-card-subtitle>
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Twoje pojazdy</mat-label>
+                  <mat-select [formControl]="f.vehiclesList" multiple required>
+                    <mat-option *ngFor="let vehicle of vehiclesList" [value]="vehicle.id">
+                      [ {{vehicle.make}} | {{vehicle.model}} | {{vehicle.vehicleRegistrationNumber}} | {{vehicle.year}} ]
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="f.vehiclesList.hasError('required')">
+                    Wybór pojazdu jest <strong>obowiązkowy</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <mat-card-actions class="text-center m-1">
+              <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+                Przydziel
+              </button>
+              <a routerLink="../../details/{{driverId}}" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+            </mat-card-actions>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="column right">
+
+    </div>
+  </div>
+</ng-container>

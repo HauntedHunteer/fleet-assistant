@@ -19,7 +19,7 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     this.user = this.tokenStorageService.getUser();
-    if (this.user && this.user.role === 'ROLE_ADMIN') {
+    if (this.user.roles === 'ROLE_ADMIN') {
       return true;
     }
 

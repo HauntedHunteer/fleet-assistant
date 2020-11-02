@@ -26,12 +26,12 @@ export class DetailsUserDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
-    this.userDataService.getUserData().subscribe(
+    this.userDataService.getUserData(this.currentUser.id).subscribe(
       data => {
         this.userData = data;
     },
       error => {
-        if (error === 'Nie znaleziono danych użytkownika') {
+        if (error === 'Dane nie istnieją') {
           this.router.navigate(['../create'], {relativeTo: this.route});
         }
         else {

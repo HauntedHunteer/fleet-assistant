@@ -20,7 +20,7 @@ export class UseService {
 
   getUseList(): Observable<Use[]> {
     return this.httpClient.get<Use[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // broken
+    // todo
   }
 
   getUseListById(vehicleId): Observable<Use[]> {

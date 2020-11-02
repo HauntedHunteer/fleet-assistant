@@ -20,7 +20,7 @@ export class RepairService {
 
   getRepairList(): Observable<Repair[]> {
     return this.httpClient.get<Repair[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // broken
+    // todo
   }
 
   getRepairListById(vehicleId): Observable<Repair[]> {

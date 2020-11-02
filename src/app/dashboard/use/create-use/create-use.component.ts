@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UseService } from '../use.service';
 import { VehicleService } from '../../vehicle/vehicle.service';
 import { AlertService } from '../../../_services/alert.service';
+import { TokenStorageService } from '../../../account/token-storage.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Use } from '../../../_models/use';
 
@@ -17,6 +18,7 @@ export class CreateUseComponent implements OnInit {
   form: FormGroup;
   vehicleId: string;
   vehicle: Vehicle;
+  userId: string;
   query;
 
   constructor(
@@ -25,6 +27,7 @@ export class CreateUseComponent implements OnInit {
     private router: Router,
     private useService: UseService,
     private vehicleService: VehicleService,
+    private tokenStorageService: TokenStorageService,
     private alertService: AlertService
   ) { }
 
@@ -35,6 +38,7 @@ export class CreateUseComponent implements OnInit {
         this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
           data => {
             this.vehicle = data;
+            this.userId = this.tokenStorageService.getUser().id;
             this.query = {
               idV: this.vehicleId
             };
@@ -62,6 +66,7 @@ export class CreateUseComponent implements OnInit {
     const use: Use = {
       id: '',
       vehicleId: this.vehicleId,
+      userId: this.userId,
       trip: this.f.trip.value,
       tripDate: this.f.tripDate.value,
       description: this.f.description.value

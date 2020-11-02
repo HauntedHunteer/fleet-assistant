@@ -1,83 +1,93 @@
 <ng-container *ngIf="vehicle">
-  <mat-card>
-    <mat-card-title>Uzupełnij dane o naprawie</mat-card-title>
-    <mat-card-content>
-      <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
-      <div class="row">
-        <div class="col-md-4 py-1">
-          <p><strong>Marka:</strong>  {{ vehicle.make}} </p>
-        </div>
-        <div class="col-md-4 py-1">
-          <p><strong>Model:</strong>   {{ vehicle.model }}</p>
-        </div>
-        <div class="col-md-4 py-1">
-          <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
-        </div>
-      </div>
-      <mat-card-subtitle class="my-3"><strong>Naprawa:</strong></mat-card-subtitle>
+  <div class="row">
+    <div class="column left">
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="row">
-          <div class="col m-1">
-            <mat-form-field class="input-full-width">
-              <mat-label>Tytuł </mat-label>
-              <input matInput [formControl]="f.title" required />
-              <mat-error *ngIf="f.title.hasError('required')">
-                Tytuł jest <strong>obowiązkowy</strong>
-              </mat-error>
-              <mat-error *ngIf="f.title.hasError('minlength')">
-                Tytuł musi składać się co najmniej z <strong>5</strong> znaków
-              </mat-error>
-              <mat-error *ngIf="f.title.hasError('maxlength')">
-                Tytuł musi składać się co najwyżej z <strong>20</strong> znaków
-              </mat-error>
-            </mat-form-field>
+    </div>
+    <div class="column middle">
+      <mat-card>
+        <mat-card-title>Uzupełnij dane o naprawie</mat-card-title>
+        <mat-card-content>
+          <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
+          <div class="row">
+            <div class="col-md-4 py-1">
+              <p><strong>Marka:</strong>  {{ vehicle.make}} </p>
+            </div>
+            <div class="col-md-4 py-1">
+              <p><strong>Model:</strong>   {{ vehicle.model }}</p>
+            </div>
+            <div class="col-md-4 py-1">
+              <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
+            </div>
           </div>
+          <mat-card-subtitle class="my-3"><strong>Naprawa:</strong></mat-card-subtitle>
 
-          <div class="col m-1">
-            <mat-form-field>
-              <mat-label>Data naprawy</mat-label>
-              <input matInput [matDatepicker]="dpr" [formControl]="f.repairDate" required>
-              <mat-datepicker-toggle matSuffix [for]="dpr"></mat-datepicker-toggle>
-              <mat-datepicker #dpr></mat-datepicker>
-              <mat-error *ngIf="f.repairDate.hasError('required')">
-                Data naprawy jest <strong>obowiązkowa</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Tytuł </mat-label>
+                  <input matInput [formControl]="f.title" required />
+                  <mat-error *ngIf="f.title.hasError('required')">
+                    Tytuł jest <strong>obowiązkowy</strong>
+                  </mat-error>
+                  <mat-error *ngIf="f.title.hasError('minlength')">
+                    Tytuł musi składać się co najmniej z <strong>5</strong> znaków
+                  </mat-error>
+                  <mat-error *ngIf="f.title.hasError('maxlength')">
+                    Tytuł musi składać się co najwyżej z <strong>20</strong> znaków
+                  </mat-error>
+                </mat-form-field>
+              </div>
 
-        <div class="row">
-          <div class="col m-1">
-            <mat-form-field >
-              <mat-label>Koszt naprawy (zł) </mat-label>
-              <input matInput [formControl]="f.cost" required />
-              <mat-error *ngIf="f.cost.hasError('required')">
-                Koszt naprawy jest <strong>obowiązkowy</strong>
-              </mat-error>
-              <mat-error *ngIf="f.cost.hasError('pattern')">
-                Nieprawidłowy format
-              </mat-error>
-            </mat-form-field>
-          </div>
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Data naprawy</mat-label>
+                  <input matInput [matDatepicker]="dpr" [formControl]="f.repairDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="dpr"></mat-datepicker-toggle>
+                  <mat-datepicker #dpr></mat-datepicker>
+                  <mat-error *ngIf="f.repairDate.hasError('required')">
+                    Data naprawy jest <strong>obowiązkowa</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
 
-          <div class="col m-1">
-            <mat-form-field class="example-full-width">
-              <mat-label>Opis naprawy</mat-label>
-              <textarea matInput [formControl]="f.description" required></textarea>
-              <mat-error *ngIf="f.description.hasError('maxlength')">
-                Opis naprawy muszi składać się co najwyżej z <strong>555</strong> znaków
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <mat-card-actions class="text-center m-1">
-          <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
-            Dodaj
-          </button>
-          <a routerLink="../list" [queryParams]="query" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
-        </mat-card-actions>
-      </form>
-    </mat-card-content>
-  </mat-card>
+            <div class="row">
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Koszt naprawy (zł) </mat-label>
+                  <input matInput [formControl]="f.cost" required />
+                  <mat-error *ngIf="f.cost.hasError('required')">
+                    Koszt naprawy jest <strong>obowiązkowy</strong>
+                  </mat-error>
+                  <mat-error *ngIf="f.cost.hasError('pattern')">
+                    Nieprawidłowy format
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Opis naprawy</mat-label>
+                  <textarea matInput [formControl]="f.description" required></textarea>
+                  <mat-error *ngIf="f.description.hasError('maxlength')">
+                    Opis naprawy muszi składać się co najwyżej z <strong>555</strong> znaków
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <mat-card-actions class="text-center m-1">
+              <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+                Dodaj
+              </button>
+              <a routerLink="../list" [queryParams]="query" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+            </mat-card-actions>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="column right">
+
+    </div>
+  </div>
 </ng-container>

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { NewDriversAccount } from '../../_models/new-drivers-account';
 import { User } from '../../_models/user';
+import { Share } from '../../_models/share';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -35,5 +36,9 @@ export class DriversService {
 
   getDriversList(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.apiUrl}/user/show-all-account`, httpOptions);
+  }
+
+  createShareVehicle(share: Share): Observable<Share> {
+    return this.http.post<Share>(`${environment.apiUrl}/share`, share, httpOptions);
   }
 }

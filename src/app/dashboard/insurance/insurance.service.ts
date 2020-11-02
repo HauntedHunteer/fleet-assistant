@@ -21,7 +21,7 @@ export class InsuranceService {
 
   getInsuranceList(): Observable<Insurance[]> {
     return this.httpClient.get<Insurance[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // broken
+    // todo
   }
 
   getInsuranceListById(vehicleId): Observable<Insurance[]> {

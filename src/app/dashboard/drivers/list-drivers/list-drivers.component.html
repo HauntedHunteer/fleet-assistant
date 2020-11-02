@@ -15,9 +15,15 @@
         <td mat-cell *matCellDef="let row"> {{row.email}} </td>
       </ng-container>
 
+      <!-- CreatedAt Column -->
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data stworzenia </th>
+        <td mat-cell *matCellDef="let row"> {{row.createdAt | date : 'dd/MM/yyyy'}} </td>
+      </ng-container>
+
       <!-- Details Link Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef > Szczegóły </th>
+        <th mat-header-cell *matHeaderCellDef > Szczegółowe dane </th>
         <td mat-cell *matCellDef="let row" > <a routerLink="../details/{{row.id}}" mat-raised-button > Szczegóły </a> </td>
       </ng-container>
 

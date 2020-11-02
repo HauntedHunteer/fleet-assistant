@@ -9,28 +9,28 @@
       <div fxShow="true" fxHide.lt-md="true">
 
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a mat-button [matMenuTriggerFor]="driversMenu" class="link">
-          <mat-icon>people_alt</mat-icon>
-          Moi kierowcy
-        </a>
-        <mat-menu #driversMenu="matMenu" xPosition="before">
-          <button routerLink="/dashboard/drivers/list" mat-menu-item> Kierowcy </button>
-          <button mat-menu-item> opcja 2 </button>
-        </mat-menu>
-
-        <a mat-button [matMenuTriggerFor]="fleetMenu" class="link">
-          <mat-icon>airport_shuttle</mat-icon>
-          Moja flota
-        </a>
-        <mat-menu #fleetMenu="matMenu" xPosition="before">
-          <button routerLink="/dashboard/vehicle/list" mat-menu-item> Pojazdy </button>
-          <button mat-menu-item> opcja 2 </button>
-        </mat-menu>
-
+        <ng-container *ngIf="currentUser.roles === 'ROLE_SUPERUSER'">
+          <a mat-button [matMenuTriggerFor]="driversMenu" class="link">
+            <mat-icon>people_alt</mat-icon>
+            Moi kierowcy
+          </a>
+          <a mat-button [matMenuTriggerFor]="fleetMenu" class="link">
+            <mat-icon>airport_shuttle</mat-icon>
+            Moja flota
+          </a>
+        </ng-container>
         <a mat-button [matMenuTriggerFor]="accountMenu" class="link">
           <mat-icon>account_box</mat-icon>
           Moje Konto
         </a>
+        <mat-menu #driversMenu="matMenu" xPosition="before">
+          <button routerLink="/dashboard/drivers/list" mat-menu-item> Kierowcy </button>
+          <button routerLink="/dashboard/drivers/create" mat-menu-item> Dodaj kierowcę </button>
+        </mat-menu>
+        <mat-menu #fleetMenu="matMenu" xPosition="before">
+          <button routerLink="/dashboard/vehicle/list" mat-menu-item> Pojazdy </button>
+          <button routerLink="/dashboard/vehicle/create" mat-menu-item> Dodaj pojazd </button>
+        </mat-menu>
         <mat-menu #accountMenu="matMenu" xPosition="before">
           <button routerLink="/dashboard/userData" mat-menu-item> Dane konta </button>
           <button (click)="logout()" mat-menu-item> Wyloguj </button>
@@ -43,14 +43,16 @@
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav>
       <mat-nav-list>
-        <a mat-list-item [matMenuTriggerFor]="driversMenu">
-          <mat-icon>people_alt</mat-icon>
-          Moi kierowcy
-        </a>
-        <a mat-list-item [matMenuTriggerFor]="fleetMenu">
-          <mat-icon>airport_shuttle</mat-icon>
-          Moja flota
-        </a>
+        <ng-container *ngIf="currentUser.roles === 'ROLE_SUPERUSER'">
+          <a mat-list-item [matMenuTriggerFor]="driversMenu">
+            <mat-icon>people_alt</mat-icon>
+            Moi kierowcy
+          </a>
+          <a mat-list-item [matMenuTriggerFor]="fleetMenu">
+            <mat-icon>airport_shuttle</mat-icon>
+            Moja flota
+          </a>
+        </ng-container>
         <a mat-list-item [matMenuTriggerFor]="accountMenu">
           <mat-icon>account_box</mat-icon>
           Moje Konto

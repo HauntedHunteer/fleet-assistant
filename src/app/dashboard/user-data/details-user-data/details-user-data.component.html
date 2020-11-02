@@ -9,7 +9,7 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <p><strong>Adres E-mail:</strong>  {{ currentUser.email}} </p>
+          <p><strong>Adres E-mail:</strong>  {{ userData.email}} </p>
         </div>
         <div class="col-md-4">
           <p><strong>Imię:</strong>  {{ userData.name}} </p>
@@ -26,7 +26,7 @@
         <div class="col-md-4">
           <p><strong>Miasto:</strong>  {{ userData.address.city }}</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 py-1">
           <p><strong>Ulica:</strong>  {{ userData.address.street }}</p>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <div class="col-md-4">
           <p><strong>Numer mieszkania:</strong>  {{ userData.address.flatNumber }}</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 py-1">
           <p><strong>Kod pocztowy:</strong> {{ userData.address.postalCode }}</p>
         </div>
       </div>

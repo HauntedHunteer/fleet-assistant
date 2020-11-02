@@ -24,19 +24,4 @@ export class DashboardComponent implements OnInit {
   logout() {
     this.accountService.logout();
   }
- /* user: User;
-
-  constructor(
-    private accountService: AccountService
-  ) {
-    this.user = this.accountService.userValue;
-  }
-
-  ngOnInit(): void {
-  }
-
-  logout() {
-    this.accountService.logout();
-  }
-*/
 }

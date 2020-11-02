@@ -1,74 +1,85 @@
 <ng-container *ngIf="use && vehicle">
-  <mat-card>
-    <mat-card-title>Uzupełnij dane o przebiegu</mat-card-title>
-    <mat-card-content>
-      <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
-      <div class="row">
-        <div class="col-md-4 py-1">
-          <p><strong>Marka:</strong>  {{ vehicle.make}} </p>
-        </div>
-        <div class="col-md-4 py-1">
-          <p><strong>Model:</strong>   {{ vehicle.model }}</p>
-        </div>
-        <div class="col-md-4 py-1">
-          <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
-        </div>
-      </div>
-      <mat-card-subtitle class="my-3"><strong>Przebieg:</strong></mat-card-subtitle>
+  <div class="row">
+    <div class="column left">
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="row">
-          <div class="col m-1">
-            <mat-form-field class="input-full-width">
-              <mat-label>Data przebiegu</mat-label>
-              <input matInput [matDatepicker]="dpt" [formControl]="f.tripDate" required>
-              <mat-datepicker-toggle matSuffix [for]="dpt"></mat-datepicker-toggle>
-              <mat-datepicker #dpt></mat-datepicker>
-              <mat-error *ngIf="f.tripDate.hasError('required')">
-                Data przebiegu jest <strong>obowiązkowa</strong>
-              </mat-error>
-            </mat-form-field>
+    </div>
+    <div class="column middle">
+      <mat-card>
+        <mat-card-title>Uzupełnij dane o przebiegu</mat-card-title>
+        <mat-card-content>
+          <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
+          <div class="row">
+            <div class="col-md-4 py-1">
+              <p><strong>Marka:</strong>  {{ vehicle.make}} </p>
+            </div>
+            <div class="col-md-4 py-1">
+              <p><strong>Model:</strong>   {{ vehicle.model }}</p>
+            </div>
+            <div class="col-md-4 py-1">
+              <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
+            </div>
           </div>
+          <mat-card-subtitle class="my-3"><strong>Przebieg:</strong></mat-card-subtitle>
 
-          <div class="col m-1">
-            <mat-form-field class="input-full-width">
-              <mat-label>Przebieg (km) </mat-label>
-              <input matInput [formControl]="f.trip" required />
-              <mat-error *ngIf="f.trip.hasError('required')">
-                Przebieg jest <strong>obowiązkowy</strong>
-              </mat-error>
-              <mat-error *ngIf="f.trip.hasError('maxlength')">
-                Przebieg musi składać się co najwyżej z <strong>5</strong> cyfr
-              </mat-error>
-              <mat-error *ngIf="f.trip.hasError('pattern')">
-                Nieprawidłowy format
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Data przebiegu</mat-label>
+                  <input matInput [matDatepicker]="dpt" [formControl]="f.tripDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="dpt"></mat-datepicker-toggle>
+                  <mat-datepicker #dpt></mat-datepicker>
+                  <mat-error *ngIf="f.tripDate.hasError('required')">
+                    Data przebiegu jest <strong>obowiązkowa</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
 
-        <div class="row">
-          <div class="col m-1">
-            <mat-form-field class="input-full-width">
-              <mat-label>Uwagi dodatkowe</mat-label>
-              <textarea matInput [formControl]="f.description"></textarea>
-              <mat-error *ngIf="f.description.hasError('maxlength')">
-                Uwagi dodatkowe muszą składać się co najwyżej z <strong>255</strong> znaków
-              </mat-error>
-            </mat-form-field>
-          </div>
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Przebieg (km) </mat-label>
+                  <input matInput [formControl]="f.trip" required />
+                  <mat-error *ngIf="f.trip.hasError('required')">
+                    Przebieg jest <strong>obowiązkowy</strong>
+                  </mat-error>
+                  <mat-error *ngIf="f.trip.hasError('maxlength')">
+                    Przebieg musi składać się co najwyżej z <strong>5</strong> cyfr
+                  </mat-error>
+                  <mat-error *ngIf="f.trip.hasError('pattern')">
+                    Nieprawidłowy format
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
 
-          <div class="col m-1">
+            <div class="row">
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Uwagi dodatkowe</mat-label>
+                  <textarea matInput [formControl]="f.description"></textarea>
+                  <mat-error *ngIf="f.description.hasError('maxlength')">
+                    Uwagi dodatkowe muszą składać się co najwyżej z <strong>255</strong> znaków
+                  </mat-error>
+                </mat-form-field>
+              </div>
 
-          </div>
-        </div>
-        <mat-card-actions class="text-center m-1">
-          <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
-            Zaktualizuj
-          </button>
-          <a routerLink="../../details/{{use.id}}" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
-        </mat-card-actions>
-      </form>
-    </mat-card-content>
-  </mat-card>
+              <div class="col m-1">
+
+              </div>
+            </div>
+            <mat-card-actions class="text-center m-1">
+              <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+                Zaktualizuj
+              </button>
+              <a routerLink="../../details/{{use.id}}" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+            </mat-card-actions>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="column right">
+
+    </div>
+  </div>
+
 </ng-container>

@@ -4,6 +4,7 @@ export interface UserData {
   surname: string;
   phoneNumber: string;
   address: Address;
+  email: string;
 }
 
 export interface Address {

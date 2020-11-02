@@ -1,7 +1,7 @@
 export interface User {
+  id: string;
   email: string;
-  createdAt: string;
-  role: string;
+  roles: string;
   userStatus: string;
   accessToken: string;
 }

@@ -20,7 +20,7 @@ export class InspectionService {
 
   getInspectionList(): Observable<Inspection[]> {
     return this.httpClient.get<Inspection[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // broken
+    // todo
   }
 
   getInspectionListById(vehicleId): Observable<Inspection[]> {

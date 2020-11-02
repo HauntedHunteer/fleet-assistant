@@ -20,7 +20,7 @@ export class RefuelingService {
 
   getRefuelingList(): Observable<Refueling[]> {
     return this.httpClient.get<Refueling[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // broken
+    // todo
   }
 
   getRefuelingListById(vehicleId): Observable<Refueling[]> {

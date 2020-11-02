@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { VehicleService} from '../../vehicle/vehicle.service';
 import { UseService } from '../use.service';
+import { AccountService } from '../../../account/account.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Use } from '../../../_models/use';
@@ -20,6 +21,8 @@ export class DetailsUseComponent implements OnInit {
   vehicleId: string;
   use: Use;
   useId: string;
+  userId: string;
+  userMail: string;
   query;
 
   constructor(
@@ -28,6 +31,7 @@ export class DetailsUseComponent implements OnInit {
     private vehicleService: VehicleService,
     private useService: UseService,
     private alertService: AlertService,
+    private accountService: AccountService,
     private matDialog: MatDialog
   ) { }
 
@@ -39,12 +43,21 @@ export class DetailsUseComponent implements OnInit {
           useData => {
             this.use = useData;
             this.vehicleId = useData.vehicleId;
+            this.userId = useData.userId;
             this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               data => {
                 this.vehicle = data;
                 this.query = {
                   idV: this.vehicleId
                 };
+              },
+              error => {
+                this.alertService.error(error);
+              });
+
+            this.accountService.getMail(this.userId).subscribe(
+              data => {
+                this.userMail = data.email;
               },
               error => {
                 this.alertService.error(error);

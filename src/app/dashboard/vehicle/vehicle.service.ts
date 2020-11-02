@@ -47,4 +47,14 @@ export class VehicleService {
   getFuelTypes(): Observable<FuelType[]> {
     return this.httpClient.get<FuelType[]>(`${environment.apiUrl}/vehicle/fuelType`, httpOptions);
   }
+
+  getVehicleListToShare(): Observable<Vehicle[]> {
+    return this.httpClient.get<Vehicle[]>(`${environment.apiUrl}/vehicle`, httpOptions);
+    // todo
+  }
+
+  getSharedVehicleList(driverId): Observable<Vehicle[]> {
+    return this.httpClient.get<Vehicle[]>(`${environment.apiUrl}/vehicle`, httpOptions);
+    // todo
+  }
 }

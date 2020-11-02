@@ -1,79 +1,89 @@
 <ng-container *ngIf="inspection && vehicle">
-  <mat-card>
-    <mat-card-title>Uzupełnij dane o przeglądzie</mat-card-title>
-    <mat-card-content>
-      <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
-      <div class="row">
-        <div class="col-md-4 py-1">
-          <p><strong>Marka:</strong>  {{ vehicle.make}} </p>
-        </div>
-        <div class="col-md-4 py-1">
-          <p><strong>Model:</strong>   {{ vehicle.model }}</p>
-        </div>
-        <div class="col-md-4 py-1">
-          <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
-        </div>
-      </div>
-      <mat-card-subtitle class="my-3"><strong>Przegląd:</strong></mat-card-subtitle>
+  <div class="row">
+    <div class="column left">
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="row">
-          <div class="col m-1">
-            <mat-form-field class="input-full-width">
-              <mat-label>Data przeglądu</mat-label>
-              <input matInput [matDatepicker]="dpi" [formControl]="f.inspectionDate" required>
-              <mat-datepicker-toggle matSuffix [for]="dpi"></mat-datepicker-toggle>
-              <mat-datepicker #dpi></mat-datepicker>
-              <mat-error *ngIf="f.inspectionDate.hasError('required')">
-                Data przeglądu jest <strong>obowiązkowa</strong>
-              </mat-error>
-            </mat-form-field>
+    </div>
+    <div class="column middle">
+      <mat-card>
+        <mat-card-title>Uzupełnij dane o przeglądzie</mat-card-title>
+        <mat-card-content>
+          <mat-card-subtitle class="my-3"><strong>Pojazd:</strong></mat-card-subtitle>
+          <div class="row">
+            <div class="col-md-4 py-1">
+              <p><strong>Marka:</strong>  {{ vehicle.make}} </p>
+            </div>
+            <div class="col-md-4 py-1">
+              <p><strong>Model:</strong>   {{ vehicle.model }}</p>
+            </div>
+            <div class="col-md-4 py-1">
+              <p><strong>Model:</strong>   {{ vehicle.vehicleRegistrationNumber }}</p>
+            </div>
           </div>
+          <mat-card-subtitle class="my-3"><strong>Przegląd:</strong></mat-card-subtitle>
 
-          <div class="col m-1">
-            <mat-form-field class="input-full-width">
-              <mat-label>Data ważności</mat-label>
-              <input matInput [matDatepicker]="dpe" [formControl]="f.expirationDate" required>
-              <mat-datepicker-toggle matSuffix [for]="dpe"></mat-datepicker-toggle>
-              <mat-datepicker #dpe></mat-datepicker>
-              <mat-error *ngIf="f.expirationDate.hasError('required')">
-                Data ważności jest <strong>obowiązkowa</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Data przeglądu</mat-label>
+                  <input matInput [matDatepicker]="dpi" [formControl]="f.inspectionDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="dpi"></mat-datepicker-toggle>
+                  <mat-datepicker #dpi></mat-datepicker>
+                  <mat-error *ngIf="f.inspectionDate.hasError('required')">
+                    Data przeglądu jest <strong>obowiązkowa</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
 
-        <div class="row">
-          <div class="col m-1">
-            <mat-form-field class="input-full-width">
-              <mat-label>Koszt przeglądu (zł) </mat-label>
-              <input matInput [formControl]="f.cost" required />
-              <mat-error *ngIf="f.cost.hasError('required')">
-                Koszt przeglądu jest <strong>obowiązkowy</strong>
-              </mat-error>
-              <mat-error *ngIf="f.cost.hasError('pattern')">
-                Nieprawidłowy format
-              </mat-error>
-            </mat-form-field>
-          </div>
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Data ważności</mat-label>
+                  <input matInput [matDatepicker]="dpe" [formControl]="f.expirationDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="dpe"></mat-datepicker-toggle>
+                  <mat-datepicker #dpe></mat-datepicker>
+                  <mat-error *ngIf="f.expirationDate.hasError('required')">
+                    Data ważności jest <strong>obowiązkowa</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
 
-          <div class="col m-1">
-            <mat-form-field class="input-full-width">
-              <mat-label>Uwagi dodatkowe</mat-label>
-              <textarea matInput [formControl]="f.description"></textarea>
-              <mat-error *ngIf="f.description.hasError('maxlength')">
-                Uwagi dodatkowe muszą składać się co najwyżej z <strong>45</strong> znaków
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <mat-card-actions class="text-center m-1">
-          <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
-            Zaktualizuj
-          </button>
-          <a routerLink="../../details/{{inspection.id}}" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
-        </mat-card-actions>
-      </form>
-    </mat-card-content>
-  </mat-card>
+            <div class="row">
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Koszt przeglądu (zł) </mat-label>
+                  <input matInput [formControl]="f.cost" required />
+                  <mat-error *ngIf="f.cost.hasError('required')">
+                    Koszt przeglądu jest <strong>obowiązkowy</strong>
+                  </mat-error>
+                  <mat-error *ngIf="f.cost.hasError('pattern')">
+                    Nieprawidłowy format
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
+                  <mat-label>Uwagi dodatkowe</mat-label>
+                  <textarea matInput [formControl]="f.description"></textarea>
+                  <mat-error *ngIf="f.description.hasError('maxlength')">
+                    Uwagi dodatkowe muszą składać się co najwyżej z <strong>45</strong> znaków
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <mat-card-actions class="text-center m-1">
+              <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+                Zaktualizuj
+              </button>
+              <a routerLink="../../details/{{inspection.id}}" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+            </mat-card-actions>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="column right">
+
+    </div>
+  </div>
 </ng-container>
