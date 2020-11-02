@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
@@ -18,9 +18,11 @@ export class UseService {
     private httpClient: HttpClient
   ) { }
 
-  getUseList(): Observable<Use[]> {
-    return this.httpClient.get<Use[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // todo
+  getSharedUseList(vehicleId, userId): Observable<Use[]> {
+    let params = new HttpParams();
+    params = params.append('v', vehicleId);
+    params = params.append('u', userId);
+    return this.httpClient.get<Use[]>(`${environment.apiUrl}/use/list`, {params: params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 
   getUseListById(vehicleId): Observable<Use[]> {

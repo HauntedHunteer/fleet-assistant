@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminGuard } from '../_helpers/admin.guard';
 import { SuperuserGuard } from '../_helpers/superuser.guard';
+import { UserGuard } from '../_helpers/user.guard';
 
 import { DashboardComponent } from './dashboard.component';
 import { UserDataComponent } from './user-data/user-data.component';
@@ -40,6 +41,9 @@ import { CreateUseComponent } from './use/create-use/create-use.component';
 import { UpdateUseComponent } from './use/update-use/update-use.component';
 import { DetailsUseComponent } from './use/details-use/details-use.component';
 import { ListUseComponent } from './use/list-use/list-use.component';
+import { SharedVehicleComponent } from './shared-vehicle/shared-vehicle.component';
+import { DetailsSharedVehicleComponent } from './shared-vehicle/details-shared-vehicle/details-shared-vehicle.component';
+import { ListSharedVehicleComponent } from './shared-vehicle/list-shared-vehicle/list-shared-vehicle.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent,
@@ -52,7 +56,7 @@ const routes: Routes = [
             { path: 'changePwd', component: ChangePasswordComponent }
           ]
         },
-        { path: 'vehicle', component: VehicleComponent,
+        { path: 'vehicle', component: VehicleComponent, canActivate: [SuperuserGuard],
           children: [
             { path: 'create', component: CreateVehicleComponent },
             { path: 'update/:id', component: UpdateVehicleComponent },
@@ -60,7 +64,7 @@ const routes: Routes = [
             { path: 'list', component: ListVehicleComponent }
           ]
         },
-        { path: 'inspection', component: InspectionComponent,
+        { path: 'inspection', component: InspectionComponent, canActivate: [SuperuserGuard],
           children: [
             { path: 'create', component: CreateInspectionComponent },
             { path: 'update/:id', component: UpdateInspectionComponent },
@@ -68,7 +72,7 @@ const routes: Routes = [
             { path: 'list', component: ListInspectionComponent }
           ]
         },
-        { path: 'insurance', component: InsuranceComponent,
+        { path: 'insurance', component: InsuranceComponent, canActivate: [SuperuserGuard],
           children: [
             { path: 'create', component: CreateInsuranceComponent },
             { path: 'update/:id', component: UpdateInsuranceComponent },
@@ -76,7 +80,7 @@ const routes: Routes = [
             { path: 'list', component: ListInsuranceComponent }
           ]
         },
-        { path: 'repair', component: RepairComponent,
+        { path: 'repair', component: RepairComponent, canActivate: [SuperuserGuard],
           children: [
             { path: 'create', component: CreateRepairComponent },
             { path: 'update/:id', component: UpdateRepairComponent },
@@ -101,9 +105,17 @@ const routes: Routes = [
           ]
         },
         { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
-          canActivate: [AdminGuard] },
+          canActivate: [AdminGuard]
+        },
         { path: 'drivers', loadChildren: () => import('./drivers/drivers.module').then(m => m.DriversModule),
-          canActivate: [SuperuserGuard] }
+          canActivate: [SuperuserGuard]
+        },
+        { path: 'sharedVehicle', component: SharedVehicleComponent, canActivate: [UserGuard],
+          children: [
+            { path: 'details/:id', component: DetailsSharedVehicleComponent },
+            { path: 'list', component: ListSharedVehicleComponent}
+          ]
+        }
       ]}
   ];
 

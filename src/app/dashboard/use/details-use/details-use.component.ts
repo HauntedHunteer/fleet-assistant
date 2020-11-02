@@ -7,9 +7,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { VehicleService} from '../../vehicle/vehicle.service';
 import { UseService } from '../use.service';
 import { AccountService } from '../../../account/account.service';
+import { TokenStorageService } from '../../../account/token-storage.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Use } from '../../../_models/use';
+import { User } from '../../../_models/user';
 
 @Component({
   selector: 'app-details-use',
@@ -23,6 +25,7 @@ export class DetailsUseComponent implements OnInit {
   useId: string;
   userId: string;
   userMail: string;
+  currentUser: User;
   query;
 
   constructor(
@@ -32,6 +35,7 @@ export class DetailsUseComponent implements OnInit {
     private useService: UseService,
     private alertService: AlertService,
     private accountService: AccountService,
+    private tokenStorageService: TokenStorageService,
     private matDialog: MatDialog
   ) { }
 
@@ -44,6 +48,7 @@ export class DetailsUseComponent implements OnInit {
             this.use = useData;
             this.vehicleId = useData.vehicleId;
             this.userId = useData.userId;
+            this.currentUser = this.tokenStorageService.getUser();
             this.vehicleService.getVehicleDetails(this.vehicleId).subscribe(
               data => {
                 this.vehicle = data;
@@ -55,13 +60,15 @@ export class DetailsUseComponent implements OnInit {
                 this.alertService.error(error);
               });
 
-            this.accountService.getMail(this.userId).subscribe(
-              data => {
-                this.userMail = data.email;
-              },
-              error => {
-                this.alertService.error(error);
-              });
+            if (this.currentUser.roles === 'ROLE_SUPERUSER') {
+              this.accountService.getMail(this.userId).subscribe(
+                data => {
+                  this.userMail = data.email;
+                },
+                error => {
+                  this.alertService.error(error);
+                });
+            }
           },
           error => {
             this.alertService.error(error);

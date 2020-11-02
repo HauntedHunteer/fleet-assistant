@@ -19,6 +19,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
@@ -42,7 +43,8 @@ const material = [
   MatSortModule,
   MatDividerModule,
   MatDatepickerModule,
-  MatDialogModule
+  MatDialogModule,
+  MatExpansionModule
 ];
 
 @NgModule({

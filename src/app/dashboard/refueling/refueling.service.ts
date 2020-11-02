@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
@@ -18,9 +18,11 @@ export class RefuelingService {
     private httpClient: HttpClient
   ) { }
 
-  getRefuelingList(): Observable<Refueling[]> {
-    return this.httpClient.get<Refueling[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // todo
+  getSharedRefuelingList(vehicleId, userId): Observable<Refueling[]> {
+    let params = new HttpParams();
+    params = params.append('v', vehicleId);
+    params = params.append('u', userId);
+    return this.httpClient.get<Refueling[]>(`${environment.apiUrl}/refueling/list`, {params: params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 
   getRefuelingListById(vehicleId): Observable<Refueling[]> {

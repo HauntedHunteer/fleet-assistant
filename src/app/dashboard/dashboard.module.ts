@@ -40,6 +40,9 @@ import { CreateUseComponent } from './use/create-use/create-use.component';
 import { DetailsUseComponent } from './use/details-use/details-use.component';
 import { ListUseComponent } from './use/list-use/list-use.component';
 import { UpdateUseComponent } from './use/update-use/update-use.component';
+import { SharedVehicleComponent } from './shared-vehicle/shared-vehicle.component';
+import { DetailsSharedVehicleComponent } from './shared-vehicle/details-shared-vehicle/details-shared-vehicle.component';
+import { ListSharedVehicleComponent } from './shared-vehicle/list-shared-vehicle/list-shared-vehicle.component';
 
 
 
@@ -80,7 +83,10 @@ import { UpdateUseComponent } from './use/update-use/update-use.component';
     CreateUseComponent,
     DetailsUseComponent,
     ListUseComponent,
-    UpdateUseComponent
+    UpdateUseComponent,
+    SharedVehicleComponent,
+    DetailsSharedVehicleComponent,
+    ListSharedVehicleComponent
   ],
   imports: [
     CommonModule,

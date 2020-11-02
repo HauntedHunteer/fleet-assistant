@@ -1,1 +1,33 @@
-<p>assigned-vehicle-list works!</p>
+<div class="row">
+  <div class="column left">
+
+  </div>
+  <div class="column middle">
+    <ng-container *ngIf="drivers">
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel *ngFor="let driver of drivers" (click)="showSharedVehicles(driver.id)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{driver.email}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Konto utworzono: {{driver.createdAt | date : 'dd/MM/yyyy'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let vehicle of vehicleList">
+              {{vehicle.make}} | {{vehicle.model}} | {{vehicle.vehicleRegistrationNumber}} | {{vehicle.year}}
+              <button mat-raised-button color="warn" class="p-1 m-2" >Usuń</button> <!-- todo (click)="confirmDialog()" -->
+            </mat-list-item>
+          </mat-list>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </ng-container>
+  </div>
+  <div class="column right">
+
+  </div>
+</div>

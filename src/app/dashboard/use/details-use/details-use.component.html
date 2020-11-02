@@ -29,7 +29,7 @@
           <p><strong>Przebieg (km):</strong> {{ use.trip }} </p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Dodano przez:</strong> {{ userMail }} </p>
+          <p *ngIf="currentUser.roles === 'ROLE_SUPERUSER'"><strong>Dodano przez:</strong> {{ userMail }} </p>
         </div>
       </div>
 

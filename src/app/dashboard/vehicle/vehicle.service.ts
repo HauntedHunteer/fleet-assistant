@@ -49,12 +49,10 @@ export class VehicleService {
   }
 
   getVehicleListToShare(): Observable<Vehicle[]> {
-    return this.httpClient.get<Vehicle[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // todo
+    return this.httpClient.get<Vehicle[]>(`${environment.apiUrl}/share/vehicles`, httpOptions);
   }
 
   getSharedVehicleList(driverId): Observable<Vehicle[]> {
-    return this.httpClient.get<Vehicle[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // todo
+    return this.httpClient.get<Vehicle[]>(`${environment.apiUrl}/share/user/` + driverId, httpOptions);
   }
 }

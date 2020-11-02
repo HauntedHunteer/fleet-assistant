@@ -9,16 +9,18 @@
       <div fxShow="true" fxHide.lt-md="true">
 
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <ng-container *ngIf="currentUser.roles === 'ROLE_SUPERUSER'">
-          <a mat-button [matMenuTriggerFor]="driversMenu" class="link">
-            <mat-icon>people_alt</mat-icon>
-            Moi kierowcy
-          </a>
-          <a mat-button [matMenuTriggerFor]="fleetMenu" class="link">
-            <mat-icon>airport_shuttle</mat-icon>
-            Moja flota
-          </a>
-        </ng-container>
+        <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" mat-button [matMenuTriggerFor]="driversMenu" class="link">
+          <mat-icon>people_alt</mat-icon>
+          Moi kierowcy
+        </a>
+        <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" mat-button [matMenuTriggerFor]="fleetMenu" class="link">
+          <mat-icon>airport_shuttle</mat-icon>
+          Moja flota
+        </a>
+        <a *ngIf="currentUser.roles === 'ROLE_USER'" routerLink="/dashboard/sharedVehicle/list" mat-button class="link">
+          <mat-icon>airport_shuttle</mat-icon>
+          Przydzielone pojazdy
+        </a>
         <a mat-button [matMenuTriggerFor]="accountMenu" class="link">
           <mat-icon>account_box</mat-icon>
           Moje Konto
@@ -26,6 +28,7 @@
         <mat-menu #driversMenu="matMenu" xPosition="before">
           <button routerLink="/dashboard/drivers/list" mat-menu-item> Kierowcy </button>
           <button routerLink="/dashboard/drivers/create" mat-menu-item> Dodaj kierowcę </button>
+          <button routerLink="/dashboard/drivers/assignedList" mat-menu-item> Przypisane pojazdy </button>
         </mat-menu>
         <mat-menu #fleetMenu="matMenu" xPosition="before">
           <button routerLink="/dashboard/vehicle/list" mat-menu-item> Pojazdy </button>
@@ -43,16 +46,18 @@
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav>
       <mat-nav-list>
-        <ng-container *ngIf="currentUser.roles === 'ROLE_SUPERUSER'">
-          <a mat-list-item [matMenuTriggerFor]="driversMenu">
-            <mat-icon>people_alt</mat-icon>
-            Moi kierowcy
-          </a>
-          <a mat-list-item [matMenuTriggerFor]="fleetMenu">
-            <mat-icon>airport_shuttle</mat-icon>
-            Moja flota
-          </a>
-        </ng-container>
+        <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" mat-list-item [matMenuTriggerFor]="driversMenu">
+          <mat-icon>people_alt</mat-icon>
+          Moi kierowcy
+        </a>
+        <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" mat-list-item [matMenuTriggerFor]="fleetMenu">
+          <mat-icon>airport_shuttle</mat-icon>
+          Moja flota
+        </a>
+        <a *ngIf="currentUser.roles === 'ROLE_USER'" routerLink="/dashboard/sharedVehicle/list" mat-button class="link">
+          <mat-icon>airport_shuttle</mat-icon>
+          Przydzielone pojazdy
+        </a>
         <a mat-list-item [matMenuTriggerFor]="accountMenu">
           <mat-icon>account_box</mat-icon>
           Moje Konto

@@ -1,6 +1,6 @@
 <button routerLink="../create" [queryParams]="query" mat-raised-button color="primary" class="mt-1 mb-2 mx-2"> Dodaj nowy przebieg</button>
-<button routerLink="/dashboard/vehicle/details/{{vehicleId}}" mat-raised-button color="warn" class="mt-1 mb-2 mx-2">Powrót do pojazdu</button>
-
+<button *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="/dashboard/vehicle/details/{{vehicleId}}" mat-raised-button color="warn" class="mt-1 mb-2 mx-2">Powrót do pojazdu</button>
+<button *ngIf="currentUser.roles === 'ROLE_USER'" routerLink="/dashboard/sharedVehicle/details/{{vehicleId}}" mat-raised-button color="warn" class="mt-1 mb-2 mx-2">Powrót do pojazdu</button>
 <ng-container>
   <mat-form-field>
     <mat-label>Wyszukaj</mat-label>

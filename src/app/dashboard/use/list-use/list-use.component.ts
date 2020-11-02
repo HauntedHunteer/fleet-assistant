@@ -7,6 +7,8 @@ import { MatSort } from '@angular/material/sort';
 import { UseService } from '../use.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Use } from '../../../_models/use';
+import { TokenStorageService } from '../../../account/token-storage.service';
+import { User } from '../../../_models/user';
 
 @Component({
   selector: 'app-list-use',
@@ -18,6 +20,7 @@ export class ListUseComponent implements OnInit {
   dataSource: MatTableDataSource<Use>;
   vehicleId: string;
   query;
+  currentUser: User;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -26,7 +29,8 @@ export class ListUseComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private useService: UseService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private tokenStorageService: TokenStorageService
   ) {
   }
 
@@ -34,18 +38,32 @@ export class ListUseComponent implements OnInit {
     this.route.queryParams.subscribe(
       params => {
         this.vehicleId = params.idV;
+        this.currentUser = this.tokenStorageService.getUser();
         this.query = {
           idV: this.vehicleId
         };
-        this.useService.getUseListById(this.vehicleId).subscribe(
-          data => {
-            this.dataSource = new MatTableDataSource(data);
-            this.dataSource.paginator = this.paginator;
-            this.dataSource.sort = this.sort;
-          },
-          error => {
-            this.alertService.error(error);
-          });
+        if (this.currentUser.roles === 'ROLE_SUPERUSER') {
+          this.useService.getUseListById(this.vehicleId).subscribe(
+            data => {
+              this.dataSource = new MatTableDataSource(data);
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+            },
+            error => {
+              this.alertService.error(error);
+            });
+        }
+        if (this.currentUser.roles === 'ROLE_USER') {
+          this.useService.getSharedUseList(this.vehicleId, this.currentUser.id).subscribe(
+            data => {
+              this.dataSource = new MatTableDataSource(data);
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+            },
+            error => {
+              this.alertService.error(error);
+            });
+        }
       },
       error => {
         this.alertService.error(error);
