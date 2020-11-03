@@ -43,9 +43,8 @@ export class AssignedVehicleListComponent implements OnInit {
         this.alertService.error(error);
       });
   }
-// todo
-  /*
-  confirmDialog(): void {
+
+  confirmDialog(vehicleId): void {
 
     const message = `Czy na pewno chcesz odebrać ten pojazd kierowcy?`;
 
@@ -59,10 +58,9 @@ export class AssignedVehicleListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       const result: boolean = dialogResult;
       if (result) {
-        this.vehicleService.deleteVehicle(this.vehicleId).subscribe(
+        this.driversService.deleteShareVehicle(vehicleId).subscribe(
           data => {
-            this.alertService.info('Pojazd został usunięty pomyślnie', { keepAfterRouteChange : true});
-            this.router.navigate(['../../list'], {relativeTo: this.route});
+            this.alertService.info('Pojazd został odebrany pomyślnie', { keepAfterRouteChange : true});
           },
           error => {
             this.alertService.error(error);
@@ -70,5 +68,5 @@ export class AssignedVehicleListComponent implements OnInit {
       }
     });
   }
-*/
+
 }

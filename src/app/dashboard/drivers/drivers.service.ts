@@ -41,4 +41,8 @@ export class DriversService {
   createShareVehicle(share: Share): Observable<Share> {
     return this.http.post<Share>(`${environment.apiUrl}/share`, share, httpOptions);
   }
+
+  deleteShareVehicle(vehicleId): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/share/vehicle/` + vehicleId, httpOptions);
+  }
 }

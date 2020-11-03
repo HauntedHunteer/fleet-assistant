@@ -4,7 +4,7 @@
   </div>
   <div class="column middle">
     <ng-container *ngIf="drivers">
-      <mat-accordion class="example-headers-align" multi>
+      <mat-accordion class="example-headers-align detailsFont">
         <mat-expansion-panel *ngFor="let driver of drivers" (click)="showSharedVehicles(driver.id)">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -17,8 +17,8 @@
 
           <mat-list role="list">
             <mat-list-item role="listitem" *ngFor="let vehicle of vehicleList">
+              <button mat-stroked-button color="warn" class="p-1 m-2" (click)="confirmDialog(vehicle.id)" >Usuń</button>
               {{vehicle.make}} | {{vehicle.model}} | {{vehicle.vehicleRegistrationNumber}} | {{vehicle.year}}
-              <button mat-raised-button color="warn" class="p-1 m-2" >Usuń</button> <!-- todo (click)="confirmDialog()" -->
             </mat-list-item>
           </mat-list>
 
