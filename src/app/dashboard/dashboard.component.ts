@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { User } from '../_models/user';
 import { AccountService } from '../account/account.service';
@@ -13,12 +14,17 @@ export class DashboardComponent implements OnInit {
   currentUser: User;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private accountService: AccountService,
     private tokenStorageService: TokenStorageService
   ) { }
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
+    if (this.currentUser.roles === 'ROLE_ADMIN') {
+      this.router.navigate(['/dashboard/users/list'], {relativeTo: this.route});
+    }
   }
 
   logout() {

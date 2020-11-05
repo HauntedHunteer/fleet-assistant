@@ -1,0 +1,42 @@
+<ng-container *ngIf="user">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Dane użytkownika </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="detailsFont">
+      <div>
+        <img class="mb-4" src="assets/img/driving-license.svg" alt="" width="100" height="100">
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <p><strong>Adres E-mail:</strong>  {{ user.email}} </p>
+        </div>
+        <div class="col-md-4">
+          <p><strong>Rola:</strong>  {{ user.roles}} </p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Status użytkownika:</strong>   {{ user.userStatus }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <p><strong>Data utworzenia konta:</strong>  {{ user.createdAt }}</p>
+        </div>
+        <div class="col-md-4">
+          <p><strong>Data ostatniego logowania:</strong>  {{ user.lastLoginAt }}</p>
+        </div>
+        <div class="col-md-4 py-1">
+          <p><strong>Ulica:</strong>  {{ user.isEnabled }}</p>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+      <button *ngIf="userStatus === 'ACTIVE'" class="p-1 my-2" mat-raised-button color="warn" (click)="confirmDialog()" >Zablokuj</button>
+      <button *ngIf="userStatus === 'BLOCKED'" class="p-1 my-2" mat-raised-button color="warn" (click)="confirmDialog()" >Odblokuj</button>
+      <button routerLink="../../list" class="m-1" mat-raised-button>Powrót</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
+

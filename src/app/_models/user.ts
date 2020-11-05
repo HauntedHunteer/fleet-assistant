@@ -4,5 +4,7 @@ export interface User {
   roles: string;
   createdAt: string;
   userStatus: string;
+  isEnabled: string;
+  lastLoginAt: string;
   accessToken: string;
 }
