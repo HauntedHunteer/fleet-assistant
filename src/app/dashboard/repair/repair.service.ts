@@ -18,11 +18,6 @@ export class RepairService {
     private httpClient: HttpClient
   ) { }
 
-  getRepairList(): Observable<Repair[]> {
-    return this.httpClient.get<Repair[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // todo
-  }
-
   getRepairListById(vehicleId): Observable<Repair[]> {
     return this.httpClient.get<Repair[]>(`${environment.apiUrl}/repair/v/` + vehicleId, httpOptions);
   }

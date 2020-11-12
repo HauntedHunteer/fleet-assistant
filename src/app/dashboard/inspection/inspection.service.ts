@@ -18,11 +18,6 @@ export class InspectionService {
     private httpClient: HttpClient
   ) { }
 
-  getInspectionList(): Observable<Inspection[]> {
-    return this.httpClient.get<Inspection[]>(`${environment.apiUrl}/vehicle`, httpOptions);
-    // todo
-  }
-
   getInspectionListById(vehicleId): Observable<Inspection[]> {
     return this.httpClient.get<Inspection[]>(`${environment.apiUrl}/inspection/v/` + vehicleId, httpOptions);
   }

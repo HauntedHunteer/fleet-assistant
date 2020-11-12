@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
     if (this.currentUser.roles === 'ROLE_ADMIN') {
-      this.router.navigate(['/dashboard/users/list'], {relativeTo: this.route});
+    this.router.navigate(['/dashboard/users/list'], {relativeTo: this.route});
     }
   }
 

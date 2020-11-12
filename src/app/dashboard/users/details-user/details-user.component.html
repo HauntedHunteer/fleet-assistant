@@ -12,22 +12,26 @@
           <p><strong>Adres E-mail:</strong>  {{ user.email}} </p>
         </div>
         <div class="col-md-4">
-          <p><strong>Rola:</strong>  {{ user.roles}} </p>
+          <p *ngIf="user.roles === 'ROLE_SUPERUSER'"><strong>Rola:</strong>  Menadżer </p>
+          <p *ngIf="user.roles === 'ROLE_USER'"><strong>Rola:</strong>  Kieorwca </p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Status użytkownika:</strong>   {{ user.userStatus }}</p>
+          <p *ngIf="user.userStatus === 'ACTIVE'"><strong>Status użytkownika:</strong>   Aktywny</p>
+          <p *ngIf="user.userStatus === 'INACTIVE'"><strong>Status użytkownika:</strong>   Nieaktywny</p>
+          <p *ngIf="user.userStatus === 'BLOCKED'"><strong>Status użytkownika:</strong>   Zablokowany</p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-4">
-          <p><strong>Data utworzenia konta:</strong>  {{ user.createdAt }}</p>
+          <p><strong>Data utworzenia konta:</strong>  {{ user.createdAt  | date : 'dd/MM/yyyy hh:mm:ss'}}</p>
         </div>
         <div class="col-md-4">
-          <p><strong>Data ostatniego logowania:</strong>  {{ user.lastLoginAt }}</p>
+          <p><strong>Data ostatniego logowania:</strong>  {{ user.lastLoginAt  | date : 'dd/MM/yyyy hh:mm:ss' }}</p>
         </div>
         <div class="col-md-4 py-1">
-          <p><strong>Ulica:</strong>  {{ user.isEnabled }}</p>
+          <p *ngIf="user.enabled"><strong>Aktywne:</strong>  Tak</p>
+          <p *ngIf="!user.enabled"><strong>Aktywne:</strong>  Nie</p>
         </div>
       </div>
 
