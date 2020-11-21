@@ -4,5 +4,6 @@ export interface Use {
   userId: string;
   trip: string;
   tripDate: string;
+  tripType: string;
   description: string;
 }

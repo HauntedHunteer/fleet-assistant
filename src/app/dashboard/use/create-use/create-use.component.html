@@ -55,6 +55,21 @@
             <div class="row">
               <div class="col m-1">
                 <mat-form-field class="input-full-width">
+                  <mat-label>Rodzaj przebiegu</mat-label>
+                  <mat-select [formControl]="f.tripType" required>
+                    <mat-option>Wybierz</mat-option>
+                    <mat-option *ngFor="let tripType of tripTypes" [value]="tripType.backendValue">
+                      {{tripType.frontendText}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="f.tripType.hasError('required')">
+                    Rodzaj przebiegu jest <strong>obowiązkowy</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col m-1">
+                <mat-form-field class="input-full-width">
                   <mat-label>Uwagi dodatkowe</mat-label>
                   <textarea matInput [formControl]="f.description"></textarea>
                   <mat-error *ngIf="f.description.hasError('maxlength')">
@@ -63,9 +78,6 @@
                 </mat-form-field>
               </div>
 
-              <div class="col m-1">
-
-              </div>
             </div>
             <mat-card-actions class="text-center m-1">
               <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">

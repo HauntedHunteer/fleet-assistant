@@ -8,6 +8,7 @@ import { TokenStorageService } from '../../../account/token-storage.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Use } from '../../../_models/use';
+import { TripType } from '../../../_models/trip-type';
 
 @Component({
   selector: 'app-update-use',
@@ -21,6 +22,11 @@ export class UpdateUseComponent implements OnInit {
   useId: string;
   use: Use;
   userId: string;
+  tripTypes: TripType[] = [
+    { backendValue: 'city', frontendText: 'Miejski' },
+    { backendValue: 'country', frontendText: 'Pozamiejski' },
+    { backendValue: 'average', frontendText: 'Mieszany' }
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,6 +63,7 @@ export class UpdateUseComponent implements OnInit {
         this.form = this.formBuilder.group( {
           tripDate: ['', Validators.required],
           trip: ['', [Validators.required, Validators.maxLength(5), Validators.pattern('^([1-9]\\d{1}|[1-9]\\d{0,4})$')]],
+          tripType: ['', Validators.required],
           description: ['', Validators.maxLength(255)]
         });
       });
@@ -65,6 +72,7 @@ export class UpdateUseComponent implements OnInit {
   pushValues(use: Use) {
     this.f.tripDate.setValue(use.tripDate);
     this.f.trip.setValue(use.trip);
+    this.f.tripType.setValue(use.tripType);
     this.f.description.setValue(use.description);
   }
 
@@ -79,6 +87,7 @@ export class UpdateUseComponent implements OnInit {
       userId: this.userId,
       trip: this.f.trip.value,
       tripDate: this.f.tripDate.value,
+      tripType: this.f.tripType.value,
       description: this.f.description.value
     };
 

@@ -35,9 +35,12 @@
 
       <div class="row">
         <div class="col-md-4 py-1">
-          <p><strong>Uwagi dodatkowe:</strong> {{ use.description }} </p>
+          <p *ngIf="use.tripType === 'city'"><strong>Rodzaj przebiegu:</strong> Miejski </p>
+          <p *ngIf="use.tripType === 'country'"><strong>Rodzaj przebiegu:</strong> Pozamiejski </p>
+          <p *ngIf="use.tripType === 'average'"><strong>Rodzaj przebiegu:</strong> Mieszany </p>
         </div>
         <div class="col-md-4 py-1">
+          <p><strong>Uwagi dodatkowe:</strong> {{ use.description }} </p>
         </div>
         <div class="col-md-4 py-1">
         </div>
