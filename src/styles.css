@@ -12,6 +12,15 @@ body {
   font-family: 'Armata', sans-serif;
 }
 
+.dashboardTitle {
+  font-size: xx-large;
+  font-family: 'Crimson Text', serif;
+}
+
+.chart {
+  height: 370px;
+  width: 100%;
+}
 
 /*
 html, body { height: 100%; }

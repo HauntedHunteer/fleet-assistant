@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="column left">
+
+  </div>
+  <div class="column middle">
+    <mat-card class="mb-2">
+      <mat-card-title>Wybierz okres do statystyki</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Data początkowa</mat-label>
+                <input matInput [matDatepicker]="dps" [formControl]="f.startDate" required>
+                <mat-datepicker-toggle matSuffix [for]="dps"></mat-datepicker-toggle>
+                <mat-datepicker #dps></mat-datepicker>
+                <mat-error *ngIf="f.startDate.hasError('required')">
+                  Data początkowa jest <strong>obowiązkowa</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Data końcowa</mat-label>
+                <input matInput [matDatepicker]="dpe" [formControl]="f.endDate" required>
+                <mat-datepicker-toggle matSuffix [for]="dpe"></mat-datepicker-toggle>
+                <mat-datepicker #dpe></mat-datepicker>
+                <mat-error *ngIf="f.endDate.hasError('required')">
+                  Data końcowa jest <strong>obowiązkowa</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <mat-card-actions class="text-center m-1">
+            <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+            Wyszukaj
+          </button>
+          </mat-card-actions>
+        </form>
+        <mat-card-subtitle class="my-3"><strong>Zakres dat:</strong></mat-card-subtitle>
+        <ng-container *ngIf="query">
+          <div class="row">
+            <div class="col-md-3 py-1">
+            </div>
+            <div class="col-md-3 py-1">
+              <p><strong>Od:</strong>   {{ query.startDate }}</p>
+            </div>
+            <div class="col-md-3 py-1">
+              <p><strong>Do:</strong>   {{ query.endDate }}</p>
+            </div>
+            <div class="col-md-3 py-1">
+
+            </div>
+          </div>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+    <!--<mat-spinner *ngIf="loading1 || loading2 || loading3"></mat-spinner>-->
+    <ng-container>
+      <div id="FuelConsumptionCostsForFleet" class="chart mb-2"></div>
+    </ng-container>
+    <ng-container>
+      <div id="MileageForFleet" class="chart mb-2"></div>
+    </ng-container>
+    <ng-container>
+      <div id="VehicleCostsForFleet" class="chart mb-2"></div>
+    </ng-container>
+  </div>
+  <div class="column right">
+
+  </div>
+</div>

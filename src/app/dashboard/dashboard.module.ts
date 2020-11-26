@@ -43,6 +43,10 @@ import { UpdateUseComponent } from './use/update-use/update-use.component';
 import { SharedVehicleComponent } from './shared-vehicle/shared-vehicle.component';
 import { DetailsSharedVehicleComponent } from './shared-vehicle/details-shared-vehicle/details-shared-vehicle.component';
 import { ListSharedVehicleComponent } from './shared-vehicle/list-shared-vehicle/list-shared-vehicle.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { FleetStatisticsComponent } from './statistics/fleet-statistics/fleet-statistics.component';
+import { VehicleStatisticsComponent } from './statistics/vehicle-statistics/vehicle-statistics.component';
+import { DriverStatisticsComponent } from './statistics/driver-statistics/driver-statistics.component';
 
 
 
@@ -86,7 +90,11 @@ import { ListSharedVehicleComponent } from './shared-vehicle/list-shared-vehicle
     UpdateUseComponent,
     SharedVehicleComponent,
     DetailsSharedVehicleComponent,
-    ListSharedVehicleComponent
+    ListSharedVehicleComponent,
+    StatisticsComponent,
+    FleetStatisticsComponent,
+    VehicleStatisticsComponent,
+    DriverStatisticsComponent
   ],
   imports: [
     CommonModule,

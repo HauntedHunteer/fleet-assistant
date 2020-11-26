@@ -44,6 +44,10 @@ import { ListUseComponent } from './use/list-use/list-use.component';
 import { SharedVehicleComponent } from './shared-vehicle/shared-vehicle.component';
 import { DetailsSharedVehicleComponent } from './shared-vehicle/details-shared-vehicle/details-shared-vehicle.component';
 import { ListSharedVehicleComponent } from './shared-vehicle/list-shared-vehicle/list-shared-vehicle.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { FleetStatisticsComponent } from './statistics/fleet-statistics/fleet-statistics.component';
+import { VehicleStatisticsComponent } from './statistics/vehicle-statistics/vehicle-statistics.component';
+import { DriverStatisticsComponent } from './statistics/driver-statistics/driver-statistics.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent,
@@ -114,6 +118,13 @@ const routes: Routes = [
           children: [
             { path: 'details/:id', component: DetailsSharedVehicleComponent },
             { path: 'list', component: ListSharedVehicleComponent}
+          ]
+        },
+        { path: 'stats', component: StatisticsComponent,
+          children: [
+            { path: 'fleet', component: FleetStatisticsComponent },
+            { path: 'vehicle', component: VehicleStatisticsComponent },
+            { path: 'driver', component: DriverStatisticsComponent }
           ]
         }
       ]}

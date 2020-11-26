@@ -25,6 +25,9 @@ export class DashboardComponent implements OnInit {
     if (this.currentUser.roles === 'ROLE_ADMIN') {
     this.router.navigate(['/dashboard/users/list'], {relativeTo: this.route});
     }
+    if (this.currentUser.roles === 'ROLE_SUPERUSER') {
+      this.router.navigate(['/dashboard/stats/fleet'], {relativeTo: this.route});
+    }
   }
 
   logout() {
