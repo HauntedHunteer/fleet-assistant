@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="column left">
+
+  </div>
+  <div class="column middle">
+    <mat-card>
+      <mat-card-title>Wprowadź dane do raportu</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Data początkowa</mat-label>
+                <input matInput [matDatepicker]="dps" [formControl]="f.startDate" required>
+                <mat-datepicker-toggle matSuffix [for]="dps"></mat-datepicker-toggle>
+                <mat-datepicker #dps></mat-datepicker>
+                <mat-error *ngIf="f.startDate.hasError('required')">
+                  Data początkowa jest <strong>obowiązkowa</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Data końcowa</mat-label>
+                <input matInput [matDatepicker]="dpe" [formControl]="f.endDate" required>
+                <mat-datepicker-toggle matSuffix [for]="dpe"></mat-datepicker-toggle>
+                <mat-datepicker #dpe></mat-datepicker>
+                <mat-error *ngIf="f.endDate.hasError('required')">
+                  Data końcowa jest <strong>obowiązkowa</strong>
+                </mat-error>
+                <mat-error *ngIf="f.endDate.hasError('checkDateRange')">
+                  Chronologia musi być zachowana
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Wybierz kierowcę</mat-label>
+                <mat-select [formControl]="f.driversList" required>
+                  <mat-option *ngFor="let driver of driversList" [value]="driver.id">
+                    {{driver.email}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f.driversList.hasError('required')">
+                  Wybór kierowcy jest <strong>obowiązkowy</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Wybierz przedmiot raportu</mat-label>
+                <mat-select [formControl]="f.reportSubject" required>
+                  <mat-option>Wybierz</mat-option>
+                  <mat-option *ngFor="let reportSubject of reportSubjects" [value]="reportSubject.backendValue">
+                    {{reportSubject.frontendText}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f.reportSubject.hasError('required')">
+                  Przedmiot raportu jest <strong>obowiązkowy</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+            <mat-card-actions class="text-center m-1">
+              <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
+                Wygeneruj
+              </button>
+              <a routerLink="/dashboard/stats/fleet" mat-raised-button class="ml-3 mt-3">Powrót </a>
+            </mat-card-actions>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="column right">
+
+  </div>
+</div>
+

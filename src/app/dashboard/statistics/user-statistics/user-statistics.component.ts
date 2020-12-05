@@ -3,49 +3,45 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as CanvasJS from './../../../../assets/canvasjs/canvasjs.min';
 
 import { StatisticsService } from '../statistics.service';
-import { DriversService } from '../../drivers/drivers.service';
 import { AlertService } from '../../../_services/alert.service';
 import { StatsElement } from '../../../_models/stats-element';
-import { User} from '../../../_models/user';
 
 import { CheckDateRange } from '../../../_helpers/check-date-range';
 
 @Component({
-  selector: 'app-driver-statistics',
-  templateUrl: './driver-statistics.component.html',
-  styleUrls: ['./driver-statistics.component.css']
+  selector: 'app-user-statistics',
+  templateUrl: './user-statistics.component.html',
+  styleUrls: ['./user-statistics.component.css']
 })
-export class DriverStatisticsComponent implements OnInit {
+export class UserStatisticsComponent implements OnInit {
   form: FormGroup;
   query;
-
-  fuelCostsForDriver: StatsElement[];
-  mileageForDriver: StatsElement[];
-  driversList: User[];
+  fuelCostsForUser: StatsElement[];
+  mileageForUser: StatsElement[];
 
   constructor(
     private formBuilder: FormBuilder,
     private statisticsService: StatisticsService,
-    private driversService: DriversService,
     private alertService: AlertService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
-    this.driversService.getDriversList().subscribe(
-      dataDrivers => {
-        this.driversList = dataDrivers;
-      },
-      error => {
-        this.alertService.error(error);
-      });
-
     this.form = this.formBuilder.group({
       startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      driversList: ['', Validators.required]
+      endDate: ['', Validators.required]
     }, {
       validator: CheckDateRange('startDate', 'endDate')
     });
+
+    let endDate: Date;
+    endDate = new Date();
+    this.query = {
+      startDate: (endDate.getFullYear() - 1) + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate(),
+      endDate: endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate()
+    };
+    this.renderChart1();
+    this.renderChart2();
   }
 
   get f() {
@@ -59,26 +55,24 @@ export class DriverStatisticsComponent implements OnInit {
     endDate = new Date(this.f.endDate.value);
     this.query = {
       startDate: startDate.getFullYear() + '-' + (startDate.getMonth() + 1) + '-' + startDate.getDate(),
-      endDate: endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate(),
-      userId: this.f.driversList.value
+      endDate: endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate()
     };
     this.renderChart1();
     this.renderChart2();
-
   }
 
   renderChart1() {
-    this.statisticsService.getFuelCostsForDriver(this.query).subscribe(
+    this.statisticsService.getFuelCostsForUser(this.query).subscribe(
       data => {
-        this.fuelCostsForDriver = data;
+        this.fuelCostsForUser = data;
         let dataPoints = [];
-        for (let element of this.fuelCostsForDriver) {
+        for (let element of this.fuelCostsForUser) {
           dataPoints.push({
             y: element.value,
             label: element.name
           });
         }
-        const chart = new CanvasJS.Chart('FuelCostsForDriver', {
+        const chart = new CanvasJS.Chart('FuelCostsForUser', {
           animationEnabled: true,
           exportEnabled: true,
           title: {
@@ -102,17 +96,17 @@ export class DriverStatisticsComponent implements OnInit {
   }
 
   renderChart2() {
-    this.statisticsService.getMileageForDriver(this.query).subscribe(
+    this.statisticsService.getMileageForUser(this.query).subscribe(
       data => {
-        this.mileageForDriver = data;
+        this.mileageForUser = data;
         let dataPoints = [];
-        for (let element of this.mileageForDriver) {
+        for (let element of this.mileageForUser) {
           dataPoints.push({
             y: element.value,
             label: element.name
           });
         }
-        const chart = new CanvasJS.Chart('MileageForDriver', {
+        const chart = new CanvasJS.Chart('MileageForUser', {
           animationEnabled: true,
           exportEnabled: true,
           title: {
@@ -134,5 +128,4 @@ export class DriverStatisticsComponent implements OnInit {
         this.alertService.error(error);
       });
   }
-
 }

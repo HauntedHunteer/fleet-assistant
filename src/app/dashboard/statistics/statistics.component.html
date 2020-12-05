@@ -1,9 +1,10 @@
 <div class="m-1">
-  <p class="dashboardTitle">Statystyki</p>
+  <!--<p class="dashboardTitle">Statystyki</p>-->
   <div class="text-center">
-  <button routerLink="./fleet" mat-stroked-button color="primary" class="py-2 m-2 ">Flota</button>
-  <button routerLink="./vehicle" mat-stroked-button color="primary" class="py-2 m-2 ">Pojazd</button>
-  <button routerLink="./driver" mat-stroked-button color="primary" class="py-2 m-2 ">Kierowcy</button>
+  <button *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="./fleet" mat-stroked-button color="primary" class="py-2 m-2 ">Flota</button>
+  <button *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="./vehicle" mat-stroked-button color="primary" class="py-2 m-2 ">Pojazd</button>
+  <button *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="./driver" mat-stroked-button color="primary" class="py-2 m-2 ">Kierowcy</button>
+  <button *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="./user" mat-stroked-button color="primary" class="py-2 m-2 ">Użytkownik</button>
   <router-outlet></router-outlet>
   </div>
 </div>

@@ -8,7 +8,7 @@ import { TokenStorageService } from '../../../account/token-storage.service';
 import { AlertService } from '../../../_services/alert.service';
 import { Vehicle } from '../../../_models/vehicle';
 import { Use } from '../../../_models/use';
-import { TripType } from '../../../_models/trip-type';
+import { List } from '../../../_models/list';
 
 @Component({
   selector: 'app-update-use',
@@ -22,7 +22,7 @@ export class UpdateUseComponent implements OnInit {
   useId: string;
   use: Use;
   userId: string;
-  tripTypes: TripType[] = [
+  tripTypes: List[] = [
     { backendValue: 'city', frontendText: 'Miejski' },
     { backendValue: 'country', frontendText: 'Pozamiejski' },
     { backendValue: 'average', frontendText: 'Mieszany' }

@@ -4,13 +4,19 @@
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Fleet Assistant</span>
+      <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="/dashboard/stats/fleet" class="dashboardNavLink">Fleet Assistant</a>
+      <a *ngIf="currentUser.roles === 'ROLE_USER'" routerLink="/dashboard/stats/user" class="dashboardNavLink">Fleet Assistant</a>
+      <a *ngIf="currentUser.roles === 'ROLE_ADMIN'" routerLink="/dashboard/users/list" class="dashboardNavLink">Fleet Assistant</a>
       <span class="iconSpacer"></span>
       <div fxShow="true" fxHide.lt-md="true">
 
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a mat-button color="accent">
+        <a mat-button color="accent" class="dashboardMail">
           {{currentUser.email}}
+        </a>
+        <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="/dashboard/report/vehicle" mat-button class="link">
+          <mat-icon>cloud_download</mat-icon>
+          Raporty
         </a>
         <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" mat-button [matMenuTriggerFor]="driversMenu" class="link">
           <mat-icon>people_alt</mat-icon>
@@ -52,6 +58,10 @@
         <a mat-list-item>
           {{currentUser.email}}
         </a>
+        <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="/dashboard/report/vehicle" mat-list-item>
+          <mat-icon>cloud_download</mat-icon>
+          Raporty
+        </a>
         <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" mat-list-item [matMenuTriggerFor]="driversMenu">
           <mat-icon>people_alt</mat-icon>
           Moi kierowcy
@@ -60,7 +70,7 @@
           <mat-icon>airport_shuttle</mat-icon>
           Moja flota
         </a>
-        <a *ngIf="currentUser.roles === 'ROLE_USER'" routerLink="/dashboard/sharedVehicle/list" mat-button class="link">
+        <a *ngIf="currentUser.roles === 'ROLE_USER'" routerLink="/dashboard/sharedVehicle/list" mat-list-item>
           <mat-icon>airport_shuttle</mat-icon>
           Przydzielone pojazdy
         </a>

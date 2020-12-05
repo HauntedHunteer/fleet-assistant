@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { TokenStorageService } from '../../../account/token-storage.service';
 import { UserDataService } from '../user-data.service';
 import { AlertService } from '../../../_services/alert.service';
 import { UserData } from '../../../_models/user-data';
+import { User } from '../../../_models/user';
 
 @Component({
   selector: 'app-create-user-data',
@@ -13,16 +15,20 @@ import { UserData } from '../../../_models/user-data';
 })
 export class CreateUserDataComponent implements OnInit {
   form: FormGroup;
+  currentUser: User;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private tokenStorageService: TokenStorageService,
     private userDataService: UserDataService,
     private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorageService.getUser();
+
     this.form = this.formBuilder.group( {
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(45)]],
       surname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(45)]],

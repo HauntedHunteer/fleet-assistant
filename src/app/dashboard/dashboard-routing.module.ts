@@ -48,6 +48,10 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { FleetStatisticsComponent } from './statistics/fleet-statistics/fleet-statistics.component';
 import { VehicleStatisticsComponent } from './statistics/vehicle-statistics/vehicle-statistics.component';
 import { DriverStatisticsComponent } from './statistics/driver-statistics/driver-statistics.component';
+import { UserStatisticsComponent } from './statistics/user-statistics/user-statistics.component';
+import { ReportComponent } from './report/report.component';
+import { VehicleReportComponent } from './report/vehicle-report/vehicle-report.component';
+import { UserReportComponent } from './report/user-report/user-report.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent,
@@ -122,9 +126,16 @@ const routes: Routes = [
         },
         { path: 'stats', component: StatisticsComponent,
           children: [
-            { path: 'fleet', component: FleetStatisticsComponent },
-            { path: 'vehicle', component: VehicleStatisticsComponent },
-            { path: 'driver', component: DriverStatisticsComponent }
+            { path: 'fleet', component: FleetStatisticsComponent, canActivate: [SuperuserGuard] },
+            { path: 'vehicle', component: VehicleStatisticsComponent, canActivate: [SuperuserGuard] },
+            { path: 'driver', component: DriverStatisticsComponent, canActivate: [SuperuserGuard] },
+            { path: 'user', component: UserStatisticsComponent }
+          ]
+        },
+        { path: 'report', component: ReportComponent, canActivate: [SuperuserGuard],
+          children: [
+            { path: 'vehicle', component: VehicleReportComponent },
+            { path: 'driver', component: UserReportComponent }
           ]
         }
       ]}

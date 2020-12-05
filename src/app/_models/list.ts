@@ -1,4 +1,4 @@
-export interface TripType {
+export interface List {
   backendValue: string;
   frontendText: string;
 }

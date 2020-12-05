@@ -144,7 +144,9 @@
             <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
               Dodaj
             </button>
-            <a routerLink="/dashboard" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+            <a *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="/dashboard/stats/fleet" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+            <a *ngIf="currentUser.roles === 'ROLE_USER'" routerLink="/dashboard/stats/user" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
+            <a *ngIf="currentUser.roles === 'ROLE_ADMIN'" routerLink="/dashboard/users/list" mat-raised-button color="warn" class="ml-3 mt-3">Anuluj </a>
           </mat-card-actions>
         </form>
       </mat-card-content>

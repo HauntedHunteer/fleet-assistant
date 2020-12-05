@@ -47,6 +47,10 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { FleetStatisticsComponent } from './statistics/fleet-statistics/fleet-statistics.component';
 import { VehicleStatisticsComponent } from './statistics/vehicle-statistics/vehicle-statistics.component';
 import { DriverStatisticsComponent } from './statistics/driver-statistics/driver-statistics.component';
+import { UserStatisticsComponent } from './statistics/user-statistics/user-statistics.component';
+import { ReportComponent } from './report/report.component';
+import { VehicleReportComponent } from './report/vehicle-report/vehicle-report.component';
+import { UserReportComponent } from './report/user-report/user-report.component';
 
 
 
@@ -94,7 +98,11 @@ import { DriverStatisticsComponent } from './statistics/driver-statistics/driver
     StatisticsComponent,
     FleetStatisticsComponent,
     VehicleStatisticsComponent,
-    DriverStatisticsComponent
+    DriverStatisticsComponent,
+    UserStatisticsComponent,
+    ReportComponent,
+    VehicleReportComponent,
+    UserReportComponent
   ],
   imports: [
     CommonModule,

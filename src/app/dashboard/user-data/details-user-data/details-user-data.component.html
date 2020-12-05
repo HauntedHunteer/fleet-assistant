@@ -46,7 +46,9 @@
     <mat-card-actions class="text-center">
       <button routerLink="../changePwd" class="m-1" mat-raised-button color="primary" >Zmień hasło</button>
       <button routerLink="../update" class="m-1" mat-raised-button color="primary" >Edytuj dane</button>
-      <button routerLink="/dashboard" class="m-1" mat-raised-button>Powrót</button>
+      <button *ngIf="currentUser.roles === 'ROLE_SUPERUSER'" routerLink="/dashboard/stats/fleet" class="m-1" mat-raised-button>Powrót</button>
+      <button *ngIf="currentUser.roles === 'ROLE_USER'" routerLink="/dashboard/stats/user" class="m-1" mat-raised-button>Powrót</button>
+      <button *ngIf="currentUser.roles === 'ROLE_ADMIN'" routerLink="/dashboard/users/list" class="m-1" mat-raised-button>Powrót</button>
     </mat-card-actions>
   </mat-card>
 </ng-container>

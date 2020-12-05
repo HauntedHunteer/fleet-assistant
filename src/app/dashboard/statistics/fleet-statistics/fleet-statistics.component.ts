@@ -6,6 +6,8 @@ import { StatisticsService } from '../statistics.service';
 import { AlertService } from '../../../_services/alert.service';
 import { StatsElement } from '../../../_models/stats-element';
 
+import { CheckDateRange } from '../../../_helpers/check-date-range';
+
 @Component({
   selector: 'app-fleet-statistics',
   templateUrl: './fleet-statistics.component.html',
@@ -14,18 +16,10 @@ import { StatsElement } from '../../../_models/stats-element';
 export class FleetStatisticsComponent implements OnInit {
   form: FormGroup;
   query;
-  fuelConsumptionCostsForFleet: StatsElement[];
+  fuelCostsForFleet: StatsElement[];
   mileageForFleet: StatsElement[];
   vehicleCostsForFleet: StatsElement[];
-  //dataPoints1;
-  //dataPoints2;
-  //dataPoints3;
-  isFirst;
-  isSecond;
-  isThird;
-  loading1: boolean;
-  loading2: boolean;
-  loading3: boolean;
+  vehicleUseCountForFleet: StatsElement[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,7 +32,20 @@ export class FleetStatisticsComponent implements OnInit {
     this.form = this.formBuilder.group({
       startDate: ['', Validators.required],
       endDate: ['', Validators.required]
+    }, {
+      validator: CheckDateRange('startDate', 'endDate')
     });
+
+    let endDate: Date;
+    endDate = new Date();
+    this.query = {
+      startDate: (endDate.getFullYear() - 1) + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate(),
+      endDate: endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate()
+    };
+    this.renderChart1();
+    this.renderChart2();
+    this.renderChart3();
+    this.renderChart4();
   }
 
   get f() {
@@ -46,10 +53,6 @@ export class FleetStatisticsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isFirst = false;
-    this.isSecond = false;
-    this.isThird = false;
-    // todo make service's call
     let startDate: Date;
     startDate = new Date(this.f.startDate.value);
     let endDate: Date;
@@ -58,107 +61,152 @@ export class FleetStatisticsComponent implements OnInit {
       startDate: startDate.getFullYear() + '-' + (startDate.getMonth() + 1) + '-' + startDate.getDate(),
       endDate: endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate()
     };
-    this.loading1 = true;
-    this.statisticsService.getFuelConsumptionCostsForFleet(this.query).subscribe(
+    this.renderChart1();
+    this.renderChart2();
+    this.renderChart3();
+    this.renderChart4();
+  }
+
+  renderChart1() {
+    this.statisticsService.getFuelCostsForFleet(this.query).subscribe(
       data => {
-        if (data.length !== 0) {
-          this.fuelConsumptionCostsForFleet = data;
-          let dataPoints = [];
-          for (let element of this.fuelConsumptionCostsForFleet) {
-            dataPoints.push({
-              y: element.value,
-              label: element.name
-            });
-          }
-          const chart = new CanvasJS.Chart('FuelConsumptionCostsForFleet', {
-            animationEnabled: true,
-            exportEnabled: true,
-            title: {
-              text: 'Koszty paliwa'
-            },
-            data: [{
-              type: 'column',
-              dataPoints: dataPoints
-            }]
+        this.fuelCostsForFleet = data;
+        let dataPoints = [];
+        for (let element of this.fuelCostsForFleet) {
+          dataPoints.push({
+            y: element.value,
+            label: element.name
           });
-          this.loading1 = false;
-          this.isFirst = true;
-          chart.render();
         }
+        const chart = new CanvasJS.Chart('FuelCostsForFleet', {
+          animationEnabled: true,
+          exportEnabled: true,
+          title: {
+            text: 'Sumaryczne koszty paliwa',
+            fontFamily: 'arial'
+          },
+          axisY: {
+            title: 'PLN',
+          },
+          data: [{
+            type: 'column',
+            toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y} PLN',
+            dataPoints: dataPoints
+          }]
+        });
+        chart.render();
       },
       error => {
         this.alertService.error(error);
-        this.loading1 = false;
       });
-    this.loading2 = true;
+  }
+
+  renderChart2() {
     this.statisticsService.getMileageForFleet(this.query).subscribe(
       data => {
-        if (data.length !== 0) {
-          this.mileageForFleet = data;
-          let dataPoints = [];
-          for (let element of this.mileageForFleet) {
-            dataPoints.push({
-              y: element.value,
-              label: element.name
-            });
-          }
-          const chart2 = new CanvasJS.Chart('MileageForFleet', {
-            animationEnabled: true,
-            exportEnabled: true,
-            title: {
-              text: 'Przebiegi'
-            },
-            data: [{
-              type: 'column',
-              dataPoints: dataPoints
-            }]
+        this.mileageForFleet = data;
+        let dataPoints = [];
+        for (let element of this.mileageForFleet) {
+          dataPoints.push({
+            y: element.value,
+            label: element.name
           });
-          this.loading2 = false;
-          this.isSecond = true;
-          chart2.render();
         }
+        const chart = new CanvasJS.Chart('MileageForFleet', {
+          animationEnabled: true,
+          exportEnabled: true,
+          title: {
+            text: 'Sumaryczne przebiegi',
+            fontFamily: 'arial'
+          },
+          axisY: {
+            title: 'km'
+          },
+          data: [{
+            type: 'column',
+            toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y} km',
+            dataPoints: dataPoints
+          }]
+        });
+        chart.render();
       },
       error => {
         this.alertService.error(error);
-        this.loading2 = false;
       });
-    this.loading3 = true;
+  }
+
+  renderChart3() {
     this.statisticsService.getVehicleCostsForFleet(this.query).subscribe(
       data => {
-        if (data.length !== 0) {
-          this.vehicleCostsForFleet = data;
-          console.log(this.vehicleCostsForFleet);
-          let dataPoints = [];
-          for (let element of this.vehicleCostsForFleet) {
-            dataPoints.push({
-              y: element.value,
-              name: element.name
-            });
-          }
-          const chart3 = new CanvasJS.Chart('VehicleCostsForFleet', {
-            theme: 'light2',
-            animationEnabled: true,
-            exportEnabled: true,
-            title: {
-              text: 'Koszty utrzymania floty'
-            },
-            data: [{
-              type: 'pie',
-              showInLegend: true,
-              toolTipContent: '<b>{name}</b>: {y} PLN (#percent%)',
-              indexLabel: '{name} - #percent%',
-              dataPoints: dataPoints
-            }]
+        this.vehicleCostsForFleet = data;
+        let dataPoints = [];
+        let total: number = 0.00;
+        for (let element of this.vehicleCostsForFleet) {
+          total += element.value;
+          dataPoints.push({
+            y: element.value,
+            name: element.name
           });
-          this.loading3 = false;
-          this.isThird = true;
-          chart3.render();
         }
+        const chart = new CanvasJS.Chart('VehicleCostsForFleet', {
+          theme: 'light2',
+          animationEnabled: true,
+          exportEnabled: true,
+          title: {
+            text: 'Koszty utrzymania floty',
+            fontFamily: 'arial',
+            fontWeight: 'normal'
+          },
+          subtitles: [{
+            text: 'Całkowity koszt',
+            fontSize: 14
+          }],
+          data: [{
+            type: 'pie',
+            showInLegend: true,
+            toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{name}:</span> {y} PLN (#percent%)',
+            indexLabel: '{name} - #percent%',
+            dataPoints: dataPoints
+          }]
+        });
+        chart.render();
+        chart.subtitles[0].set('text', 'Całkowity koszt: ' + total.toFixed(2) + ' PLN');
       },
       error => {
         this.alertService.error(error);
-        this.loading3 = false;
+      });
+  }
+
+  renderChart4() {
+    this.statisticsService.getVehicleUseCountForFleet(this.query).subscribe(
+      data => {
+        this.vehicleUseCountForFleet = data;
+        let dataPoints = [];
+        for (let element of this.vehicleUseCountForFleet) {
+          dataPoints.push({
+            y: element.value,
+            label: element.name
+          });
+        }
+        const chart = new CanvasJS.Chart('VehicleUseCountForFleet', {
+          animationEnabled: true,
+          exportEnabled: true,
+          title: {
+            text: 'Liczba użyć (przebiegów)',
+            fontFamily: 'arial'
+          },
+          data: [{
+            type: 'column',
+            toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y}',
+            dataPoints: dataPoints
+          }]
+        });
+        chart.render();
+      },
+      error => {
+        this.alertService.error(error);
       });
   }
 }
+
 
