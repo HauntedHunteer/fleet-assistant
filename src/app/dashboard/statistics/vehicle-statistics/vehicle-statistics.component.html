@@ -1,87 +1,96 @@
 <ng-container *ngIf="vehiclesList">
   <div class="row">
-    <div class="column left">
+    <mat-card class="my-2 example-card mat-card-cvr mx-3">
+      <mat-card-title>Statystyki twojego pojazdu</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-3 m-1">
 
-    </div>
-    <div class="column middle">
-      <mat-card class="my-2">
-        <mat-card-title>Statystyki twojego pojazdu</mat-card-title>
-        <mat-card-content>
-          <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="row">
-              <div class="col m-1">
-                <mat-form-field class="input-full-width">
-                  <mat-label>Data początkowa</mat-label>
-                  <input matInput [matDatepicker]="dps" [formControl]="f.startDate" required>
-                  <mat-datepicker-toggle matSuffix [for]="dps"></mat-datepicker-toggle>
-                  <mat-datepicker #dps></mat-datepicker>
-                  <mat-error *ngIf="f.startDate.hasError('required')">
-                    Data początkowa jest <strong>obowiązkowa</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
-
-              <div class="col m-1">
-                <mat-form-field class="input-full-width">
-                  <mat-label>Data końcowa</mat-label>
-                  <input matInput [matDatepicker]="dpe" [formControl]="f.endDate" required>
-                  <mat-datepicker-toggle matSuffix [for]="dpe"></mat-datepicker-toggle>
-                  <mat-datepicker #dpe></mat-datepicker>
-                  <mat-error *ngIf="f.endDate.hasError('required')">
-                    Data końcowa jest <strong>obowiązkowa</strong>
-                  </mat-error>
-                  <mat-error *ngIf="f.endDate.hasError('checkDateRange')">
-                    Chronologia musi być zachowana
-                  </mat-error>
-                </mat-form-field>
-              </div>
+            </div>
+            <div class="col-md-3 m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Data początkowa</mat-label>
+                <input matInput [matDatepicker]="dps" [formControl]="f.startDate" required>
+                <mat-datepicker-toggle matSuffix [for]="dps"></mat-datepicker-toggle>
+                <mat-datepicker #dps></mat-datepicker>
+                <mat-error *ngIf="f.startDate.hasError('required')">
+                  Data początkowa jest <strong>obowiązkowa</strong>
+                </mat-error>
+              </mat-form-field>
             </div>
 
-            <div class="row">
-              <div class="col m-1">
-                <mat-form-field class="input-full-width">
-                  <mat-label>Twoje pojazdy</mat-label>
-                  <mat-select [formControl]="f.vehiclesList" required>
-                    <mat-option *ngFor="let vehicle of vehiclesList" [value]="vehicle.id">
-                      [ {{vehicle.make}} | {{vehicle.model}} | {{vehicle.vehicleRegistrationNumber}} | {{vehicle.year}} ]
-                    </mat-option>
-                  </mat-select>
-                  <mat-error *ngIf="f.vehiclesList.hasError('required')">
-                    Wybór pojazdu jest <strong>obowiązkowy</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
+            <div class="col-md-3 m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Data końcowa</mat-label>
+                <input matInput [matDatepicker]="dpe" [formControl]="f.endDate" required>
+                <mat-datepicker-toggle matSuffix [for]="dpe"></mat-datepicker-toggle>
+                <mat-datepicker #dpe></mat-datepicker>
+                <mat-error *ngIf="f.endDate.hasError('required')">
+                  Data końcowa jest <strong>obowiązkowa</strong>
+                </mat-error>
+                <mat-error *ngIf="f.endDate.hasError('checkDateRange')">
+                  Chronologia musi być zachowana
+                </mat-error>
+              </mat-form-field>
             </div>
-            <mat-card-actions class="text-center m-1">
-              <button [disabled]="!form.valid" mat-raised-button color="primary" class="ml-3">
-                Wyszukaj
-              </button>
-            </mat-card-actions>
-          </form>
-          <mat-card-subtitle class="my-3"><strong>Aktualny zakres:</strong></mat-card-subtitle>
-          <ng-container *ngIf="query">
-            <div class="row">
-              <div class="col-md-3 py-1">
-              </div>
-              <div class="col-md-3 py-1">
-                <p><strong>Od:</strong>   {{ query.startDate }}</p>
-              </div>
-              <div class="col-md-3 py-1">
-                <p><strong>Do:</strong>   {{ query.endDate }}</p>
-              </div>
-              <div class="col-md-3 py-1">
+            <div class="col-md-3 m-1">
 
-              </div>
             </div>
-          </ng-container>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <div class="column right">
+          </div>
+          <div class="row">
+            <div class="col-md-4 m-1">
 
-    </div>
+            </div>
+            <div class="col-md-4 m-1">
+              <mat-form-field class="input-full-width">
+                <mat-label>Twoje pojazdy</mat-label>
+                <mat-select [formControl]="f.vehiclesList" required>
+                  <mat-option *ngFor="let vehicle of vehiclesList" [value]="vehicle.id">
+                    [ {{vehicle.make}} | {{vehicle.model}} | {{vehicle.vehicleRegistrationNumber}} | {{vehicle.year}} ]
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f.vehiclesList.hasError('required')">
+                  Wybór pojazdu jest <strong>obowiązkowy</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-4 m-1">
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-card-actions>
+                <button [disabled]="!form.valid" mat-raised-button color="primary">
+                  Wyszukaj
+                </button>
+              </mat-card-actions>
+            </div>
+          </div>
+        </form>
+        <mat-card-subtitle class="my-3"><strong>Aktualny zakres:</strong></mat-card-subtitle>
+        <ng-container *ngIf="query">
+          <div class="row">
+            <div class="col-md-2 py-1">
+            </div>
+            <div class="col-md-2 py-1">
+            </div>
+            <div class="col-md-2 py-1">
+              <p><strong>Od:</strong>   {{ query.startDate }}</p>
+            </div>
+            <div class="col-md-2 py-1">
+              <p><strong>Do:</strong>   {{ query.endDate }}</p>
+            </div>
+            <div class="col-md-2 py-1">
+            </div>
+            <div class="col-md-2 py-1">
+            </div>
+          </div>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
   </div>
-
   <div class="row">
     <div class="col-md-6">
       <div id="FuelCostsForVehicle" class="chart my-4"></div>

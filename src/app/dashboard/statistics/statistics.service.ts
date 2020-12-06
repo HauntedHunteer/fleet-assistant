@@ -71,18 +71,21 @@ export class StatisticsService {
 
   getVehicleCosts(qParams): Observable<StatsElement[]>{
     const params = this.makeParamsForVehicle(qParams);
+    // tslint:disable-next-line:max-line-length
     return this.httpClient.get<StatsElement[]>(`${environment.apiUrl}/dashboard/vehicle_cost_by_category` , {params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
 
   }
 
   getMileageGrouped(qParams): Observable<StatsElement[]>{
     const params = this.makeParamsForVehicle(qParams);
+    // tslint:disable-next-line:max-line-length
     return this.httpClient.get<StatsElement[]>(`${environment.apiUrl}/dashboard/vehicle_trip_by_trip_type` , {params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 
   // driver-statistics.component
   getMileageForDriver(qParams): Observable<StatsElement[]> {
       const params = this.makeParamsForDriver(qParams);
+    // tslint:disable-next-line:max-line-length
       return this.httpClient.get<StatsElement[]>(`${environment.apiUrl}/dashboard/trip_by_user` , {params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 
@@ -99,6 +102,7 @@ export class StatisticsService {
 
   getFuelCostsForUser(qParams): Observable<StatsElement[]> {
     const params = this.makeParamsForFleetAndUser(qParams);
+    // tslint:disable-next-line:max-line-length
     return this.httpClient.get<StatsElement[]>(`${environment.apiUrl}/dashboard/fuel_cost_by_login_user` , {params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 }

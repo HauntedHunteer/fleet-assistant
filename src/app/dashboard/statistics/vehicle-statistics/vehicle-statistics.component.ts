@@ -73,14 +73,14 @@ export class VehicleStatisticsComponent implements OnInit {
     this.statisticsService.getFuelCostsForVehicle(this.query).subscribe(
       data => {
         this.fuelCostsForVehicle = data;
-        let dataPoints = [];
-        for (let element of this.fuelCostsForVehicle) {
+        const dataPoints = [];
+        for (const element of this.fuelCostsForVehicle) {
           dataPoints.push({
             y: element.value,
             x: new Date(element.name)
           });
         }
-        let chart = new CanvasJS.Chart('FuelCostsForVehicle', {
+        const chart = new CanvasJS.Chart('FuelCostsForVehicle', {
           theme: 'light2',
           animationEnabled: true,
           exportEnabled: true,
@@ -100,7 +100,7 @@ export class VehicleStatisticsComponent implements OnInit {
             indexLabelFontSize: 16,
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{x}:</span> {y} PLN',
             xValueFormatString: 'DD-MM-YYYY',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();
@@ -114,14 +114,14 @@ export class VehicleStatisticsComponent implements OnInit {
     this.statisticsService.getMileageForVehicle(this.query).subscribe(
       data => {
         this.mileageForVehicle = data;
-        let dataPoints = [];
-        for (let element of this.mileageForVehicle) {
+        const dataPoints = [];
+        for (const element of this.mileageForVehicle) {
           dataPoints.push({
             y: element.value,
             x: new Date(element.name)
           });
         }
-        let chart = new CanvasJS.Chart('MileageForVehicle', {
+        const chart = new CanvasJS.Chart('MileageForVehicle', {
           theme: 'light2',
           animationEnabled: true,
           exportEnabled: true,
@@ -141,7 +141,7 @@ export class VehicleStatisticsComponent implements OnInit {
             indexLabelFontSize: 16,
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{x}:</span> {y} km',
             xValueFormatString: 'DD-MM-YYYY',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();
@@ -155,9 +155,9 @@ export class VehicleStatisticsComponent implements OnInit {
     this.statisticsService.getVehicleCosts(this.query).subscribe(
       data => {
         this.vehicleCosts = data;
-        let dataPoints = [];
-        let total: number = 0.00;
-        for (let element of this.vehicleCosts) {
+        const dataPoints = [];
+        let total = 0.00;
+        for (const element of this.vehicleCosts) {
           total += element.value;
           dataPoints.push({
             y: element.value,
@@ -182,7 +182,7 @@ export class VehicleStatisticsComponent implements OnInit {
             showInLegend: true,
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{name}:</span> {y} PLN (#percent%)',
             indexLabel: '{name} - #percent%',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();
@@ -197,8 +197,8 @@ export class VehicleStatisticsComponent implements OnInit {
     this.statisticsService.getMileageGrouped(this.query).subscribe(
       data => {
         this.mileageGrouped = data;
-        let dataPoints = [];
-        for (let element of this.mileageGrouped) {
+        const dataPoints = [];
+        for (const element of this.mileageGrouped) {
           dataPoints.push({
             y: element.value,
             label: element.name
@@ -217,7 +217,7 @@ export class VehicleStatisticsComponent implements OnInit {
           data: [{
             type: 'column',
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y} km',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();

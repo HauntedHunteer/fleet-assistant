@@ -22,7 +22,7 @@ export class UseService {
     let params = new HttpParams();
     params = params.append('v', vehicleId);
     params = params.append('u', userId);
-    return this.httpClient.get<Use[]>(`${environment.apiUrl}/use/list`, {params: params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
+    return this.httpClient.get<Use[]>(`${environment.apiUrl}/use/list`, {params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 
   getUseListById(vehicleId): Observable<Use[]> {

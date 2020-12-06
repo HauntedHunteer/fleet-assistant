@@ -29,7 +29,7 @@ export class UsersService {
   changeUserStatus(userId, userStatus): Observable<any> {
     return this.httpClient.post(`${environment.apiUrl}/admin/status`, {
       id: userId,
-      userStatus: userStatus
+      userStatus
     }, httpOptions);
   }
 }

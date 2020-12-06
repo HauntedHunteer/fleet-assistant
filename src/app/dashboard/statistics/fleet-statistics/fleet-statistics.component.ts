@@ -71,8 +71,8 @@ export class FleetStatisticsComponent implements OnInit {
     this.statisticsService.getFuelCostsForFleet(this.query).subscribe(
       data => {
         this.fuelCostsForFleet = data;
-        let dataPoints = [];
-        for (let element of this.fuelCostsForFleet) {
+        const dataPoints = [];
+        for (const element of this.fuelCostsForFleet) {
           dataPoints.push({
             y: element.value,
             label: element.name
@@ -91,7 +91,7 @@ export class FleetStatisticsComponent implements OnInit {
           data: [{
             type: 'column',
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y} PLN',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();
@@ -105,8 +105,8 @@ export class FleetStatisticsComponent implements OnInit {
     this.statisticsService.getMileageForFleet(this.query).subscribe(
       data => {
         this.mileageForFleet = data;
-        let dataPoints = [];
-        for (let element of this.mileageForFleet) {
+        const dataPoints = [];
+        for (const element of this.mileageForFleet) {
           dataPoints.push({
             y: element.value,
             label: element.name
@@ -125,7 +125,7 @@ export class FleetStatisticsComponent implements OnInit {
           data: [{
             type: 'column',
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y} km',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();
@@ -139,9 +139,9 @@ export class FleetStatisticsComponent implements OnInit {
     this.statisticsService.getVehicleCostsForFleet(this.query).subscribe(
       data => {
         this.vehicleCostsForFleet = data;
-        let dataPoints = [];
-        let total: number = 0.00;
-        for (let element of this.vehicleCostsForFleet) {
+        const dataPoints = [];
+        let total = 0.00;
+        for (const element of this.vehicleCostsForFleet) {
           total += element.value;
           dataPoints.push({
             y: element.value,
@@ -166,7 +166,7 @@ export class FleetStatisticsComponent implements OnInit {
             showInLegend: true,
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{name}:</span> {y} PLN (#percent%)',
             indexLabel: '{name} - #percent%',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();
@@ -181,8 +181,8 @@ export class FleetStatisticsComponent implements OnInit {
     this.statisticsService.getVehicleUseCountForFleet(this.query).subscribe(
       data => {
         this.vehicleUseCountForFleet = data;
-        let dataPoints = [];
-        for (let element of this.vehicleUseCountForFleet) {
+        const dataPoints = [];
+        for (const element of this.vehicleUseCountForFleet) {
           dataPoints.push({
             y: element.value,
             label: element.name
@@ -198,7 +198,7 @@ export class FleetStatisticsComponent implements OnInit {
           data: [{
             type: 'column',
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y}',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();

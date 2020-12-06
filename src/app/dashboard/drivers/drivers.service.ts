@@ -27,7 +27,8 @@ export class DriversService {
   getNewAccountPasswordToken(qParams): Observable<any> {
     let params = new HttpParams();
     params = params.append('u', qParams.u);
-    return this.http.get(`${environment.apiUrl}/user/new-account`, {params: params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
+    // tslint:disable-next-line:max-line-length
+    return this.http.get(`${environment.apiUrl}/user/new-account`, {params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 
   setNewPasswordForUser(bundle: NewDriversAccount): Observable<NewDriversAccount> {

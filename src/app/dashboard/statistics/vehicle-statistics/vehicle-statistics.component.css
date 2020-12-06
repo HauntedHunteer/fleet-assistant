@@ -1,31 +1,5 @@
-.column {
-  float: left;
-}
-
-.left, .right {
-  width: 30%;
-}
-
-.middle {
-  width: 40%;
-}
-
-@media (min-width: 550px) and (max-width: 767px) {
-  .left, .right {
-    width: 25%;
-  }
-
-  .middle {
-    width: 50%;
-  }
-}
-
-@media (max-width: 549px) {
-  .left, .right {
-    width: 5%;
-  }
-
-  .middle {
-    width: 90%;
-  }
+.example-card{ display:inline-block; }
+.mat-card-cvr{
+  width: 100%;
+  text-align:center;
 }

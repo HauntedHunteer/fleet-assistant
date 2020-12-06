@@ -21,7 +21,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 
-import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
@@ -51,7 +50,6 @@ const material = [
 
 @NgModule({
   declarations: [
-    FooterComponent,
     AlertComponent,
     PageNotFoundComponent,
     ConfirmDialogComponent,
@@ -65,7 +63,6 @@ const material = [
   ],
   exports: [
     material,
-    FooterComponent,
     AlertComponent,
     PageNotFoundComponent,
     ConfirmDialogComponent

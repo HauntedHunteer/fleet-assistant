@@ -49,7 +49,8 @@ export class AccountService {
     let params = new HttpParams();
     params = params.append('u', qParams.u);
     params = params.append('c', qParams.c);
-    return this.http.get(`${environment.apiUrl}/user/reset-password`, {params: params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
+    // tslint:disable-next-line:max-line-length
+    return this.http.get(`${environment.apiUrl}/user/reset-password`, {params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 
   setNewPassword(bundle: ResetPwd): Observable<ResetPwd> {
@@ -58,8 +59,8 @@ export class AccountService {
 
   changePassword(oldPassword, newPassword): Observable<any> {
     return this.http.post(`${environment.apiUrl}/user/change-password`, {
-      oldPassword: oldPassword,
-      newPassword: newPassword
+      oldPassword,
+      newPassword
     }, httpOptions);
   }
 

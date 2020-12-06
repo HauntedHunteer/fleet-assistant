@@ -65,8 +65,8 @@ export class UserStatisticsComponent implements OnInit {
     this.statisticsService.getFuelCostsForUser(this.query).subscribe(
       data => {
         this.fuelCostsForUser = data;
-        let dataPoints = [];
-        for (let element of this.fuelCostsForUser) {
+        const dataPoints = [];
+        for (const element of this.fuelCostsForUser) {
           dataPoints.push({
             y: element.value,
             label: element.name
@@ -85,7 +85,7 @@ export class UserStatisticsComponent implements OnInit {
           data: [{
             type: 'column',
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y} PLN',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();
@@ -99,8 +99,8 @@ export class UserStatisticsComponent implements OnInit {
     this.statisticsService.getMileageForUser(this.query).subscribe(
       data => {
         this.mileageForUser = data;
-        let dataPoints = [];
-        for (let element of this.mileageForUser) {
+        const dataPoints = [];
+        for (const element of this.mileageForUser) {
           dataPoints.push({
             y: element.value,
             label: element.name
@@ -119,7 +119,7 @@ export class UserStatisticsComponent implements OnInit {
           data: [{
             type: 'column',
             toolTipContent: '<span style=\'"\'color: #4f81bc;\'"\'>{label}:</span> {y} km',
-            dataPoints: dataPoints
+            dataPoints
           }]
         });
         chart.render();

@@ -22,7 +22,7 @@ export class RefuelingService {
     let params = new HttpParams();
     params = params.append('v', vehicleId);
     params = params.append('u', userId);
-    return this.httpClient.get<Refueling[]>(`${environment.apiUrl}/refueling/list`, {params: params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
+    return this.httpClient.get<Refueling[]>(`${environment.apiUrl}/refueling/list`, {params, headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 
   getRefuelingListById(vehicleId): Observable<Refueling[]> {
