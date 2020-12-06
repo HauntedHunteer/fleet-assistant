@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { saveAs } from 'file-saver';
 
 import { ReportService } from '../report.service';
 import { DriversService } from '../../drivers/drivers.service';
@@ -66,12 +67,20 @@ export class UserReportComponent implements OnInit {
     };
 
     this.reportService.generateUserReport(this.query).subscribe(
-      data => {
-
+      response => {
+        const blob = new Blob([response], { type: 'application/pdf' });
+        saveAs(blob, this.makeFileName());
       },
       error => {
         this.alertService.error(error);
       });
   }
 
+  makeFileName(): string {
+    const chosenUser: User = this.driversList.find(element => element.id === this.query.userId);
+    const email: string = chosenUser.email + '_';
+    const subject: string = this.reportSubjects.find(element => element.backendValue === this.query.reportSubject).frontendText + '_';
+    const filename: string = email + subject + this.query.startDate + '_' + this.query.endDate;
+    return filename;
+  }
 }

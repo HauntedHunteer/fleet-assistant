@@ -25,6 +25,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { AuthorsComponent } from './authors/authors.component';
+import { SourceMaterialsComponent } from './source-materials/source-materials.component';
 
 const material = [
   MatToolbarModule,
@@ -52,7 +54,9 @@ const material = [
     FooterComponent,
     AlertComponent,
     PageNotFoundComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AuthorsComponent,
+    SourceMaterialsComponent
   ],
   imports: [
     CommonModule,

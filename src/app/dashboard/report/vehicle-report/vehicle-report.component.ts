@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { saveAs } from 'file-saver';
 
 import { ReportService } from '../report.service';
 import { VehicleService } from '../../vehicle/vehicle.service';
@@ -68,12 +69,20 @@ export class VehicleReportComponent implements OnInit {
     };
 
     this.reportService.generateVehicleReport(this.query).subscribe(
-      data => {
-
+      response => {
+        const blob = new Blob([response], { type: 'application/pdf' });
+        saveAs(blob, this.makeFileName());
       },
       error => {
         this.alertService.error(error);
       });
   }
 
+  makeFileName(): string {
+    const chosenVehicle: Vehicle = this.vehiclesList.find(element => element.id === this.query.vehicleId);
+    const makeModelRegNumberNames: string = chosenVehicle.make + '_' + chosenVehicle.model + '_' + chosenVehicle.vehicleRegistrationNumber + '_';
+    const subject: string = this.reportSubjects.find(element => element.backendValue === this.query.reportSubject).frontendText + '_';
+    const filename: string = makeModelRegNumberNames + subject + this.query.startDate + '_' + this.query.endDate;
+    return filename;
+  }
 }
